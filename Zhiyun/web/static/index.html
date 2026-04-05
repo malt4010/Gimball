@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Gimbal AI Tracker</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -10,166 +10,296 @@
             background: #1a1a2e; color: #eee;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             display: flex; flex-direction: column; height: 100vh;
+            overflow: hidden;
         }
         header {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 12px 20px; background: #16213e;
+            padding: 10px 16px; background: #16213e; flex-shrink: 0;
         }
-        header h1 { font-size: 18px; font-weight: 600; }
-        .status-bar {
-            display: flex; gap: 16px; font-size: 13px;
-        }
-        .status-dot {
-            width: 10px; height: 10px; border-radius: 50%;
-            display: inline-block; margin-right: 4px;
+        header h1 { font-size: 16px; font-weight: 600; }
+        .status-bar { display: flex; gap: 12px; font-size: 12px; }
+        .dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            display: inline-block; margin-right: 3px;
         }
         .dot-green { background: #4ade80; }
         .dot-red { background: #f87171; }
         .dot-orange { background: #fb923c; }
         .dot-gray { background: #6b7280; }
-        .main {
-            flex: 1; display: flex; gap: 0;
+
+        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+        /* Mode selector */
+        .mode-bar {
+            display: flex; gap: 8px; padding: 8px 16px;
+            background: #0f172a; flex-shrink: 0;
         }
-        .video-container {
+        .mode-btn {
+            padding: 6px 14px; border: 1px solid #334155; border-radius: 6px;
+            background: transparent; color: #94a3b8; font-size: 12px;
+            cursor: pointer;
+        }
+        .mode-btn.active { background: #1e40af; border-color: #3b82f6; color: white; }
+
+        /* Video area */
+        .video-area {
             flex: 1; position: relative; background: #000;
             display: flex; align-items: center; justify-content: center;
-            cursor: crosshair;
+            overflow: hidden;
         }
-        .video-container img {
+        .video-area video,
+        .video-area img {
             max-width: 100%; max-height: 100%; object-fit: contain;
         }
-        .click-hint {
-            position: absolute; bottom: 10px; left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.7); padding: 6px 14px;
-            border-radius: 6px; font-size: 12px; color: #aaa;
+        .video-area canvas {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
         }
-        .sidebar {
-            width: 220px; background: #16213e; padding: 16px;
-            display: flex; flex-direction: column; gap: 12px;
+        #camera-preview { display: none; }
+        #processed-feed { cursor: crosshair; }
+
+        .hint {
+            position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.75); padding: 5px 12px;
+            border-radius: 6px; font-size: 11px; color: #999;
         }
-        .sidebar h3 {
-            font-size: 13px; text-transform: uppercase;
-            color: #64748b; letter-spacing: 1px;
+
+        /* Controls */
+        .controls {
+            display: flex; gap: 8px; padding: 10px 16px;
+            background: #16213e; flex-shrink: 0;
+            align-items: center; flex-wrap: wrap;
         }
-        button {
-            width: 100%; padding: 10px; border: none; border-radius: 6px;
-            font-size: 14px; font-weight: 500; cursor: pointer;
-            transition: opacity 0.15s;
+        .controls button {
+            padding: 8px 16px; border: none; border-radius: 6px;
+            font-size: 13px; font-weight: 500; cursor: pointer;
         }
-        button:hover { opacity: 0.85; }
+        .btn-camera { background: #8b5cf6; color: white; }
+        .btn-camera.active { background: #22c55e; }
         .btn-stop { background: #ef4444; color: white; }
         .btn-center { background: #3b82f6; color: white; }
-        .btn-connect { background: #22c55e; color: white; }
-        .state-display {
-            padding: 10px; border-radius: 6px; text-align: center;
-            font-size: 16px; font-weight: 600;
+        .state-badge {
+            padding: 4px 10px; border-radius: 4px; font-size: 12px;
+            font-weight: 600; margin-left: auto;
         }
         .state-idle { background: #374151; }
         .state-tracking { background: #166534; }
         .state-lost { background: #92400e; }
-        .state-locking { background: #854d0e; }
-        .log {
-            flex: 1; overflow-y: auto; font-size: 11px;
-            background: #0f172a; border-radius: 6px; padding: 8px;
-            font-family: monospace; color: #94a3b8;
-        }
+
+        .info { font-size: 11px; color: #64748b; padding: 0 4px; }
     </style>
 </head>
 <body>
     <header>
         <h1>Gimbal AI Tracker</h1>
         <div class="status-bar">
-            <span><span class="status-dot dot-gray" id="gimbal-dot"></span>Gimbal</span>
-            <span><span class="status-dot dot-gray" id="track-dot"></span>Tracking</span>
+            <span><span class="dot dot-gray" id="cam-dot"></span>Camera</span>
+            <span><span class="dot dot-gray" id="gimbal-dot"></span>Gimbal</span>
+            <span><span class="dot dot-gray" id="track-dot"></span>Track</span>
+            <span class="info" id="fps-info"></span>
         </div>
     </header>
 
     <div class="main">
-        <div class="video-container" id="video-container">
-            <img id="video-feed" src="/video_feed" alt="Video Feed">
-            <div class="click-hint">Click on a person to start tracking</div>
+        <div class="video-area" id="video-area">
+            <!-- Hidden video element for camera preview / capture -->
+            <video id="camera-preview" autoplay playsinline muted></video>
+            <!-- Canvas for capturing frames to send -->
+            <canvas id="capture-canvas" style="display:none;"></canvas>
+            <!-- Processed video from server -->
+            <img id="processed-feed" src="/video_feed" alt="Waiting for camera...">
+            <div class="hint" id="hint">Start camera to begin</div>
         </div>
 
-        <div class="sidebar">
-            <h3>Status</h3>
-            <div class="state-display state-idle" id="state-display">IDLE</div>
-
-            <h3>Controls</h3>
-            <button class="btn-stop" onclick="stopTracking()">Stop Tracking</button>
-            <button class="btn-center" onclick="centerGimbal()">Center Gimbal</button>
-
-            <h3>Log</h3>
-            <div class="log" id="log"></div>
+        <div class="controls">
+            <button class="btn-camera" id="btn-camera" onclick="toggleCamera()">Start Camera</button>
+            <button class="btn-stop" onclick="stopTracking()">Stop Track</button>
+            <button class="btn-center" onclick="centerGimbal()">Center</button>
+            <span class="state-badge state-idle" id="state-badge">IDLE</span>
         </div>
     </div>
 
     <script>
-        const ws = new WebSocket(`ws://${location.host}/ws`);
-        const videoImg = document.getElementById('video-feed');
-        const stateDisplay = document.getElementById('state-display');
-        const gimbalDot = document.getElementById('gimbal-dot');
-        const trackDot = document.getElementById('track-dot');
-        const logEl = document.getElementById('log');
+    // --- State ---
+    let ws = null;
+    let cameraStream = null;
+    let sending = false;
+    let sendInterval = null;
 
-        function log(msg) {
-            const time = new Date().toLocaleTimeString();
-            logEl.innerHTML += `${time} ${msg}\n`;
-            logEl.scrollTop = logEl.scrollHeight;
-        }
+    const preview = document.getElementById('camera-preview');
+    const captureCanvas = document.getElementById('capture-canvas');
+    const processedFeed = document.getElementById('processed-feed');
+    const btnCamera = document.getElementById('btn-camera');
+    const hint = document.getElementById('hint');
+    const camDot = document.getElementById('cam-dot');
+    const gimbalDot = document.getElementById('gimbal-dot');
+    const trackDot = document.getElementById('track-dot');
+    const fpsInfo = document.getElementById('fps-info');
+    const stateBadge = document.getElementById('state-badge');
 
-        ws.onopen = () => log('WebSocket connected');
-        ws.onclose = () => log('WebSocket disconnected');
+    // --- WebSocket ---
+    function connectWS() {
+        ws = new WebSocket(`ws://${location.host}/ws`);
+        ws.binaryType = 'arraybuffer';
+
+        ws.onopen = () => {
+            console.log('WS connected');
+            // Start status polling
+            setInterval(() => {
+                if (ws.readyState === 1) {
+                    ws.send(JSON.stringify({ action: 'get_status' }));
+                }
+            }, 500);
+        };
 
         ws.onmessage = (e) => {
-            const data = JSON.parse(e.data);
-
-            if (data.event === 'status') {
-                // Update state display
-                const state = data.state || 'idle';
-                stateDisplay.textContent = state.toUpperCase();
-                stateDisplay.className = `state-display state-${state}`;
-
-                // Update dots
-                gimbalDot.className = `status-dot ${data.gimbal_connected ? 'dot-green' : 'dot-red'}`;
-                trackDot.className = `status-dot ${
-                    state === 'tracking' ? 'dot-green' :
-                    state === 'lost' ? 'dot-orange' : 'dot-gray'
-                }`;
-            }
-            else if (data.event === 'target_selected') {
-                log(data.success ? 'Target selected!' : 'No person at click position');
-            }
-            else if (data.event === 'tracking_stopped') {
-                log('Tracking stopped');
-            }
-            else if (data.event === 'centered') {
-                log('Gimbal centered');
+            if (typeof e.data === 'string') {
+                const data = JSON.parse(e.data);
+                if (data.event === 'status') {
+                    updateStatus(data);
+                } else if (data.event === 'target_selected') {
+                    hint.textContent = data.success
+                        ? 'Target locked! Tracking...'
+                        : 'No person detected at that position';
+                } else if (data.event === 'tracking_stopped') {
+                    hint.textContent = 'Tracking stopped. Click a person to track.';
+                }
             }
         };
 
-        // Click on video to select target
-        document.getElementById('video-container').addEventListener('click', (e) => {
-            const img = videoImg;
-            const rect = img.getBoundingClientRect();
+        ws.onclose = () => {
+            console.log('WS disconnected, reconnecting...');
+            setTimeout(connectWS, 2000);
+        };
+    }
 
-            // Calculate click position relative to the actual video frame
-            const scaleX = img.naturalWidth / rect.width;
-            const scaleY = img.naturalHeight / rect.height;
-            const x = Math.round((e.clientX - rect.left) * scaleX);
-            const y = Math.round((e.clientY - rect.top) * scaleY);
+    function updateStatus(data) {
+        const state = data.state || 'idle';
+        stateBadge.textContent = state.toUpperCase();
+        stateBadge.className = `state-badge state-${state}`;
 
-            ws.send(JSON.stringify({ action: 'select_target', x, y }));
-            log(`Clicked at (${x}, ${y})`);
-        });
+        gimbalDot.className = `dot ${data.gimbal_connected ? 'dot-green' : 'dot-red'}`;
+        trackDot.className = `dot ${
+            state === 'tracking' ? 'dot-green' :
+            state === 'lost' ? 'dot-orange' : 'dot-gray'
+        }`;
 
-        function stopTracking() {
+        if (data.fps) fpsInfo.textContent = `${data.fps} FPS`;
+    }
+
+    // --- Camera ---
+    async function toggleCamera() {
+        if (cameraStream) {
+            stopCamera();
+            return;
+        }
+
+        try {
+            // Request back camera on phones, any camera on desktop
+            cameraStream = await navigator.mediaDevices.getUserMedia({
+                video: {
+                    facingMode: { ideal: 'environment' },
+                    width: { ideal: 1280 },
+                    height: { ideal: 720 },
+                },
+                audio: false,
+            });
+
+            preview.srcObject = cameraStream;
+            await preview.play();
+
+            // Set up capture canvas
+            const track = cameraStream.getVideoTracks()[0];
+            const settings = track.getSettings();
+            captureCanvas.width = settings.width || 640;
+            captureCanvas.height = settings.height || 480;
+
+            btnCamera.textContent = 'Stop Camera';
+            btnCamera.classList.add('active');
+            camDot.className = 'dot dot-green';
+            hint.textContent = 'Camera active. Click on a person to track.';
+
+            // Start sending frames to server
+            startSending();
+
+        } catch (err) {
+            console.error('Camera error:', err);
+            hint.textContent = 'Camera access denied. Check permissions.';
+            camDot.className = 'dot dot-red';
+        }
+    }
+
+    function stopCamera() {
+        stopSending();
+        if (cameraStream) {
+            cameraStream.getTracks().forEach(t => t.stop());
+            cameraStream = null;
+        }
+        preview.srcObject = null;
+        btnCamera.textContent = 'Start Camera';
+        btnCamera.classList.remove('active');
+        camDot.className = 'dot dot-gray';
+        hint.textContent = 'Camera stopped.';
+    }
+
+    function startSending() {
+        if (sending) return;
+        sending = true;
+        const ctx = captureCanvas.getContext('2d');
+
+        // Send frames at ~15 FPS (balance between quality and bandwidth)
+        sendInterval = setInterval(() => {
+            if (!ws || ws.readyState !== 1 || !cameraStream) return;
+
+            ctx.drawImage(preview, 0, 0, captureCanvas.width, captureCanvas.height);
+            captureCanvas.toBlob((blob) => {
+                if (blob && ws.readyState === 1) {
+                    blob.arrayBuffer().then(buf => ws.send(buf));
+                }
+            }, 'image/jpeg', 0.7);
+        }, 66); // ~15 FPS
+    }
+
+    function stopSending() {
+        sending = false;
+        if (sendInterval) {
+            clearInterval(sendInterval);
+            sendInterval = null;
+        }
+    }
+
+    // --- Target selection ---
+    document.getElementById('video-area').addEventListener('click', (e) => {
+        if (!ws || ws.readyState !== 1) return;
+
+        const img = processedFeed;
+        const rect = img.getBoundingClientRect();
+
+        // Map click to frame coordinates
+        const scaleX = (img.naturalWidth || 640) / rect.width;
+        const scaleY = (img.naturalHeight || 480) / rect.height;
+        const x = Math.round((e.clientX - rect.left) * scaleX);
+        const y = Math.round((e.clientY - rect.top) * scaleY);
+
+        ws.send(JSON.stringify({ action: 'select_target', x, y }));
+        hint.textContent = `Selecting target at (${x}, ${y})...`;
+    });
+
+    function stopTracking() {
+        if (ws && ws.readyState === 1) {
             ws.send(JSON.stringify({ action: 'stop_tracking' }));
         }
+    }
 
-        function centerGimbal() {
+    function centerGimbal() {
+        if (ws && ws.readyState === 1) {
             ws.send(JSON.stringify({ action: 'center' }));
         }
+    }
+
+    // --- Init ---
+    connectWS();
     </script>
 </body>
 </html>

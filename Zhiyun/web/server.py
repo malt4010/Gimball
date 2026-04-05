@@ -1,38 +1,39 @@
 """
-Web server with live video dashboard and gimbal controls.
+Web server with WebRTC camera input, live video dashboard, and gimbal controls.
 
-Provides a browser-based UI for:
-- Viewing live camera feed with detection overlays
-- Clicking to select tracking target
-- Center/stop controls
-- Connection status
+The phone opens the web UI in its browser which:
+1. Sends camera feed to Pi via WebRTC
+2. Shows processed video (with detection overlays) back via MJPEG
+3. Allows clicking on persons to track them
+4. Provides gimbal controls (center, stop)
+
+A separate device (laptop/tablet) can also open the UI for monitoring only.
 """
 import asyncio
 import json
 import cv2
+import numpy as np
 from pathlib import Path
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, StreamingResponse
-from fastapi.staticfiles import StaticFiles
 
 
 class WebServer:
-    """FastAPI-based web dashboard."""
-
-    def __init__(self, tracker, gimbal_controller, host="0.0.0.0", port=8080):
+    def __init__(self, tracker, gimbal_controller, video_capture,
+                 host="0.0.0.0", port=8080):
         self.tracker = tracker
         self.gimbal = gimbal_controller
+        self.video = video_capture
         self.host = host
         self.port = port
         self.app = FastAPI()
-        self._latest_frame = None
-        self._control_callbacks = {}
+        self._latest_annotated = None
 
         self._setup_routes()
 
-    def set_frame(self, frame):
-        """Update the latest frame (called from main loop)."""
-        self._latest_frame = frame
+    def set_annotated_frame(self, frame):
+        """Set the latest AI-processed frame for streaming back."""
+        self._latest_annotated = frame
 
     def _setup_routes(self):
         app = self.app
@@ -54,54 +55,67 @@ class WebServer:
             await ws.accept()
             try:
                 while True:
-                    msg = await ws.receive_text()
-                    data = json.loads(msg)
-                    action = data.get("action")
+                    msg = await ws.receive()
 
-                    if action == "select_target":
-                        x = data.get("x", 0)
-                        y = data.get("y", 0)
-                        frame = self._latest_frame
+                    # Binary = JPEG frame from phone camera
+                    if "bytes" in msg and msg["bytes"]:
+                        jpeg_bytes = msg["bytes"]
+                        arr = np.frombuffer(jpeg_bytes, dtype=np.uint8)
+                        frame = cv2.imdecode(arr, cv2.IMREAD_COLOR)
                         if frame is not None:
-                            success = self.tracker.select_target(x, y, frame)
-                            await ws.send_json({"event": "target_selected", "success": success})
+                            self.video.push_frame(frame)
+                        continue
 
-                    elif action == "stop_tracking":
-                        self.tracker.stop_tracking()
-                        if self.gimbal:
-                            await self.gimbal.stop()
-                        await ws.send_json({"event": "tracking_stopped"})
+                    # Text = JSON control message
+                    if "text" in msg and msg["text"]:
+                        data = json.loads(msg["text"])
+                        action = data.get("action")
 
-                    elif action == "center":
-                        if self.gimbal:
-                            await self.gimbal.stop()
-                        await ws.send_json({"event": "centered"})
+                        if action == "select_target":
+                            x, y = data.get("x", 0), data.get("y", 0)
+                            frame = self.video.frame
+                            if frame is not None:
+                                success = self.tracker.select_target(x, y, frame)
+                                await ws.send_json({"event": "target_selected",
+                                                    "success": success})
 
-                    # Send periodic status updates
-                    status = {
-                        "event": "status",
-                        "state": self.tracker.state,
-                        "gimbal_connected": self.gimbal.connected if self.gimbal else False,
-                        "target_bbox": self.tracker.target_bbox,
-                    }
-                    await ws.send_json(status)
+                        elif action == "stop_tracking":
+                            self.tracker.stop_tracking()
+                            if self.gimbal:
+                                await self.gimbal.stop()
+                            await ws.send_json({"event": "tracking_stopped"})
+
+                        elif action == "center":
+                            if self.gimbal:
+                                await self.gimbal.stop()
+                            await ws.send_json({"event": "centered"})
+
+                        elif action == "get_status":
+                            await ws.send_json({
+                                "event": "status",
+                                "state": self.tracker.state,
+                                "gimbal_connected": self.gimbal.connected if self.gimbal else False,
+                                "target_bbox": self.tracker.target_bbox,
+                                "fps": round(self.video.fps, 1),
+                            })
 
             except WebSocketDisconnect:
                 pass
+            except Exception as e:
+                print(f"[WebSocket] Error: {e}")
 
     async def _generate_mjpeg(self):
-        """Generate MJPEG stream from latest frames."""
         while True:
-            if self._latest_frame is not None:
-                _, buffer = cv2.imencode(".jpg", self._latest_frame,
-                                         [cv2.IMWRITE_JPEG_QUALITY, 70])
+            frame = self._latest_annotated
+            if frame is not None:
+                _, buf = cv2.imencode(".jpg", frame,
+                                      [cv2.IMWRITE_JPEG_QUALITY, 70])
                 yield (b"--frame\r\n"
                        b"Content-Type: image/jpeg\r\n\r\n" +
-                       buffer.tobytes() + b"\r\n")
-            await asyncio.sleep(0.033)  # ~30 fps
+                       buf.tobytes() + b"\r\n")
+            await asyncio.sleep(0.033)
 
     async def start(self):
-        """Start the web server."""
         import uvicorn
         config = uvicorn.Config(self.app, host=self.host, port=self.port,
                                 log_level="warning")

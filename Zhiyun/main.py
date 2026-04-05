@@ -27,25 +27,26 @@ async def main(args):
     print("[INIT] Starting AI Tracking Gimbal System...")
 
     # Video capture
-    source = args.source
-    if source.isdigit():
-        source = int(source)
-    video = VideoCapture(source=source, width=args.width, height=args.height)
-    video.start()
-    print(f"[INIT] Video capture: {args.source} ({args.width}x{args.height})")
+    if args.source == "webrtc":
+        video = VideoCapture(source=None, width=args.width, height=args.height)
+        print(f"[INIT] Video: WebRTC (waiting for phone camera via browser)")
+    else:
+        source = int(args.source) if args.source.isdigit() else args.source
+        video = VideoCapture(source=source, width=args.width, height=args.height)
+        video.start()
+        print(f"[INIT] Video capture: {args.source} ({args.width}x{args.height})")
 
-    # Wait for first frame
-    for _ in range(50):
-        if video.frame is not None:
-            break
-        await asyncio.sleep(0.1)
+        for _ in range(50):
+            if video.frame is not None:
+                break
+            await asyncio.sleep(0.1)
 
-    if video.frame is None:
-        print("[ERROR] No video frames received!")
-        video.stop()
-        return
+        if video.frame is None:
+            print("[ERROR] No video frames received!")
+            video.stop()
+            return
 
-    print(f"[INIT] Video OK, FPS: {video.fps:.0f}")
+    print(f"[INIT] Video ready")
 
     # Person tracker
     tracker = PersonTracker(
@@ -76,7 +77,7 @@ async def main(args):
     )
 
     # Web server
-    web = WebServer(tracker, gimbal, port=args.port)
+    web = WebServer(tracker, gimbal, video, port=args.port)
     print(f"[INIT] Web UI: http://0.0.0.0:{args.port}")
 
     # Start web server in background
@@ -137,7 +138,7 @@ async def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="AI Person Tracking Gimbal")
-    parser.add_argument("--source", default="0", help="Video source: camera index, RTSP URL, or file")
+    parser.add_argument("--source", default="webrtc", help="Video source: 'webrtc' (phone browser), camera index, or RTSP URL")
     parser.add_argument("--width", type=int, default=640, help="Frame width")
     parser.add_argument("--height", type=int, default=480, help="Frame height")
     parser.add_argument("--model", default="n", choices=["n", "s", "m"], help="YOLO model size")
