@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gimbal AI Tracker</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #1a1a2e; color: #eee;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex; flex-direction: column; height: 100vh;
+        }
+        header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 20px; background: #16213e;
+        }
+        header h1 { font-size: 18px; font-weight: 600; }
+        .status-bar {
+            display: flex; gap: 16px; font-size: 13px;
+        }
+        .status-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            display: inline-block; margin-right: 4px;
+        }
+        .dot-green { background: #4ade80; }
+        .dot-red { background: #f87171; }
+        .dot-orange { background: #fb923c; }
+        .dot-gray { background: #6b7280; }
+        .main {
+            flex: 1; display: flex; gap: 0;
+        }
+        .video-container {
+            flex: 1; position: relative; background: #000;
+            display: flex; align-items: center; justify-content: center;
+            cursor: crosshair;
+        }
+        .video-container img {
+            max-width: 100%; max-height: 100%; object-fit: contain;
+        }
+        .click-hint {
+            position: absolute; bottom: 10px; left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7); padding: 6px 14px;
+            border-radius: 6px; font-size: 12px; color: #aaa;
+        }
+        .sidebar {
+            width: 220px; background: #16213e; padding: 16px;
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .sidebar h3 {
+            font-size: 13px; text-transform: uppercase;
+            color: #64748b; letter-spacing: 1px;
+        }
+        button {
+            width: 100%; padding: 10px; border: none; border-radius: 6px;
+            font-size: 14px; font-weight: 500; cursor: pointer;
+            transition: opacity 0.15s;
+        }
+        button:hover { opacity: 0.85; }
+        .btn-stop { background: #ef4444; color: white; }
+        .btn-center { background: #3b82f6; color: white; }
+        .btn-connect { background: #22c55e; color: white; }
+        .state-display {
+            padding: 10px; border-radius: 6px; text-align: center;
+            font-size: 16px; font-weight: 600;
+        }
+        .state-idle { background: #374151; }
+        .state-tracking { background: #166534; }
+        .state-lost { background: #92400e; }
+        .state-locking { background: #854d0e; }
+        .log {
+            flex: 1; overflow-y: auto; font-size: 11px;
+            background: #0f172a; border-radius: 6px; padding: 8px;
+            font-family: monospace; color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gimbal AI Tracker</h1>
+        <div class="status-bar">
+            <span><span class="status-dot dot-gray" id="gimbal-dot"></span>Gimbal</span>
+            <span><span class="status-dot dot-gray" id="track-dot"></span>Tracking</span>
+        </div>
+    </header>
+
+    <div class="main">
+        <div class="video-container" id="video-container">
+            <img id="video-feed" src="/video_feed" alt="Video Feed">
+            <div class="click-hint">Click on a person to start tracking</div>
+        </div>
+
+        <div class="sidebar">
+            <h3>Status</h3>
+            <div class="state-display state-idle" id="state-display">IDLE</div>
+
+            <h3>Controls</h3>
+            <button class="btn-stop" onclick="stopTracking()">Stop Tracking</button>
+            <button class="btn-center" onclick="centerGimbal()">Center Gimbal</button>
+
+            <h3>Log</h3>
+            <div class="log" id="log"></div>
+        </div>
+    </div>
+
+    <script>
+        const ws = new WebSocket(`ws://${location.host}/ws`);
+        const videoImg = document.getElementById('video-feed');
+        const stateDisplay = document.getElementById('state-display');
+        const gimbalDot = document.getElementById('gimbal-dot');
+        const trackDot = document.getElementById('track-dot');
+        const logEl = document.getElementById('log');
+
+        function log(msg) {
+            const time = new Date().toLocaleTimeString();
+            logEl.innerHTML += `${time} ${msg}\n`;
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+
+        ws.onopen = () => log('WebSocket connected');
+        ws.onclose = () => log('WebSocket disconnected');
+
+        ws.onmessage = (e) => {
+            const data = JSON.parse(e.data);
+
+            if (data.event === 'status') {
+                // Update state display
+                const state = data.state || 'idle';
+                stateDisplay.textContent = state.toUpperCase();
+                stateDisplay.className = `state-display state-${state}`;
+
+                // Update dots
+                gimbalDot.className = `status-dot ${data.gimbal_connected ? 'dot-green' : 'dot-red'}`;
+                trackDot.className = `status-dot ${
+                    state === 'tracking' ? 'dot-green' :
+                    state === 'lost' ? 'dot-orange' : 'dot-gray'
+                }`;
+            }
+            else if (data.event === 'target_selected') {
+                log(data.success ? 'Target selected!' : 'No person at click position');
+            }
+            else if (data.event === 'tracking_stopped') {
+                log('Tracking stopped');
+            }
+            else if (data.event === 'centered') {
+                log('Gimbal centered');
+            }
+        };
+
+        // Click on video to select target
+        document.getElementById('video-container').addEventListener('click', (e) => {
+            const img = videoImg;
+            const rect = img.getBoundingClientRect();
+
+            // Calculate click position relative to the actual video frame
+            const scaleX = img.naturalWidth / rect.width;
+            const scaleY = img.naturalHeight / rect.height;
+            const x = Math.round((e.clientX - rect.left) * scaleX);
+            const y = Math.round((e.clientY - rect.top) * scaleY);
+
+            ws.send(JSON.stringify({ action: 'select_target', x, y }));
+            log(`Clicked at (${x}, ${y})`);
+        });
+
+        function stopTracking() {
+            ws.send(JSON.stringify({ action: 'stop_tracking' }));
+        }
+
+        function centerGimbal() {
+            ws.send(JSON.stringify({ action: 'center' }));
+        }
+    </script>
+</body>
+</html>
