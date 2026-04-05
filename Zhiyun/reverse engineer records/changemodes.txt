@@ -1,0 +1,53 @@
+Apr 05 15:47:08.770  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:47:08.821  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -46 dBm - Channel 39  
+Apr 05 15:47:08.851  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -49 dBm - Channel 39  
+Apr 05 15:47:09.131  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Low Power - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -51 dBm - Channel 38  
+Apr 05 15:47:09.132  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -48 dBm - Channel 37  
+Apr 05 15:47:09.739  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Low Power - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -55 dBm - Channel 37  
+Apr 05 15:47:09.743  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -49 dBm - Channel 39  
+Apr 05 15:47:09.771  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:47:10.465  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0601 2700 00B8 67  
+Apr 05 15:47:10.511  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0601 2700 0298 25  
+Apr 05 15:47:10.524  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0681 2700 0175 7E  
+Apr 05 15:47:10.526  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:47:10.571  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0681 2700 0175 7E  
+Apr 05 15:47:10.692  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:47:10.780  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:47:10.921  HCI Event        0x0000  F0:87:A1:4E:3F:18  LE - Ext ADV - 1 Report - Normal - Random - F0:87:A1:4E:3F:18 - RSSI: -68 dBm - Channel 37  
+Apr 05 15:47:10.923  HCI Event        0x0000  F0:87:A1:4E:3F:18  LE - Ext ADV - 1 Report - Low Power - Random - F0:87:A1:4E:3F:18 - RSSI: Unavailable (0x7F) - Channel 38  
+Apr 05 15:47:11.315  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0601 2700 00B8 67  
+Apr 05 15:47:11.381  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0601 2700 01A8 46  
+Apr 05 15:47:11.382  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0681 2700 0065 5F  
+Apr 05 15:47:11.385  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:47:11.440  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0681 2700 0065 5F  
+Apr 05 15:47:11.560  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:47:11.789  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:47:12.148  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -54 dBm - Channel 38  
+Apr 05 15:47:12.425  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -56 dBm - Channel 39  
+Apr 05 15:47:12.532  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0601 2700 00B8 67  
+Apr 05 15:47:12.580  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0601 2700 00B8 67  
+Apr 05 15:47:12.582  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0681 2700 0245 1D  
+Apr 05 15:47:12.584  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:47:12.640  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0681 2700 0245 1D  
+Apr 05 15:47:12.716  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:47:12.718  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:47:12.718  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:47:12.725  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -52 dBm - Channel 37  
+Apr 05 15:47:12.728  HCI Command      0x0000  00:00:00:00:00:00  Set Ext Advertising Disabled  
+Apr 05 15:47:12.732  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2039] - Set Ext Advertising  
+Apr 05 15:47:12.732  HCI Command      0x0000  00:00:00:00:00:00  Set Ext ADV Parameters - Min/Max Interval: 181.25ms/181.25ms - Handle: 0x0 - SID: 0  
+Apr 05 15:47:12.735  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2036] - Set Ext ADV Parameters  
+Apr 05 15:47:12.735  HCI Command      0x0000  00:00:00:00:00:00  Set Ext ADV Data - ADV Handle: 0x0  
+Apr 05 15:47:12.738  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2037] - Set Ext ADV Data  
+Apr 05 15:47:12.738  HCI Command      0x0000  00:00:00:00:00:00  Set Ext Advertising Enabled - Handles: 0x0   
+Apr 05 15:47:12.742  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2039] - Set Ext Advertising  
+Apr 05 15:47:12.742  HCI Command      0x0000  00:00:00:00:00:00  Set Ext ADV Parameters - Min/Max Interval: 2000ms/2000ms - Handle: 0x3 - SID: 3  
+Apr 05 15:47:12.745  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2036] - Set Ext ADV Parameters  
+Apr 05 15:47:12.745  HCI Command      0x0000  00:00:00:00:00:00  Set Ext ADV Data - ADV Handle: 0x3  
+Apr 05 15:47:12.748  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2037] - Set Ext ADV Data  
+Apr 05 15:47:12.748  HCI Command      0x0000  00:00:00:00:00:00  Set Ext Advertising Enabled - Handles: 0x3   
+Apr 05 15:47:12.751  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2039] - Set Ext Advertising  
+Apr 05 15:47:12.790  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:47:13.652  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -44 dBm - Channel 37  
+Apr 05 15:47:13.790  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:47:14.435  Note             0x0000  00:00:00:00:00:00  iOS Device connection has been lost  

@@ -1,0 +1,234 @@
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Product: iPhone16,1  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Firmware Version: 23.3.566.3954  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Chipset: BCM_4388, Revision: s=C0  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Transport: PCIe  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Address: FC:31:5D:89:4D:43  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Firmware Filename: BCM4388C0_23.3.566.3954_PCIE_Petunia_CLPC_OS_USI_20250917.bin  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Bluetooth Host: MobileBluetooth-193.9  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Software: Version 26.3.1 (a) (Build 23D771330a)  
+Apr 05 15:45:51.919  Config           0x0000  Crane84D9          Connected: 00:00:00:00:00:00 - Handle: 0x0 - Crane84D9 - B5825D7F-CAB5-ECC0-5180-C043954FD063  
+Apr 05 15:45:51.919  Config           0x0000  00:00:00:00:00:00  Undecoded packet  
+Apr 05 15:45:51.919  Config           0x0000  00:00:00:00:00:00  Undecoded packet  
+Apr 05 15:45:51.919  Note             0x0000  00:00:00:00:00:00  WiFi State: On, Band: 5 GHz  
+Apr 05 15:45:52.371  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -48 dBm - Channel 39  
+Apr 05 15:45:52.372  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Low Power - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -48 dBm - Channel 39  
+Apr 05 15:45:52.428  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:45:52.683  HCI Event        0x0000  D2:F5:27:9A:B1:93  LE - Ext ADV - 1 Report - Low Power - Random - D2:F5:27:9A:B1:93 - RSSI: Unavailable (0x7F) - Channel 37  
+Apr 05 15:45:52.711  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:52.714  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:52.960  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -43 dBm - Channel 38  
+Apr 05 15:45:52.961  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Low Power - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -42 dBm - Channel 38  
+Apr 05 15:45:53.094  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0108 0068 BB  
+Apr 05 15:45:53.095  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:53.095  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 0006 DB  
+Apr 05 15:45:53.112  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.112  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.140  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 0108 0068 BB06 1002 0800 31EB  
+Apr 05 15:45:53.170  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 0308 0006 DB  
+Apr 05 15:45:53.290  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.294  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FCDF BF  
+Apr 05 15:45:53.295  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:53.295  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 7348 2F  
+Apr 05 15:45:53.322  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.322  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.322  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.350  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FCDF BF06 1002 0800 31EB 0610…  
+Apr 05 15:45:53.351  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 2F  
+Apr 05 15:45:53.439  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:45:53.494  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FEFF FD  
+Apr 05 15:45:53.495  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:53.495  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 563C E8  
+Apr 05 15:45:53.502  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.502  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.502  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.530  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FEFF FD06 1002 0800 31EB 0610…  
+Apr 05 15:45:53.532  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: E8  
+Apr 05 15:45:53.694  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FFEF DC  
+Apr 05 15:45:53.694  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:53.695  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 2132 98  
+Apr 05 15:45:53.712  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.712  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.712  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.740  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FFEF DC06 1002 0800 31EB 0610…  
+Apr 05 15:45:53.741  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 98  
+Apr 05 15:45:53.894  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FFEF DC  
+Apr 05 15:45:53.894  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:53.895  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 0CC7 57  
+Apr 05 15:45:53.922  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.922  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.922  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:53.950  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FFEF DC06 1002 0800 31EB 0610…  
+Apr 05 15:45:53.951  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 57  
+Apr 05 15:45:54.094  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FFEF DC  
+Apr 05 15:45:54.094  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:54.094  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 0CC7 57  
+Apr 05 15:45:54.102  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.102  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.102  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.130  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FFEF DC06 1002 0800 31EB 0610…  
+Apr 05 15:45:54.132  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 57  
+Apr 05 15:45:54.294  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FFEF DC  
+Apr 05 15:45:54.294  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:54.294  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 0CC7 57  
+Apr 05 15:45:54.312  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.312  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.312  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.340  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FFEF DC06 1002 0800 31EB 0610…  
+Apr 05 15:45:54.341  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 57  
+Apr 05 15:45:54.440  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:45:54.494  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FFEF DC  
+Apr 05 15:45:54.494  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:54.494  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 0CC7 57  
+Apr 05 15:45:54.524  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.524  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.524  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.553  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FFEF DC06 1002 0800 31EB 0610…  
+Apr 05 15:45:54.553  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 57  
+Apr 05 15:45:54.694  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FFEF DC  
+Apr 05 15:45:54.694  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:54.694  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 0CC7 57  
+Apr 05 15:45:54.704  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.704  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.704  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.733  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FFEF DC06 1002 0800 31EB 0610…  
+Apr 05 15:45:54.733  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 57  
+Apr 05 15:45:54.894  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FFEF DC  
+Apr 05 15:45:54.895  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:54.895  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 0CC7 57  
+Apr 05 15:45:54.912  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.912  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.912  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:54.940  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FFEF DC06 1002 0800 31EB 0610…  
+Apr 05 15:45:54.941  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 57  
+Apr 05 15:45:55.045  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -42 dBm - Channel 39  
+Apr 05 15:45:55.047  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Low Power - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -42 dBm - Channel 39  
+Apr 05 15:45:55.093  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FFEF DC  
+Apr 05 15:45:55.093  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:55.094  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 0CC7 57  
+Apr 05 15:45:55.152  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FFEF DC  
+Apr 05 15:45:55.152  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.152  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.180  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 0208 0031 EB06 1003 080C C757  
+Apr 05 15:45:55.294  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FFEF DC  
+Apr 05 15:45:55.295  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:55.295  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 0BB7 B0  
+Apr 05 15:45:55.296  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.303  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.303  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.303  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.331  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FFEF DC06 1002 0800 31EB 0610…  
+Apr 05 15:45:55.331  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: B0  
+Apr 05 15:45:55.449  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:45:55.494  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FFEF DC  
+Apr 05 15:45:55.494  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:55.495  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 0BB7 B0  
+Apr 05 15:45:55.512  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.512  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.512  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.540  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FFEF DC06 1002 0800 31EB 0610…  
+Apr 05 15:45:55.541  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: B0  
+Apr 05 15:45:55.694  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FFEF DC  
+Apr 05 15:45:55.695  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:55.695  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 0BB7 B0  
+Apr 05 15:45:55.722  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.722  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.722  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.750  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FFEF DC06 1002 0800 31EB 0610…  
+Apr 05 15:45:55.752  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: B0  
+Apr 05 15:45:55.894  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 010F FFEF DC  
+Apr 05 15:45:55.894  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0208 0031 EB  
+Apr 05 15:45:55.894  ATT Send         0x0044  00:00:00:00:00:00  Write Command - Handle:0x002C - Value: 0610 0308 0BB7 B0  
+Apr 05 15:45:55.902  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.902  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.902  HCI Event        0x0044  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x0044 - Packets: 0x0001    
+Apr 05 15:45:55.930  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: 0610 010F FFEF DC06 1002 0800 31EB 0610…  
+Apr 05 15:45:55.931  ATT Receive      0x0044  00:00:00:00:00:00  Handle Value Notification - Handle:0x002F - Value: B0  
+Apr 05 15:45:55.972  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -43 dBm - Channel 39  
+Apr 05 15:45:55.973  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Low Power - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -44 dBm - Channel 39  
+Apr 05 15:45:55.986  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Low Power - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -46 dBm - Channel 39  
+Apr 05 15:45:56.265  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -48 dBm - Channel 37  
+Apr 05 15:45:56.266  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Low Power - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -48 dBm - Channel 37  
+Apr 05 15:45:56.461  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:45:56.547  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -41 dBm - Channel 38  
+Apr 05 15:45:56.548  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Low Power - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -40 dBm - Channel 38  
+Apr 05 15:45:56.584  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:56.587  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE77] -   
+Apr 05 15:45:56.587  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:56.591  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FD7F] -   
+Apr 05 15:45:56.591  HCI Command      0x0000  00:00:00:00:00:00  Set MWS Channel Parameters  
+Apr 05 15:45:56.594  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [0C6E] - Set MWS Channel Parameters  
+Apr 05 15:45:56.626  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:56.628  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FD7F] -   
+Apr 05 15:45:57.067  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.069  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.070  HCI Command      0x0000  00:00:00:00:00:00  Set Ext Advertising Disabled  
+Apr 05 15:45:57.072  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2039] - Set Ext Advertising  
+Apr 05 15:45:57.073  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.076  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE29] -   
+Apr 05 15:45:57.076  HCI Command      0x0000  00:00:00:00:00:00  Set Ext ADV Parameters - Min/Max Interval: 30ms/30ms - Handle: 0x0 - SID: 0  
+Apr 05 15:45:57.079  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2036] - Set Ext ADV Parameters  
+Apr 05 15:45:57.079  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.082  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:45:57.082  HCI Command      0x0000  00:00:00:00:00:00  Set Ext ADV Data - ADV Handle: 0x0  
+Apr 05 15:45:57.085  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2037] - Set Ext ADV Data  
+Apr 05 15:45:57.085  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.088  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.088  HCI Command      0x0000  00:00:00:00:00:00  Set Ext Advertising Enabled - Handles: 0x0   
+Apr 05 15:45:57.091  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2039] - Set Ext Advertising  
+Apr 05 15:45:57.091  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.095  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.095  HCI Command      0x0000  00:00:00:00:00:00  Set Ext ADV Parameters - Min/Max Interval: 2000ms/2000ms - Handle: 0x3 - SID: 3  
+Apr 05 15:45:57.098  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2036] - Set Ext ADV Parameters  
+Apr 05 15:45:57.098  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.101  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.101  HCI Command      0x0000  00:00:00:00:00:00  Set Ext ADV Data - ADV Handle: 0x3  
+Apr 05 15:45:57.104  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2037] - Set Ext ADV Data  
+Apr 05 15:45:57.104  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.107  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.107  HCI Command      0x0000  00:00:00:00:00:00  Set Ext Advertising Enabled - Handles: 0x3   
+Apr 05 15:45:57.111  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2039] - Set Ext Advertising  
+Apr 05 15:45:57.113  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.116  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.117  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.120  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.120  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.123  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.123  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.126  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.126  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.129  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.129  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.132  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.133  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.136  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.136  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.139  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.139  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.142  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.142  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.146  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.146  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.149  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.149  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.152  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.152  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.155  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.155  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.159  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.159  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.162  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.162  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.165  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.166  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.169  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.169  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.172  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.172  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.175  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:45:57.178  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.181  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:45:57.181  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.184  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE37] -   
+Apr 05 15:45:57.184  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:45:57.187  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE29] -   
+Apr 05 15:45:57.394  Note             0x0000  00:00:00:00:00:00  iOS Device connection has been lost  

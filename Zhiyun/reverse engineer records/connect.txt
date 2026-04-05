@@ -1,0 +1,667 @@
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Product: iPhone16,1  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Firmware Version: 23.3.566.3954  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Chipset: BCM_4388, Revision: s=C0  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Transport: PCIe  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Address: FC:31:5D:89:4D:43  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Firmware Filename: BCM4388C0_23.3.566.3954_PCIE_Petunia_CLPC_OS_USI_20250917.bin  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Bluetooth Host: MobileBluetooth-193.9  
+Apr 05 15:02:23.314  Note             0x0000  00:00:00:00:00:00  Software: Version 26.3.1 (a) (Build 23D771330a)  
+Apr 05 15:49:46.223  Config           0x0000  00:00:00:00:00:00  Undecoded packet  
+Apr 05 15:49:46.223  Config           0x0000  00:00:00:00:00:00  Undecoded packet  
+Apr 05 15:49:46.223  Note             0x0000  00:00:00:00:00:00  WiFi State: On, Band: 5 GHz  
+Apr 05 15:49:46.482  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:46.685  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -44 dBm - Channel 37  
+Apr 05 15:49:46.848  HCI Event        0x0000  DB:B9:65:0A:48:EC  LE - Ext ADV - 1 Report - Normal - Random - DB:B9:65:0A:48:EC - RSSI: -44 dBm - Channel 37  
+Apr 05 15:49:46.927  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:46.929  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE29] -   
+Apr 05 15:49:46.929  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:46.933  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:49:46.933  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:46.936  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:46.936  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:46.940  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:46.940  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:46.943  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:46.943  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:46.946  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:46.949  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:46.952  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:49:46.952  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:46.956  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE37] -   
+Apr 05 15:49:46.956  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:46.959  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE37] -   
+Apr 05 15:49:46.959  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:46.964  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE29] -   
+Apr 05 15:49:46.973  HCI Event        0x0000  6A:10:0C:A1:E0:51  LE - Ext ADV - 1 Report - Normal - Random - 6A:10:0C:A1:E0:51 - RSSI: -43 dBm - Channel 37  
+Apr 05 15:49:46.973  HCI Event        0x0000  6A:10:0C:A1:E0:51  LE - Ext ADV - 1 Report - Normal - Random - 6A:10:0C:A1:E0:51 - RSSI: -43 dBm - Channel 37  
+Apr 05 15:49:46.988  HCI Event        0x0000  FF:9B:7E:B6:AB:3D  LE - Ext ADV - 1 Report - Normal - Random - FF:9B:7E:B6:AB:3D - RSSI: -82 dBm - Channel 37  
+Apr 05 15:49:46.988  HCI Event        0x0000  FF:9B:7E:B6:AB:3D  LE - Ext ADV - 1 Report - Normal - Random - FF:9B:7E:B6:AB:3D - RSSI: -82 dBm - Channel 37  
+Apr 05 15:49:46.994  HCI Event        0x0000  10:B9:F7:10:8B:6F  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:10:8B:6F - RSSI: -77 dBm - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:46.994  HCI Event        0x0000  10:B9:F7:10:8B:6F  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:10:8B:6F - RSSI: -77 dBm - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:46.996  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -83 dBm - Crane84D9 - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:46.997  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -83 dBm - Channel 37  
+Apr 05 15:49:47.003  HCI Event        0x0000  22:BA:9D:17:3F:A4  LE - Ext ADV - 1 Report - Low Power - Random - 22:BA:9D:17:3F:A4 - RSSI: -70 dBm - Manufacturer Specific Data - Channel 39  
+Apr 05 15:49:47.018  HCI Event        0x0000  63:24:10:19:87:0F  LE - Ext ADV - 1 Report - Normal - Random - 63:24:10:19:87:0F - RSSI: -84 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.018  HCI Event        0x0000  63:24:10:19:87:0F  LE - Ext ADV - 1 Report - Normal - Random - 63:24:10:19:87:0F - RSSI: -84 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.024  HCI Event        0x0000  7C:FD:65:87:6D:AB  LE - Ext ADV - 1 Report - Normal - Random - 7C:FD:65:87:6D:AB - RSSI: -71 dBm - Channel 38  
+Apr 05 15:49:47.028  HCI Event        0x0000  24:71:7D:4A:78:76  LE - Ext ADV - 1 Report - Normal - Random - 24:71:7D:4A:78:76 - RSSI: -64 dBm - Channel 38  
+Apr 05 15:49:47.028  HCI Event        0x0000  24:71:7D:4A:78:76  LE - Ext ADV - 1 Report - Normal - Random - 24:71:7D:4A:78:76 - RSSI: -64 dBm - Channel 38  
+Apr 05 15:49:47.033  HCI Event        0x0000  6F:DC:1E:7E:F9:F0  LE - Ext ADV - 1 Report - Normal - Random - 6F:DC:1E:7E:F9:F0 - RSSI: -42 dBm - Channel 38  
+Apr 05 15:49:47.067  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -79 dBm - Crane84D9 - Manufacturer Specific Data - Channel 39  
+Apr 05 15:49:47.069  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -79 dBm - Channel 39  
+Apr 05 15:49:47.088  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -41 dBm - Channel 37  
+Apr 05 15:49:47.088  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Low Power - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -42 dBm - Channel 38  
+Apr 05 15:49:47.091  HCI Event        0x0000  2B:8A:64:03:71:25  LE - Ext ADV - 1 Report - Normal - Random - 2B:8A:64:03:71:25 - RSSI: -70 dBm - Channel 37  
+Apr 05 15:49:47.091  HCI Event        0x0000  2B:8A:64:03:71:25  LE - Ext ADV - 1 Report - Normal - Random - 2B:8A:64:03:71:25 - RSSI: -70 dBm - Channel 37  
+Apr 05 15:49:47.091  HCI Event        0x0000  2B:8A:64:03:71:25  LE - Ext ADV - 1 Report - Low Power - Random - 2B:8A:64:03:71:25 - RSSI: -64 dBm - Channel 38  
+Apr 05 15:49:47.110  HCI Event        0x0000  68:58:01:14:13:9E  LE - Ext ADV - 1 Report - Normal - Random - 68:58:01:14:13:9E - RSSI: -67 dBm - Channel 37  
+Apr 05 15:49:47.111  HCI Event        0x0000  68:58:01:14:13:9E  LE - Ext ADV - 1 Report - Normal - Random - 68:58:01:14:13:9E - RSSI: -66 dBm - Channel 37  
+Apr 05 15:49:47.112  HCI Event        0x0000  22:BA:9D:17:3F:A4  LE - Ext ADV - 1 Report - Normal - Random - 22:BA:9D:17:3F:A4 - RSSI: -75 dBm - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:47.133  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -78 dBm - Crane84D9 - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.133  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -78 dBm - Channel 38  
+Apr 05 15:49:47.140  HCI Event        0x0000  10:B9:F7:10:0E:BC  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:10:0E:BC - RSSI: -80 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.140  HCI Event        0x0000  10:B9:F7:10:0E:BC  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:10:0E:BC - RSSI: -80 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.164  HCI Event        0x0000  10:B9:F7:10:8C:BA  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:10:8C:BA - RSSI: -97 dBm - Manufacturer Specific Data - Channel 39  
+Apr 05 15:49:47.202  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -82 dBm - Crane84D9 - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:47.203  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -82 dBm - Channel 37  
+Apr 05 15:49:47.203  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Low Power - Public - AC:9A:22:88:08:BD - RSSI: -77 dBm - Crane84D9 - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.212  HCI Event        0x0000  10:B9:F7:0F:D5:E7  LE - Ext ADV - 1 Report - Low Power - Public - 10:B9:F7:0F:D5:E7 - RSSI: -88 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.221  HCI Event        0x0000  68:85:AD:7E:7F:A3  LE - Ext ADV - 1 Report - Normal - Random - 68:85:AD:7E:7F:A3 - RSSI: -70 dBm - Channel 37  
+Apr 05 15:49:47.221  HCI Event        0x0000  68:85:AD:7E:7F:A3  LE - Ext ADV - 1 Report - Normal - Random - 68:85:AD:7E:7F:A3 - RSSI: -70 dBm - Channel 37  
+Apr 05 15:49:47.224  HCI Event        0x0000  6F:DC:1E:7E:F9:F0  LE - Ext ADV - 1 Report - Normal - Random - 6F:DC:1E:7E:F9:F0 - RSSI: -45 dBm - Channel 37  
+Apr 05 15:49:47.231  HCI Event        0x0000  D2:F5:27:9A:B1:93  LE - Ext ADV - 1 Report - Normal - Random - D2:F5:27:9A:B1:93 - RSSI: -82 dBm - Channel 37  
+Apr 05 15:49:47.231  HCI Event        0x0000  D2:F5:27:9A:B1:93  LE - Ext ADV - 1 Report - Normal - Random - D2:F5:27:9A:B1:93 - RSSI: -82 dBm - Channel 37  
+Apr 05 15:49:47.249  HCI Event        0x0000  10:B9:F7:10:8B:6F  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:10:8B:6F - RSSI: -86 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.249  HCI Event        0x0000  10:B9:F7:10:8B:6F  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:10:8B:6F - RSSI: -86 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.275  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -78 dBm - Crane84D9 - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.276  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -78 dBm - Channel 38  
+Apr 05 15:49:47.288  HCI Event        0x0000  63:24:10:19:87:0F  LE - Ext ADV - 1 Report - Low Power - Random - 63:24:10:19:87:0F - RSSI: -95 dBm - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:47.291  HCI Event        0x0000  63:24:10:19:87:0F  LE - Ext ADV - 1 Report - Normal - Random - 63:24:10:19:87:0F - RSSI: -90 dBm - Manufacturer Specific Data - Channel 39  
+Apr 05 15:49:47.291  HCI Event        0x0000  63:24:10:19:87:0F  LE - Ext ADV - 1 Report - Normal - Random - 63:24:10:19:87:0F - RSSI: -89 dBm - Manufacturer Specific Data - Channel 39  
+Apr 05 15:49:47.294  HCI Event        0x0000  C4:29:FB:DD:CC:C1  LE - Ext ADV - 1 Report - Normal - Random - C4:29:FB:DD:CC:C1 - RSSI: -88 dBm - Channel 39  
+Apr 05 15:49:47.331  HCI Event        0x0000  22:BA:9D:17:3F:A4  LE - Ext ADV - 1 Report - Normal - Random - 22:BA:9D:17:3F:A4 - RSSI: -73 dBm - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:47.332  HCI Event        0x0000  22:BA:9D:17:3F:A4  LE - Ext ADV - 1 Report - Low Power - Random - 22:BA:9D:17:3F:A4 - RSSI: -65 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.341  HCI Event        0x0000  6A:10:0C:A1:E0:51  LE - Ext ADV - 1 Report - Normal - Random - 6A:10:0C:A1:E0:51 - RSSI: -43 dBm - Channel 37  
+Apr 05 15:49:47.341  HCI Event        0x0000  6A:10:0C:A1:E0:51  LE - Ext ADV - 1 Report - Normal - Random - 6A:10:0C:A1:E0:51 - RSSI: -43 dBm - Channel 37  
+Apr 05 15:49:47.377  HCI Event        0x0000  2B:8A:64:03:71:25  LE - Ext ADV - 1 Report - Normal - Random - 2B:8A:64:03:71:25 - RSSI: -64 dBm - Channel 38  
+Apr 05 15:49:47.379  HCI Event        0x0000  2B:8A:64:03:71:25  LE - Ext ADV - 1 Report - Normal - Random - 2B:8A:64:03:71:25 - RSSI: -64 dBm - Channel 38  
+Apr 05 15:49:47.382  HCI Event        0x0000  68:58:01:14:13:9E  LE - Ext ADV - 1 Report - Normal - Random - 68:58:01:14:13:9E - RSSI: -64 dBm - Channel 38  
+Apr 05 15:49:47.382  HCI Event        0x0000  68:58:01:14:13:9E  LE - Ext ADV - 1 Report - Normal - Random - 68:58:01:14:13:9E - RSSI: -64 dBm - Channel 38  
+Apr 05 15:49:47.410  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Low Power - Public - AC:9A:22:88:08:BD - RSSI: -81 dBm - Crane84D9 - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:47.411  HCI Event        0x0000  6F:DC:1E:7E:F9:F0  LE - Ext ADV - 1 Report - Normal - Random - 6F:DC:1E:7E:F9:F0 - RSSI: -41 dBm - Channel 38  
+Apr 05 15:49:47.414  HCI Event        0x0000  10:B9:F7:10:8C:BA  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:10:8C:BA - RSSI: -85 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.414  HCI Event        0x0000  10:B9:F7:10:8C:BA  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:10:8C:BA - RSSI: -85 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.436  HCI Event        0x0000  22:BA:9D:17:3F:A4  LE - Ext ADV - 1 Report - Normal - Random - 22:BA:9D:17:3F:A4 - RSSI: -71 dBm - Manufacturer Specific Data - Channel 39  
+Apr 05 15:49:47.460  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -42 dBm - Channel 37  
+Apr 05 15:49:47.461  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -42 dBm - Channel 37  
+Apr 05 15:49:47.481  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -83 dBm - Crane84D9 - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:47.481  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -83 dBm - Channel 37  
+Apr 05 15:49:47.482  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -79 dBm - Crane84D9 - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.482  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -78 dBm - Channel 38  
+Apr 05 15:49:47.483  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:47.483  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Low Power - Public - AC:9A:22:88:08:BD - RSSI: -80 dBm - Crane84D9 - Manufacturer Specific Data - Channel 39  
+Apr 05 15:49:47.494  HCI Event        0x0000  68:85:AD:7E:7F:A3  LE - Ext ADV - 1 Report - Normal - Random - 68:85:AD:7E:7F:A3 - RSSI: -72 dBm - Channel 38  
+Apr 05 15:49:47.494  HCI Event        0x0000  68:85:AD:7E:7F:A3  LE - Ext ADV - 1 Report - Normal - Random - 68:85:AD:7E:7F:A3 - RSSI: -72 dBm - Channel 38  
+Apr 05 15:49:47.508  HCI Event        0x0000  10:B9:F7:10:8B:6F  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:10:8B:6F - RSSI: -84 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.508  HCI Event        0x0000  10:B9:F7:10:8B:6F  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:10:8B:6F - RSSI: -84 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.517  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -47 dBm - Channel 38  
+Apr 05 15:49:47.517  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -48 dBm - Channel 38  
+Apr 05 15:49:47.525  HCI Event        0x0000  6A:10:0C:A1:E0:51  LE - Ext ADV - 1 Report - Low Power - Random - 6A:10:0C:A1:E0:51 - RSSI: -40 dBm - Channel 37  
+Apr 05 15:49:47.527  HCI Event        0x0000  6A:10:0C:A1:E0:51  LE - Ext ADV - 1 Report - Normal - Random - 6A:10:0C:A1:E0:51 - RSSI: -39 dBm - Channel 39  
+Apr 05 15:49:47.527  HCI Event        0x0000  6A:10:0C:A1:E0:51  LE - Ext ADV - 1 Report - Normal - Random - 6A:10:0C:A1:E0:51 - RSSI: -39 dBm - Channel 39  
+Apr 05 15:49:47.538  HCI Event        0x0000  22:BA:9D:17:3F:A4  LE - Ext ADV - 1 Report - Normal - Random - 22:BA:9D:17:3F:A4 - RSSI: -71 dBm - Manufacturer Specific Data - Channel 39  
+Apr 05 15:49:47.547  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -79 dBm - Crane84D9 - Manufacturer Specific Data - Channel 39  
+Apr 05 15:49:47.547  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -80 dBm - Channel 39  
+Apr 05 15:49:47.574  HCI Event        0x0000  7C:FD:65:87:6D:AB  LE - Ext ADV - 1 Report - Normal - Random - 7C:FD:65:87:6D:AB - RSSI: -77 dBm - Channel 37  
+Apr 05 15:49:47.604  HCI Event        0x0000  24:71:7D:4A:78:76  LE - Ext ADV - 1 Report - Normal - Random - 24:71:7D:4A:78:76 - RSSI: -67 dBm - Channel 38  
+Apr 05 15:49:47.605  HCI Event        0x0000  24:71:7D:4A:78:76  LE - Ext ADV - 1 Report - Normal - Random - 24:71:7D:4A:78:76 - RSSI: -63 dBm - Channel 38  
+Apr 05 15:49:47.605  HCI Event        0x0000  24:71:7D:4A:78:76  LE - Ext ADV - 1 Report - Low Power - Random - 24:71:7D:4A:78:76 - RSSI: -65 dBm - Channel 39  
+Apr 05 15:49:47.613  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -79 dBm - Crane84D9 - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.613  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -78 dBm - Channel 38  
+Apr 05 15:49:47.645  HCI Event        0x0000  10:B9:F7:10:0E:BC  LE - Ext ADV - 1 Report - Low Power - Public - 10:B9:F7:10:0E:BC - RSSI: -80 dBm - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:47.649  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Low Power - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -40 dBm - Channel 37  
+Apr 05 15:49:47.656  HCI Event        0x0000  68:58:01:14:13:9E  LE - Ext ADV - 1 Report - Normal - Random - 68:58:01:14:13:9E - RSSI: -60 dBm - Channel 39  
+Apr 05 15:49:47.656  HCI Event        0x0000  68:58:01:14:13:9E  LE - Ext ADV - 1 Report - Normal - Random - 68:58:01:14:13:9E - RSSI: -60 dBm - Channel 39  
+Apr 05 15:49:47.672  HCI Event        0x0000  2B:8A:64:03:71:25  LE - Ext ADV - 1 Report - Normal - Random - 2B:8A:64:03:71:25 - RSSI: -72 dBm - Channel 39  
+Apr 05 15:49:47.672  HCI Event        0x0000  2B:8A:64:03:71:25  LE - Ext ADV - 1 Report - Normal - Random - 2B:8A:64:03:71:25 - RSSI: -67 dBm - Channel 39  
+Apr 05 15:49:47.725  HCI Event        0x0000  10:B9:F7:0F:D5:E7  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:0F:D5:E7 - RSSI: -88 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.726  HCI Event        0x0000  10:B9:F7:0F:D5:E7  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:0F:D5:E7 - RSSI: -87 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.762  HCI Event        0x0000  68:85:AD:7E:7F:A3  LE - Ext ADV - 1 Report - Low Power - Random - 68:85:AD:7E:7F:A3 - RSSI: -65 dBm - Channel 37  
+Apr 05 15:49:47.763  HCI Event        0x0000  68:85:AD:7E:7F:A3  LE - Ext ADV - 1 Report - Normal - Random - 68:85:AD:7E:7F:A3 - RSSI: -66 dBm - Channel 39  
+Apr 05 15:49:47.784  HCI Event        0x0000  6F:DC:1E:7E:F9:F0  LE - Ext ADV - 1 Report - Normal - Random - 6F:DC:1E:7E:F9:F0 - RSSI: -44 dBm - Channel 39  
+Apr 05 15:49:47.795  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -45 dBm - Channel 39  
+Apr 05 15:49:47.795  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -45 dBm - Channel 39  
+Apr 05 15:49:47.811  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -78 dBm - Crane84D9 - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:47.811  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -78 dBm - Channel 37  
+Apr 05 15:49:47.812  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Low Power - Public - AC:9A:22:88:08:BD - RSSI: -75 dBm - Crane84D9 - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.845  HCI Event        0x0000  7C:FD:65:87:6D:AB  LE - Ext ADV - 1 Report - Normal - Random - 7C:FD:65:87:6D:AB - RSSI: -70 dBm - Channel 38  
+Apr 05 15:49:47.846  HCI Event        0x0000  7C:FD:65:87:6D:AB  LE - Ext ADV - 1 Report - Normal - Random - 7C:FD:65:87:6D:AB - RSSI: -70 dBm - Channel 38  
+Apr 05 15:49:47.846  HCI Event        0x0000  7C:FD:65:87:6D:AB  LE - Ext ADV - 1 Report - Low Power - Random - 7C:FD:65:87:6D:AB - RSSI: -76 dBm - Channel 39  
+Apr 05 15:49:47.852  HCI Event        0x0000  22:BA:9D:17:3F:A4  LE - Ext ADV - 1 Report - Normal - Random - 22:BA:9D:17:3F:A4 - RSSI: -64 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.852  HCI Event        0x0000  22:BA:9D:17:3F:A4  LE - Ext ADV - 1 Report - Low Power - Random - 22:BA:9D:17:3F:A4 - RSSI: -68 dBm - Manufacturer Specific Data - Channel 39  
+Apr 05 15:49:47.859  HCI Event        0x0000  35:1D:E4:71:A2:4D  LE - Ext ADV - 1 Report - Normal - Random - 35:1D:E4:71:A2:4D - RSSI: -95 dBm - Channel 38  
+Apr 05 15:49:47.889  HCI Event        0x0000  24:71:7D:4A:78:76  LE - Ext ADV - 1 Report - Low Power - Random - 24:71:7D:4A:78:76 - RSSI: -67 dBm - Channel 37  
+Apr 05 15:49:47.892  HCI Event        0x0000  24:71:7D:4A:78:76  LE - Ext ADV - 1 Report - Normal - Random - 24:71:7D:4A:78:76 - RSSI: -71 dBm - Channel 39  
+Apr 05 15:49:47.892  HCI Event        0x0000  24:71:7D:4A:78:76  LE - Ext ADV - 1 Report - Normal - Random - 24:71:7D:4A:78:76 - RSSI: -71 dBm - Channel 39  
+Apr 05 15:49:47.902  HCI Event        0x0000  6A:10:0C:A1:E0:51  LE - Ext ADV - 1 Report - Normal - Random - 6A:10:0C:A1:E0:51 - RSSI: -44 dBm - Channel 39  
+Apr 05 15:49:47.902  HCI Event        0x0000  6A:10:0C:A1:E0:51  LE - Ext ADV - 1 Report - Normal - Random - 6A:10:0C:A1:E0:51 - RSSI: -44 dBm - Channel 39  
+Apr 05 15:49:47.930  HCI Event        0x0000  68:58:01:14:13:9E  LE - Ext ADV - 1 Report - Low Power - Random - 68:58:01:14:13:9E - RSSI: Unavailable (0x7F) - Channel 38  
+Apr 05 15:49:47.941  HCI Event        0x0000  2B:8A:64:03:71:25  LE - Ext ADV - 1 Report - Normal - Random - 2B:8A:64:03:71:25 - RSSI: -67 dBm - Channel 37  
+Apr 05 15:49:47.941  HCI Event        0x0000  2B:8A:64:03:71:25  LE - Ext ADV - 1 Report - Normal - Random - 2B:8A:64:03:71:25 - RSSI: -67 dBm - Channel 37  
+Apr 05 15:49:47.943  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -77 dBm - Crane84D9 - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:47.943  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -77 dBm - Channel 37  
+Apr 05 15:49:47.973  HCI Event        0x0000  6F:DC:1E:7E:F9:F0  LE - Ext ADV - 1 Report - Normal - Random - 6F:DC:1E:7E:F9:F0 - RSSI: -43 dBm - Channel 38  
+Apr 05 15:49:47.985  HCI Event        0x0000  10:B9:F7:0F:D5:E7  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:0F:D5:E7 - RSSI: -80 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:47.985  HCI Event        0x0000  10:B9:F7:0F:D5:E7  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:0F:D5:E7 - RSSI: -79 dBm - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:48.010  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Low Power - Public - AC:9A:22:88:08:BD - RSSI: -77 dBm - Crane84D9 - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:48.013  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -90 dBm - Crane84D9 - Manufacturer Specific Data - Channel 39  
+Apr 05 15:49:48.013  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -86 dBm - Channel 39  
+Apr 05 15:49:48.018  HCI Event        0x0000  10:B9:F7:10:8B:6F  LE - Ext ADV - 1 Report - Normal - Public - 10:B9:F7:10:8B:6F - RSSI: -77 dBm - Manufacturer Specific Data - Channel 39  
+Apr 05 15:49:48.029  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -43 dBm - Channel 39  
+Apr 05 15:49:48.029  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -43 dBm - Channel 39  
+Apr 05 15:49:48.063  HCI Event        0x0000  22:BA:9D:17:3F:A4  LE - Ext ADV - 1 Report - Normal - Random - 22:BA:9D:17:3F:A4 - RSSI: -67 dBm - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:48.069  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -45 dBm - Channel 37  
+Apr 05 15:49:48.069  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -45 dBm - Channel 37  
+Apr 05 15:49:48.084  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -74 dBm - Crane84D9 - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:48.084  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -74 dBm - Channel 38  
+Apr 05 15:49:48.084  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Low Power - Public - AC:9A:22:88:08:BD - RSSI: -85 dBm - Crane84D9 - Manufacturer Specific Data - Channel 39  
+Apr 05 15:49:48.088  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.091  HCI Event        0x0000  6A:10:0C:A1:E0:51  LE - Ext ADV - 1 Report - Normal - Random - 6A:10:0C:A1:E0:51 - RSSI: -42 dBm - Channel 38  
+Apr 05 15:49:48.092  HCI Event        0x0000  6A:10:0C:A1:E0:51  LE - Ext ADV - 1 Report - Normal - Random - 6A:10:0C:A1:E0:51 - RSSI: -47 dBm - Channel 38  
+Apr 05 15:49:48.092  HCI Event        0x0000  6A:10:0C:A1:E0:51  LE - Ext ADV - 1 Report - Low Power - Random - 6A:10:0C:A1:E0:51 - RSSI: -45 dBm - Channel 39  
+Apr 05 15:49:48.093  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE29] -   
+Apr 05 15:49:48.093  HCI Command      0x0000  00:00:00:00:00:00  LE Create Connection Cancel  
+Apr 05 15:49:48.096  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [200E] - LE Create Connection Cancel  
+Apr 05 15:49:48.096  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.096  HCI Event        0x0059  00:00:00:00:00:00  LE - Enhanced Connection Complete - Unknown Connection Identifier  
+Apr 05 15:49:48.099  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:49:48.106  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.109  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.109  HCI Command      0x0000  Crane84D9          LE Add Device To Filter Accept List - Public - AC:9A:22:88:08:BD  
+Apr 05 15:49:48.113  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2011] - LE Add Device To Filter Accept List  
+Apr 05 15:49:48.113  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.116  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.116  HCI Command      0x0000  00:00:00:00:00:00  LE Extended Create Connection - Filter Accept List - 1M Scans: 30ms/30ms Conn Interval: 10ms/30ms - 2M Scans: 30ms/30ms Conn Interval: 10ms/30ms  
+Apr 05 15:49:48.120  HCI Event        0x0000  00:00:00:00:00:00  Command Status [2043] - LE Extended Create Connection  
+Apr 05 15:49:48.120  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.123  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.123  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.126  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.126  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.129  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.129  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.132  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.132  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.135  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.135  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.139  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.139  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.142  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.142  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.146  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -78 dBm - Crane84D9 - Manufacturer Specific Data - Channel 37  
+Apr 05 15:49:48.146  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.146  HCI Event        0x0048  Crane84D9          LE - Enhanced Connection Complete - Central - Public - AC:9A:22:88:08:BD local - 00:00:00:00:00:00 peer - 00:00:00:00:00:00 - Conn Interval: 30 ms  
+Apr 05 15:49:48.146  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:48.146  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.149  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.149  HCI Command      0x0000  Crane84D9          LE Remove Device From Filter Accept List - Public - AC:9A:22:88:08:BD  
+Apr 05 15:49:48.152  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2012] - LE Remove Device From Filter Accept List  
+Apr 05 15:49:48.152  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.155  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.155  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.158  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.158  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.161  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FDC1] -   
+Apr 05 15:49:48.161  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.164  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.164  HCI Command      0x0000  00:00:00:00:00:00  LE Extended Create Connection - Filter Accept List - 1M Scans: 30ms/300ms Conn Interval: 10ms/30ms - 2M Scans: 30ms/300ms Conn Interval: 10ms/30ms  
+Apr 05 15:49:48.168  HCI Event        0x0000  00:00:00:00:00:00  Command Status [2043] - LE Extended Create Connection  
+Apr 05 15:49:48.168  HCI Command      0x0048  Crane84D9          Read Remote Version Information - Connection Handle: 0x0048  
+Apr 05 15:49:48.171  HCI Event        0x0000  00:00:00:00:00:00  Command Status [041D] - Read Remote Version Information  
+Apr 05 15:49:48.171  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.174  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.174  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.177  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:48.179  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.179  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.182  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.182  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.185  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.185  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.188  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:48.192  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.195  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:49:48.195  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.198  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE37] -   
+Apr 05 15:49:48.198  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.201  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE29] -   
+Apr 05 15:49:48.220  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -44 dBm - Channel 37  
+Apr 05 15:49:48.340  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -44 dBm - Channel 39  
+Apr 05 15:49:48.350  HCI Event        0x0000  6F:DC:1E:7E:F9:F0  LE - Ext ADV - 1 Report - Normal - Random - 6F:DC:1E:7E:F9:F0 - RSSI: -42 dBm - Channel 39  
+Apr 05 15:49:48.405  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -43 dBm - Channel 37  
+Apr 05 15:49:48.499  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:48.536  HCI Event        0x0048  Crane84D9          Read Remote Version Information Complete - Connection Failed To Be Established  
+Apr 05 15:49:48.537  HCI Event        0x0048  Crane84D9          Disconnection Complete - Connection Failed To Be Established  
+Apr 05 15:49:48.540  HCI Command      0x0000  00:00:00:00:00:00  LE Create Connection Cancel  
+Apr 05 15:49:48.543  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [200E] - LE Create Connection Cancel  
+Apr 05 15:49:48.543  HCI Event        0x0049  00:00:00:00:00:00  LE - Enhanced Connection Complete - Unknown Connection Identifier  
+Apr 05 15:49:48.543  HCI Command      0x0000  Crane84D9          LE Add Device To Filter Accept List - Public - AC:9A:22:88:08:BD  
+Apr 05 15:49:48.546  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2011] - LE Add Device To Filter Accept List  
+Apr 05 15:49:48.547  HCI Command      0x0000  00:00:00:00:00:00  LE Extended Create Connection - Filter Accept List - 1M Scans: 30ms/30ms Conn Interval: 10ms/30ms - 2M Scans: 30ms/30ms Conn Interval: 10ms/30ms  
+Apr 05 15:49:48.550  HCI Event        0x0000  00:00:00:00:00:00  Command Status [2043] - LE Extended Create Connection  
+Apr 05 15:49:48.592  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -43 dBm - Channel 38  
+Apr 05 15:49:48.612  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -77 dBm - Crane84D9 - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:48.612  HCI Event        0x004A  Crane84D9          LE - Enhanced Connection Complete - Central - Public - AC:9A:22:88:08:BD local - 00:00:00:00:00:00 peer - 00:00:00:00:00:00 - Conn Interval: 30 ms  
+Apr 05 15:49:48.612  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:48.614  HCI Command      0x0000  Crane84D9          LE Remove Device From Filter Accept List - Public - AC:9A:22:88:08:BD  
+Apr 05 15:49:48.618  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2012] - LE Remove Device From Filter Accept List  
+Apr 05 15:49:48.618  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:48.621  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FDC1] -   
+Apr 05 15:49:48.621  HCI Command      0x0000  00:00:00:00:00:00  LE Extended Create Connection - Filter Accept List - 1M Scans: 30ms/300ms Conn Interval: 10ms/30ms - 2M Scans: 30ms/300ms Conn Interval: 10ms/30ms  
+Apr 05 15:49:48.624  HCI Event        0x0000  00:00:00:00:00:00  Command Status [2043] - LE Extended Create Connection  
+Apr 05 15:49:48.624  HCI Command      0x004A  Crane84D9          Read Remote Version Information - Connection Handle: 0x004A  
+Apr 05 15:49:48.627  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:48.627  HCI Event        0x0000  00:00:00:00:00:00  Command Status [041D] - Read Remote Version Information  
+Apr 05 15:49:48.766  HCI Event        0x0000  C6:A5:C7:22:81:14  LE - Ext ADV - 1 Report - Normal - Random - C6:A5:C7:22:81:14 - RSSI: -67 dBm - Channel 39  
+Apr 05 15:49:48.785  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -40 dBm - Channel 39  
+Apr 05 15:49:48.894  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -44 dBm - Channel 38  
+Apr 05 15:49:48.986  HCI Event        0x004A  Crane84D9          Read Remote Version Information Complete - Connection Failed To Be Established  
+Apr 05 15:49:48.988  HCI Event        0x004A  Crane84D9          Disconnection Complete - Connection Failed To Be Established  
+Apr 05 15:49:48.991  HCI Command      0x0000  00:00:00:00:00:00  LE Create Connection Cancel  
+Apr 05 15:49:48.994  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [200E] - LE Create Connection Cancel  
+Apr 05 15:49:48.994  HCI Event        0x004B  00:00:00:00:00:00  LE - Enhanced Connection Complete - Unknown Connection Identifier  
+Apr 05 15:49:48.994  HCI Command      0x0000  Crane84D9          LE Add Device To Filter Accept List - Public - AC:9A:22:88:08:BD  
+Apr 05 15:49:48.998  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2011] - LE Add Device To Filter Accept List  
+Apr 05 15:49:48.999  HCI Command      0x0000  00:00:00:00:00:00  LE Extended Create Connection - Filter Accept List - 1M Scans: 30ms/30ms Conn Interval: 10ms/30ms - 2M Scans: 30ms/30ms Conn Interval: 10ms/30ms  
+Apr 05 15:49:49.002  HCI Event        0x0000  00:00:00:00:00:00  Command Status [2043] - LE Extended Create Connection  
+Apr 05 15:49:49.005  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.010  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE29] -   
+Apr 05 15:49:49.010  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.014  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:49:49.014  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.017  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.017  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.020  HCI Event        0x0000  Crane84D9          LE - Ext ADV - 1 Report - Normal - Public - AC:9A:22:88:08:BD - RSSI: -77 dBm - Crane84D9 - Manufacturer Specific Data - Channel 38  
+Apr 05 15:49:49.021  HCI Event        0x004C  Crane84D9          LE - Enhanced Connection Complete - Central - Public - AC:9A:22:88:08:BD local - 00:00:00:00:00:00 peer - 00:00:00:00:00:00 - Conn Interval: 30 ms  
+Apr 05 15:49:49.021  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:49.021  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.021  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.024  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.024  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.028  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.035  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.039  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.039  HCI Command      0x0000  Crane84D9          LE Remove Device From Filter Accept List - Public - AC:9A:22:88:08:BD  
+Apr 05 15:49:49.042  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [2012] - LE Remove Device From Filter Accept List  
+Apr 05 15:49:49.043  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.046  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.046  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:49.046  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.049  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FDC1] -   
+Apr 05 15:49:49.050  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.053  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.053  HCI Command      0x0000  00:00:00:00:00:00  LE Extended Create Connection - Filter Accept List - 1M Scans: 30ms/300ms Conn Interval: 10ms/30ms - 2M Scans: 30ms/300ms Conn Interval: 10ms/30ms  
+Apr 05 15:49:49.056  HCI Event        0x0000  00:00:00:00:00:00  Command Status [2043] - LE Extended Create Connection  
+Apr 05 15:49:49.056  HCI Command      0x004C  Crane84D9          Read Remote Version Information - Connection Handle: 0x004C  
+Apr 05 15:49:49.059  HCI Event        0x0000  00:00:00:00:00:00  Command Status [041D] - Read Remote Version Information  
+Apr 05 15:49:49.059  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.062  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.063  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.066  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.066  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.069  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.069  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.072  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.072  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.075  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.075  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.078  HCI Event        0x004C  Crane84D9          Read Remote Version Information Complete  
+Apr 05 15:49:49.078  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.078  L2CAP Receive    0x004C  Crane84D9          Connection Parameter Update Request  
+Apr 05 15:49:49.078  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.079  ATT Send         0x004C  Crane84D9          Exchange MTU Request - MTU: 185  
+Apr 05 15:49:49.081  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.083  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.083  L2CAP Send       0x004C  Crane84D9          Connection Parameter Update Response  
+Apr 05 15:49:49.085  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.085  HCI Command      0x004C  Crane84D9          LE Connection Update - Handle: 0x004C - Interval Min: 15 ms - Interval Max: 30 ms - Max Latency: 0 - Supervision Timeout: 3000 ms  
+Apr 05 15:49:49.089  HCI Event        0x0000  00:00:00:00:00:00  Command Status [2013] - LE Connection Update  
+Apr 05 15:49:49.089  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.092  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.092  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.095  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.095  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.098  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.098  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.101  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.101  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.104  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.104  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.108  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.108  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.108  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.108  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.111  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.111  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.114  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:49.117  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.120  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:49:49.120  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.123  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE37] -   
+Apr 05 15:49:49.123  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.126  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE37] -   
+Apr 05 15:49:49.126  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.130  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE29] -   
+Apr 05 15:49:49.138  ATT Receive      0x004C  Crane84D9          Exchange MTU Response - MTU: 23  
+Apr 05 15:49:49.138  ATT Send         0x004C  Crane84D9          Read By Group Type Request - Start Handle: 0x0001 - End Handle: 0xFFFF - UUID: GATT Primary Service Declaration  
+Apr 05 15:49:49.196  ATT Receive      0x004C  Crane84D9          Read By Group Type Response  
+Apr 05 15:49:49.196  ATT Send         0x004C  Crane84D9          Read By Group Type Request - Start Handle: 0x0023 - End Handle: 0xFFFF - UUID: GATT Primary Service Declaration  
+Apr 05 15:49:49.199  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.256  ATT Receive      0x004C  Crane84D9          Read By Group Type Response  
+Apr 05 15:49:49.256  ATT Send         0x004C  Crane84D9          Read By Group Type Request - Start Handle: 0x002A - End Handle: 0xFFFF - UUID: GATT Primary Service Declaration  
+Apr 05 15:49:49.259  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.316  ATT Receive      0x004C  Crane84D9          Read By Group Type Response  
+Apr 05 15:49:49.316  ATT Send         0x004C  Crane84D9          Read By Group Type Request - Start Handle: 0x0034 - End Handle: 0xFFFF - UUID: GATT Primary Service Declaration  
+Apr 05 15:49:49.319  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.377  ATT Receive      0x004C  Crane84D9          Error Response - Attribute Handle: 0x0034 - Error Code: Attribute Not Found (0x0A)  
+Apr 05 15:49:49.378  ATT Send         0x004C  Crane84D9          Read By Type Request - Start Handle: 0x000C - End Handle: 0x000F - UUID: GATT Characteristic Declaration  
+Apr 05 15:49:49.381  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.421  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.421  HCI Event        0x004C  Crane84D9          LE - Connection Update Complete - Interval: 30 ms - Latency: 0 ms - Supervision Timeout: 3000 ms  
+Apr 05 15:49:49.422  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:49.424  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FDC1] -   
+Apr 05 15:49:49.445  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -44 dBm - Channel 37  
+Apr 05 15:49:49.445  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Low Power - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -44 dBm - Channel 37  
+Apr 05 15:49:49.455  ATT Receive      0x004C  Crane84D9          Read By Type Response  
+Apr 05 15:49:49.455  ATT Send         0x004C  Crane84D9          Find Information Request - Handle: 0x000F - Service Changed  
+Apr 05 15:49:49.461  HCI Event        0x0000  6F:DC:1E:7E:F9:F0  LE - Ext ADV - 1 Report - Normal - Random - 6F:DC:1E:7E:F9:F0 - RSSI: -43 dBm - Channel 37  
+Apr 05 15:49:49.507  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.507  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:49.512  ATT Receive      0x004C  Crane84D9          Find Information Response  
+Apr 05 15:49:49.512  ATT Send         0x004C  Crane84D9          Write Request - Handle: 0x000F - Service Changed - Configuration - Indication  
+Apr 05 15:49:49.572  ATT Receive      0x004C  Crane84D9          Write Response  
+Apr 05 15:49:49.572  Config           0x0000  00:00:00:00:00:00  L(  
+Apr 05 15:49:49.572  Config           0x0000  00:00:00:00:00:00  Undecoded packet  
+Apr 05 15:49:49.572  Config           0x0000  00:00:00:00:00:00  L(  
+Apr 05 15:49:49.572  Config           0x0000  00:00:00:00:00:00  Undecoded packet  
+Apr 05 15:49:49.572  Config           0x0000  00:00:00:00:00:00  L"(  
+Apr 05 15:49:49.572  Config           0x0000  00:00:00:00:00:00  Undecoded packet  
+Apr 05 15:49:49.572  Config           0x0000  00:00:00:00:00:00  Undecoded packet  
+Apr 05 15:49:49.572  Config           0x0000  00:00:00:00:00:00  Undecoded packet  
+Apr 05 15:49:49.572  Config           0x0000  00:00:00:00:00:00  Undecoded packet  
+Apr 05 15:49:49.572  Config           0x0000  00:00:00:00:00:00  Undecoded packet  
+Apr 05 15:49:49.573  ATT Send         0x004C  Crane84D9          Read By Type Request - Start Handle: 0x0010 - End Handle: 0x0022 - UUID: GATT Characteristic Declaration  
+Apr 05 15:49:49.577  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.632  ATT Receive      0x004C  Crane84D9          Read By Type Response  
+Apr 05 15:49:49.632  ATT Send         0x004C  Crane84D9          Read By Type Request - Start Handle: 0x0017 - End Handle: 0x0022 - UUID: GATT Characteristic Declaration  
+Apr 05 15:49:49.635  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.691  ATT Receive      0x004C  Crane84D9          Read By Type Response  
+Apr 05 15:49:49.691  ATT Send         0x004C  Crane84D9          Read By Type Request - Start Handle: 0x001D - End Handle: 0x0022 - UUID: GATT Characteristic Declaration  
+Apr 05 15:49:49.694  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.752  ATT Receive      0x004C  Crane84D9          Read By Type Response  
+Apr 05 15:49:49.752  ATT Send         0x004C  Crane84D9          Read By Type Request - Start Handle: 0x0023 - End Handle: 0x0029 - UUID: GATT Characteristic Declaration  
+Apr 05 15:49:49.754  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.811  ATT Receive      0x004C  Crane84D9          Read By Type Response  
+Apr 05 15:49:49.811  ATT Send         0x004C  Crane84D9          Read By Type Request - Start Handle: 0x0026 - End Handle: 0x0029 - UUID: GATT Characteristic Declaration  
+Apr 05 15:49:49.814  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.871  ATT Receive      0x004C  Crane84D9          Read By Type Response  
+Apr 05 15:49:49.872  ATT Send         0x004C  Crane84D9          Read By Type Request - Start Handle: 0x002A - End Handle: 0x0033 - UUID: GATT Characteristic Declaration  
+Apr 05 15:49:49.874  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.933  ATT Receive      0x004C  Crane84D9          Read By Type Response  
+Apr 05 15:49:49.933  ATT Send         0x004C  Crane84D9          Read By Type Request - Start Handle: 0x002D - End Handle: 0x0033 - UUID: GATT Characteristic Declaration  
+Apr 05 15:49:49.936  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:49.992  ATT Receive      0x004C  Crane84D9          Read By Type Response  
+Apr 05 15:49:49.992  ATT Send         0x004C  Crane84D9          Read By Type Request - Start Handle: 0x0030 - End Handle: 0x0033 - UUID: GATT Characteristic Declaration  
+Apr 05 15:49:49.994  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.052  ATT Receive      0x004C  Crane84D9          Read By Type Response  
+Apr 05 15:49:50.053  ATT Send         0x004C  Crane84D9          Read Request - Handle:0x0012 - Manufacturer Name String  
+Apr 05 15:49:50.054  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.111  ATT Receive      0x004C  Crane84D9          Read Response - Manufacturer Name String - Value: 5A68 6979 756E  
+Apr 05 15:49:50.112  ATT Send         0x004C  Crane84D9          Read Request - Handle:0x001A - Firmware Revision String  
+Apr 05 15:49:50.114  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.171  ATT Receive      0x004C  Crane84D9          Read Response - Firmware Revision String - Value: 312E 322E 31  
+Apr 05 15:49:50.172  ATT Send         0x004C  Crane84D9          Read Request - Handle:0x001E - System ID  
+Apr 05 15:49:50.174  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.261  ATT Receive      0x004C  Crane84D9          Read Response - System ID - Value: BD08 8822 9AAC 0000  
+Apr 05 15:49:50.262  ATT Send         0x004C  Crane84D9          Find Information Request - Start Handle: 0x0026 - End Handle: 0x0027  
+Apr 05 15:49:50.264  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.321  ATT Receive      0x004C  Crane84D9          Find Information Response  
+Apr 05 15:49:50.322  ATT Send         0x004C  Crane84D9          Find Information Request - Handle: 0x002D - D44BC439-ABFD-45A2-B575-925416129600  
+Apr 05 15:49:50.324  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.381  ATT Receive      0x004C  Crane84D9          Find Information Response  
+Apr 05 15:49:50.382  ATT Send         0x004C  Crane84D9          Find Information Request - Handle: 0x0030 - D44BC439-ABFD-45A2-B575-925416129601  
+Apr 05 15:49:50.384  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.442  ATT Receive      0x004C  Crane84D9          Find Information Response  
+Apr 05 15:49:50.442  ATT Send         0x004C  Crane84D9          Find Information Request - Handle: 0x0033 - D44BC439-ABFD-45A2-B575-925416129610  
+Apr 05 15:49:50.444  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.501  ATT Receive      0x004C  Crane84D9          Find Information Response  
+Apr 05 15:49:50.502  ATT Send         0x004C  Crane84D9          Write Request - Handle: 0x0030 - D44BC439-ABFD-45A2-B575-925416129601 - Configuration - Notification  
+Apr 05 15:49:50.504  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.509  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:50.561  ATT Receive      0x004C  Crane84D9          Write Response  
+Apr 05 15:49:50.561  ATT Send         0x004C  Crane84D9          Write Request - Handle: 0x0030 - D44BC439-ABFD-45A2-B575-925416129601 - Configuration - Notification  
+Apr 05 15:49:50.564  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.621  ATT Receive      0x004C  Crane84D9          Write Response  
+Apr 05 15:49:50.621  ATT Send         0x004C  Crane84D9          Write Request - Handle: 0x0033 - D44BC439-ABFD-45A2-B575-925416129610 - Configuration - Notification  
+Apr 05 15:49:50.624  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.644  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -45 dBm - Channel 38  
+Apr 05 15:49:50.644  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Low Power - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -44 dBm - Channel 38  
+Apr 05 15:49:50.681  ATT Receive      0x004C  Crane84D9          Write Response  
+Apr 05 15:49:50.681  ATT Send         0x004C  Crane84D9          Write Request - Handle: 0x0033 - D44BC439-ABFD-45A2-B575-925416129610 - Configuration - Notification  
+Apr 05 15:49:50.684  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.741  ATT Receive      0x004C  Crane84D9          Write Response  
+Apr 05 15:49:50.742  ATT Send         0x004C  Crane84D9          Read Request - Handle:0x0026 - Client Characteristic Configuration  
+Apr 05 15:49:50.744  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.801  ATT Receive      0x004C  Crane84D9          Read Response - Client Characteristic Configuration - Value:   
+Apr 05 15:49:50.801  ATT Send         0x004C  Crane84D9          Read Request - Handle:0x0027 - Characteristic User Description  
+Apr 05 15:49:50.804  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.861  ATT Receive      0x004C  Crane84D9          Read Response - Characteristic User Description - Value: 4F54 4153 2076 312E 3131 004F 5441 2054…  
+Apr 05 15:49:50.862  ATT Send         0x004C  Crane84D9          Read Request - Handle:0x002D - Characteristic User Description  
+Apr 05 15:49:50.864  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.921  ATT Receive      0x004C  Crane84D9          Read Response - Characteristic User Description - Value: 312E 3200  
+Apr 05 15:49:50.922  ATT Send         0x004C  Crane84D9          Read Request - Handle:0x0030 - Client Characteristic Configuration  
+Apr 05 15:49:50.924  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:50.981  ATT Receive      0x004C  Crane84D9          Read Response - Client Characteristic Configuration - Value: 0100  
+Apr 05 15:49:50.982  ATT Send         0x004C  Crane84D9          Read Request - Handle:0x0033 - Client Characteristic Configuration  
+Apr 05 15:49:50.984  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.042  ATT Receive      0x004C  Crane84D9          Read Response - Client Characteristic Configuration - Value: 0100  
+Apr 05 15:49:51.043  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0601 0500 0050 C1  
+Apr 05 15:49:51.043  ATT Send         0x004C  Crane84D9          Read Request - Handle:0x0030 - Client Characteristic Configuration  
+Apr 05 15:49:51.046  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.075  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.075  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.104  ATT Receive      0x004C  Crane84D9          Read Response - Client Characteristic Configuration - Value: 0100  
+Apr 05 15:49:51.104  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0601 0500 08D1 C9  
+Apr 05 15:49:51.104  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0601 0500 0050 C1  
+Apr 05 15:49:51.105  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0601 0500 0050 C1  
+Apr 05 15:49:51.115  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0601 0200 00D5 51  
+Apr 05 15:49:51.133  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.133  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.133  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.162  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0601 0500 08D1 C906 0105 0008 D1C9 0601…  
+Apr 05 15:49:51.163  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: E6  
+Apr 05 15:49:51.180  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0681 5E1F 4078 4F  
+Apr 05 15:49:51.222  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0681 5E1F 4078 4F  
+Apr 05 15:49:51.223  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0681 6409 C402 F206 8161 0064 E670  
+Apr 05 15:49:51.227  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.238  HCI Event        0x0000  D2:F5:27:9A:B1:93  LE - Ext ADV - 1 Report - Normal - Random - D2:F5:27:9A:B1:93 - RSSI: -77 dBm - Channel 37  
+Apr 05 15:49:51.238  HCI Event        0x0000  D2:F5:27:9A:B1:93  LE - Ext ADV - 1 Report - Low Power - Random - D2:F5:27:9A:B1:93 - RSSI: -77 dBm - Channel 37  
+Apr 05 15:49:51.311  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0681 6409 C402 F206 8161 0064 E670  
+Apr 05 15:49:51.312  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0681 5B00 C890 7206 815F 1F40 4F7F  
+Apr 05 15:49:51.315  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.371  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0681 5B00 C890 7206 815F 1F40 4F7F  
+Apr 05 15:49:51.372  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0681 6509 C435 C206 8162 0064 BF20  
+Apr 05 15:49:51.374  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.431  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0681 6509 C435 C206 8162 0064 BF20  
+Apr 05 15:49:51.432  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0681 5C01 F4D1 0C06 8160 1770 1911  
+Apr 05 15:49:51.435  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.491  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0681 5C01 F4D1 0C06 8160 1770 1911  
+Apr 05 15:49:51.492  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0681 6611 94BC BD06 8163 0064 8810  
+Apr 05 15:49:51.495  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.511  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:51.553  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0681 6611 94BC BD06 8163 0064 8810  
+Apr 05 15:49:51.554  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0681 5D01 F4E6 3C06 8167 0000 78F2  
+Apr 05 15:49:51.555  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.611  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0681 5D01 F4E6 3C06 8167 0000 78F2  
+Apr 05 15:49:51.612  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0601 0400 0067 F1  
+Apr 05 15:49:51.614  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.642  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:51.645  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.645  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:51.672  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0601 0400 AA73 51  
+Apr 05 15:49:51.684  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0601 7C00 0016 58  
+Apr 05 15:49:51.731  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0601 7C00 0016 58  
+Apr 05 15:49:51.732  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0601 7D00 0021 6806 017E 0000 7838  
+Apr 05 15:49:51.735  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.791  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0601 7D00 0021 6806 017E 0000 7838  
+Apr 05 15:49:51.792  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0601 7F00 004F 0806 0125 0000 D607  
+Apr 05 15:49:51.795  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.852  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0601 7F00 004F 0806 0125 0000 D607  
+Apr 05 15:49:51.853  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0601 2600 008F 5706 0168 0000 89FB  
+Apr 05 15:49:51.855  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.911  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0601 2600 008F 5706 0168 0002 A9B9  
+Apr 05 15:49:51.912  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0601 6900 00BE CB  
+Apr 05 15:49:51.914  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:51.971  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0601 6900 01AE EA  
+Apr 05 15:49:52.091  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:52.138  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -44 dBm - Channel 37  
+Apr 05 15:49:52.139  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Low Power - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -44 dBm - Channel 37  
+Apr 05 15:49:52.462  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -44 dBm - Channel 38  
+Apr 05 15:49:52.464  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Low Power - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -44 dBm - Channel 38  
+Apr 05 15:49:52.510  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:52.740  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -47 dBm - Channel 39  
+Apr 05 15:49:52.741  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Low Power - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -47 dBm - Channel 39  
+Apr 05 15:49:52.772  HCI Event        0x0000  C6:A5:C7:22:81:14  LE - Ext ADV - 1 Report - Low Power - Random - C6:A5:C7:22:81:14 - RSSI: -68 dBm - Channel 39  
+Apr 05 15:49:53.059  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -44 dBm - Channel 37  
+Apr 05 15:49:53.060  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Low Power - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -44 dBm - Channel 37  
+Apr 05 15:49:53.209  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:53.211  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE77] -   
+Apr 05 15:49:53.211  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:53.214  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FD7F] -   
+Apr 05 15:49:53.214  HCI Command      0x0000  00:00:00:00:00:00  Set MWS Channel Parameters  
+Apr 05 15:49:53.217  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [0C6E] - Set MWS Channel Parameters  
+Apr 05 15:49:53.251  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:53.253  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FD7F] -   
+Apr 05 15:49:53.266  ATT Send         0x004C  Crane84D9          Read By Type Request - Start Handle: 0x0001 - End Handle: 0x000B - UUID: Device Name  
+Apr 05 15:49:53.381  ATT Receive      0x004C  Crane84D9          Read By Type Response  
+Apr 05 15:49:53.441  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:53.510  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:53.895  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:53.898  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:49:53.915  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:53.918  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:49:53.921  L2CAP Send       0x001C  00:00:00:00:00:00  Channel ID: 0xEF08  Length: 0x017F (383) [ 2C 06 69 01 78 08 86 C7 20 00 00 02 31 C7 15 A4 ... ]  
+Apr 05 15:49:53.969  L2CAP Receive    0x001C  00:00:00:00:00:00  Channel ID: 0x040B  Length: 0x004B (75) [ 1E 0B 03 00 44 72 66 C0 32 00 0C 00 0C 06 02 A7 ... ]  
+Apr 05 15:49:53.969  L2CAP Send       0x001C  00:00:00:00:00:00  Channel ID: 0xEF08  Length: 0x03FB (1019) [ 2E 06 69 03 F4 08 86 C7 20 00 00 02 32 A7 D6 EB ... ]  
+Apr 05 15:49:53.970  L2CAP Receive    0x001C  00:00:00:00:00:00  Channel ID: 0x040B  Length: 0x0053 (83) [ 20 0B 03 00 4C 72 66 C2 32 00 0C 00 0C 06 02 A7 ... ]  
+Apr 05 15:49:53.971  L2CAP Send       0x001C  00:00:00:00:00:00  Channel ID: 0xEF08  Length: 0x0043 (67) [ 30 06 68 00 3C 08 86 C7 20 00 00 02 33 17 CF 10 ... ]  
+Apr 05 15:49:53.972  HCI Event        0x001C  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x001C - Packets: 0x0001    
+Apr 05 15:49:53.980  L2CAP Receive    0x001C  00:00:00:00:00:00  Channel ID: 0x040B  Length: 0x004B (75) [ 22 0B 03 00 44 72 66 C0 32 00 0C 00 0C 06 02 A7 ... ]  
+Apr 05 15:49:53.980  HCI Event        0x001C  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x001C - Packets: 0x0001    
+Apr 05 15:49:53.980  HCI Event        0x001C  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x001C - Packets: 0x0001    
+Apr 05 15:49:53.985  L2CAP Send       0x001C  00:00:00:00:00:00  Channel ID: 0xEF08  Length: 0x0187 (391) [ 32 06 69 01 80 08 86 C7 20 00 00 02 34 5D C4 A7 ... ]  
+Apr 05 15:49:53.993  L2CAP Receive    0x001C  00:00:00:00:00:00  Channel ID: 0x040B  Length: 0x0053 (83) [ 24 0B 03 00 4C 72 66 C2 32 00 0C 00 0C 06 02 A7 ... ]  
+Apr 05 15:49:53.993  L2CAP Receive    0x001C  00:00:00:00:00:00  Channel ID: 0x040B  Length: 0x004B (75) [ 26 0B 03 00 44 72 66 C0 32 00 0C 00 0C 06 02 A7 ... ]  
+Apr 05 15:49:53.993  L2CAP Send       0x001C  00:00:00:00:00:00  Channel ID: 0xEF08  Length: 0x03DF (991) [ 34 06 69 03 D8 08 86 C7 20 00 00 02 35 AE E5 BB ... ]  
+Apr 05 15:49:53.996  HCI Event        0x001C  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x001C - Packets: 0x0001    
+Apr 05 15:49:53.998  ATT Send         0x004C  Crane84D9          Write Command - Handle:0x002C - D44BC439-ABFD-45A2-B575-925416129600 - Value: 0601 0600 0009 91  
+Apr 05 15:49:54.001  HCI Event        0x001C  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x001C - Packets: 0x0001    
+Apr 05 15:49:54.003  L2CAP Receive    0x001C  00:00:00:00:00:00  Channel ID: 0x040B  Length: 0x004B (75) [ 28 0B 03 00 44 72 66 C0 32 00 0C 00 0C 06 02 A7 ... ]  
+Apr 05 15:49:54.005  L2CAP Receive    0x001C  00:00:00:00:00:00  Channel ID: 0x040B  Length: 0x0053 (83) [ 2A 0B 03 00 4C 72 66 C2 32 00 0C 00 0C 06 02 A7 ... ]  
+Apr 05 15:49:54.005  L2CAP Send       0x001C  00:00:00:00:00:00  Channel ID: 0xEF08  Length: 0x0043 (67) [ 36 06 68 00 3C 08 86 C7 20 00 00 02 36 7A 5C 33 ... ]  
+Apr 05 15:49:54.012  HCI Event        0x001C  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x001C - Packets: 0x0001    
+Apr 05 15:49:54.012  HCI Event        0x004C  Crane84D9          Number Of Completed Packets - Handle: 0x004C - Packets: 0x0001    
+Apr 05 15:49:54.041  L2CAP Receive    0x001C  00:00:00:00:00:00  Channel ID: 0x040B  Length: 0x0053 (83) [ 2C 0B 03 00 4C 72 66 C2 32 00 0C 00 0C 06 02 A7 ... ]  
+Apr 05 15:49:54.041  L2CAP Send       0x001C  00:00:00:00:00:00  Channel ID: 0xEF08  Length: 0x0043 (67) [ 38 06 68 00 3C 08 86 C7 20 00 00 02 37 79 58 3B ... ]  
+Apr 05 15:49:54.042  ATT Receive      0x004C  Crane84D9          Handle Value Notification - Handle:0x002F - D44BC439-ABFD-45A2-B575-925416129601 - Value: 0601 0602 BD19 85  
+Apr 05 15:49:54.054  L2CAP Receive    0x001C  00:00:00:00:00:00  Channel ID: 0x0209  Length: 0x0002 (02) [ 01 1C ]  
+Apr 05 15:49:54.070  L2CAP Send       0x001C  00:00:00:00:00:00  Channel ID: 0xF10A  Length: 0x0002 (02) [ 01 17 ]  
+Apr 05 15:49:54.074  HCI Event        0x001C  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x001C - Packets: 0x0001    
+Apr 05 15:49:54.170  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.172  HCI Event        0x001C  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x001C - Packets: 0x0001    
+Apr 05 15:49:54.172  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:49:54.188  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.192  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:49:54.240  L2CAP Send       0x001C  00:00:00:00:00:00  Channel ID: 0xEF08  Length: 0x02CF (719) [ 3A 06 69 02 C8 08 86 C7 20 00 00 02 38 C5 0B C9 ... ]  
+Apr 05 15:49:54.267  L2CAP Receive    0x001C  00:00:00:00:00:00  Channel ID: 0x0209  Length: 0x0002 (02) [ 01 1D ]  
+Apr 05 15:49:54.267  L2CAP Receive    0x001C  00:00:00:00:00:00  Channel ID: 0x040B  Length: 0x004B (75) [ 2E 0B 03 00 44 72 66 C0 32 00 0C 00 0C 06 02 A7 ... ]  
+Apr 05 15:49:54.299  L2CAP Receive    0x001C  00:00:00:00:00:00  Channel ID: 0x040B  Length: 0x0053 (83) [ 30 0B 03 00 4C 72 66 C2 32 00 0C 00 0C 06 02 A7 ... ]  
+Apr 05 15:49:54.299  L2CAP Send       0x001C  00:00:00:00:00:00  Channel ID: 0xEF08  Length: 0x0043 (67) [ 3C 06 68 00 3C 08 86 C7 20 00 00 02 39 C2 74 3F ... ]  
+Apr 05 15:49:54.303  HCI Event        0x001C  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x001C - Packets: 0x0001    
+Apr 05 15:49:54.368  L2CAP Send       0x001C  00:00:00:00:00:00  Channel ID: 0xF10A  Length: 0x0002 (02) [ 01 19 ]  
+Apr 05 15:49:54.370  HCI Event        0x001C  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x001C - Packets: 0x0001    
+Apr 05 15:49:54.374  L2CAP Receive    0x001C  00:00:00:00:00:00  Channel ID: 0x0209  Length: 0x0002 (02) [ 01 1F ]  
+Apr 05 15:49:54.430  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.432  HCI Event        0x001C  00:00:00:00:00:00  Number Of Completed Packets - Handle: 0x001C - Packets: 0x0001    
+Apr 05 15:49:54.432  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE29] -   
+Apr 05 15:49:54.432  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.435  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:49:54.436  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.439  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.439  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.442  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.442  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.445  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.445  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.448  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.452  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.455  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.455  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.458  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.459  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.462  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.462  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.465  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.465  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.468  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.468  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.471  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.471  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.474  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.474  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.477  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.477  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.480  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.480  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.483  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.483  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.486  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.486  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.489  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.489  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.493  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.493  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.496  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.496  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.500  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.500  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.503  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.503  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.507  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.507  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.510  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.510  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.513  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE9] -   
+Apr 05 15:49:54.516  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.518  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:54.520  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FCE2] -   
+Apr 05 15:49:54.520  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.523  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE37] -   
+Apr 05 15:49:54.523  HCI Command      0x0000  00:00:00:00:00:00  Vendor Specific Command  
+Apr 05 15:49:54.526  HCI Event        0x0000  00:00:00:00:00:00  Command Complete [FE29] -   
+Apr 05 15:49:54.658  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -48 dBm - Channel 39  
+Apr 05 15:49:54.681  HCI Event        0x0000  6F:DC:1E:7E:F9:F0  LE - Ext ADV - 1 Report - Normal - Random - 6F:DC:1E:7E:F9:F0 - RSSI: -45 dBm - Channel 39  
+Apr 05 15:49:54.717  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -47 dBm - Channel 37  
+Apr 05 15:49:54.720  HCI Event        0x0000  C2:EC:6C:04:64:DA  LE - Ext ADV - 1 Report - Normal - Random - C2:EC:6C:04:64:DA - RSSI: -47 dBm - Channel 37  
+Apr 05 15:49:54.778  HCI Event        0x0000  C6:A5:C7:22:81:14  LE - Ext ADV - 1 Report - Normal - Random - C6:A5:C7:22:81:14 - RSSI: -83 dBm - Channel 38  
+Apr 05 15:49:54.906  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -47 dBm - Channel 37  
+Apr 05 15:49:54.952  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -43 dBm - Channel 38  
+Apr 05 15:49:55.087  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -47 dBm - Channel 37  
+Apr 05 15:49:55.202  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -47 dBm - Channel 39  
+Apr 05 15:49:55.255  HCI Event        0x0000  D2:F5:27:9A:B1:93  LE - Ext ADV - 1 Report - Normal - Random - D2:F5:27:9A:B1:93 - RSSI: -79 dBm - Channel 37  
+Apr 05 15:49:55.280  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -47 dBm - Channel 37  
+Apr 05 15:49:55.327  HCI Event        0x0000  C4:29:FB:DD:CC:C1  LE - Ext ADV - 1 Report - Normal - Random - C4:29:FB:DD:CC:C1 - RSSI: -77 dBm - Channel 38  
+Apr 05 15:49:55.517  HCI Event        0x0000  00:00:00:00:00:00  Vendor Specific Event  
+Apr 05 15:49:55.744  HCI Event        0x0000  0C:53:B7:19:1B:A5  LE - Ext ADV - 1 Report - Normal - Public Identity (Resolved Private) - 0C:53:B7:19:1B:A5 - RSSI: -47 dBm - Channel 39  
+Apr 05 15:49:56.027  HCI Event        0x0000  FE:6D:01:60:0E:D9  LE - Ext ADV - 1 Report - Normal - Random (static) Identity (Resolved Private) - FE:6D:01:60:0E:D9 - RSSI: -46 dBm - Channel 38  
+Apr 05 15:49:56.068  Note             0x0000  00:00:00:00:00:00  iOS Device connection has been lost  
