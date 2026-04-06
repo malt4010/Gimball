@@ -80,6 +80,18 @@ class WebServer:
                             await self.gimbal.stop()
                         await ws.send_json({"event": "centered"})
 
+                    elif action == "connect_gimbal":
+                        if self.gimbal:
+                            if self.gimbal.connected:
+                                await self.gimbal.disconnect()
+                                await ws.send_json({"event": "gimbal_status",
+                                                    "message": "Disconnected"})
+                            else:
+                                success = await self.gimbal.connect()
+                                msg = "Connected!" if success else "Not found"
+                                await ws.send_json({"event": "gimbal_status",
+                                                    "message": msg})
+
                     elif action == "change_source":
                         source = data.get("source", "")
                         if source:
