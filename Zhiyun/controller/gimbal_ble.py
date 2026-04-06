@@ -85,7 +85,12 @@ class ZhiyunGimbal:
         if not self._write_uuid:
             return False
 
-        # Send neutral init
+        # Init sequence from BLE captures
+        # 1. Speed/mode setting (required for pan to work)
+        await self._client.write_gatt_char(self._write_uuid,
+            bytes.fromhex("060105000050C1"), response=False)
+        await asyncio.sleep(0.1)
+        # 2. Neutral axis init
         await self._send_raw("061001080068BB", "061002080031EB", "061003080006DB")
         self._connected = True
         return True
