@@ -133,6 +133,10 @@
                 <span>FPS: <span id="fps-val">-</span></span>
                 <span>Persons: <span id="person-count">0</span></span>
             </div>
+            <div style="background:#0f172a;padding:6px 8px;border-radius:5px;margin-top:2px;">
+                <p style="font-size:10px;color:#64748b;margin-bottom:2px;">OBS Media Source URL:</p>
+                <code style="font-size:11px;color:#60a5fa;word-break:break-all;" id="obs-url"></code>
+            </div>
 
             <div class="divider"></div>
 
@@ -323,6 +327,7 @@
     });
 
     feed.onload = () => { camDot.className = 'dot dot-green'; updateFraming(); };
+    document.getElementById('obs-url').textContent = location.origin + '/clean_feed';
     connectWS();
     </script>
 </body>
