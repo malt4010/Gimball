@@ -72,14 +72,18 @@ class VideoCapture:
 
     def change_source(self, new_source):
         """Switch to a different video source without restarting the system."""
+        print(f"[VideoCapture] Switching to: {new_source}")
         self.stop()
         if isinstance(new_source, str) and new_source.isdigit():
             new_source = int(new_source)
         self.source = new_source
         self._frame = None
         self._fps = 0.0
+        self._fps_count = 0
         self._frame_count = 0
-        print(f"[VideoCapture] Switching to: {new_source}")
+        self._fps_start = time.monotonic()
+        self._running = False
+        self._thread = None
         self.start()
 
     def stop(self):
@@ -119,21 +123,40 @@ class VideoCapture:
         """Read MJPEG stream from HTTP (DroidCam, IP cameras)."""
         import requests
 
+        print(f"[VideoCapture] Connecting MJPEG: {url}")
+        retries = 0
+
         while self._running:
             try:
-                resp = requests.get(url, stream=True, timeout=10)
+                resp = requests.get(url, stream=True, timeout=5)
+                if resp.status_code != 200:
+                    print(f"[VideoCapture] HTTP {resp.status_code} from {url}")
+                    time.sleep(2)
+                    continue
+
+                print(f"[VideoCapture] MJPEG connected: {url}")
+                retries = 0
                 buf = b""
 
-                for chunk in resp.iter_content(4096):
+                for chunk in resp.iter_content(8192):
                     if not self._running:
                         break
                     buf += chunk
 
-                    # Find JPEG boundaries (FFD8 = start, FFD9 = end)
-                    start = buf.find(b"\xff\xd8")
-                    end = buf.find(b"\xff\xd9", start + 2) if start >= 0 else -1
+                    # Prevent buffer from growing forever
+                    if len(buf) > 500000:
+                        start = buf.rfind(b"\xff\xd8")
+                        buf = buf[start:] if start >= 0 else b""
 
-                    if start >= 0 and end >= 0:
+                    # Find JPEG frames (FFD8 = start, FFD9 = end)
+                    while True:
+                        start = buf.find(b"\xff\xd8")
+                        if start < 0:
+                            break
+                        end = buf.find(b"\xff\xd9", start + 2)
+                        if end < 0:
+                            break
+
                         jpg = buf[start:end + 2]
                         buf = buf[end + 2:]
 
@@ -143,6 +166,11 @@ class VideoCapture:
                             self.push_frame(frame)
 
                 resp.close()
+            except requests.exceptions.ConnectionError:
+                retries += 1
+                wait = min(retries * 2, 10)
+                print(f"[VideoCapture] Can't reach {url}, retry in {wait}s...")
+                time.sleep(wait)
             except Exception as e:
-                print(f"[VideoCapture] Stream error: {e}, reconnecting...")
-                time.sleep(1)
+                print(f"[VideoCapture] Error: {e}, reconnecting...")
+                time.sleep(2)

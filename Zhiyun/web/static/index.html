@@ -116,12 +116,7 @@
                     <option value="usb">USB Webcam</option>
                     <option value="custom">Custom URL</option>
                 </select>
-                <div id="source-config">
-                    <div class="source-row">
-                        <input type="text" id="source-ip" placeholder="Phone IP (e.g. 192.168.1.50)" value="">
-                        <button onclick="connectSource()">Go</button>
-                    </div>
-                </div>
+                <div id="source-config"></div>
             </div>
             <div class="info-row">
                 <span>Source: <span id="current-source">-</span></span>
@@ -171,18 +166,26 @@
         if (ws && ws.readyState === 1) ws.send(JSON.stringify({ action, ...extra }));
     }
 
-    // --- Source selection ---
+    // --- Source selection (with localStorage persistence) ---
+    function saveVal(key, val) { try { localStorage.setItem('gimbal_' + key, val); } catch(e) {} }
+    function loadVal(key, def) { try { return localStorage.getItem('gimbal_' + key) || def; } catch(e) { return def; } }
+
     function onSourceTypeChange() {
         const type = sourceType.value;
+        saveVal('source_type', type);
         const configs = {
-            droidcam: '<div class="source-row"><input type="text" id="source-ip" placeholder="Phone IP (e.g. 192.168.1.50)"><button onclick="connectSource()">Go</button></div>',
-            rtsp: '<div class="source-row"><input type="text" id="source-ip" placeholder="rtsp://192.168.1.50:554/stream"><button onclick="connectSource()">Go</button></div>',
-            hdmi: '<button onclick="connectSource()">Use HDMI Capture</button><p style="font-size:11px;color:#64748b;">Connects to first available capture card</p>',
-            usb: '<button onclick="connectSource()">Use USB Webcam</button><p style="font-size:11px;color:#64748b;">Connects to first available webcam</p>',
-            custom: '<div class="source-row"><input type="text" id="source-ip" placeholder="Any OpenCV-compatible URL or device"><button onclick="connectSource()">Go</button></div>',
+            droidcam: `<div class="source-row"><input type="text" id="source-ip" placeholder="Phone IP (e.g. 192.168.1.50)" value="${loadVal('droidcam_ip', '')}"><button onclick="connectSource()">Go</button></div>`,
+            rtsp: `<div class="source-row"><input type="text" id="source-ip" placeholder="rtsp://IP:554/stream" value="${loadVal('rtsp_url', '')}"><button onclick="connectSource()">Go</button></div>`,
+            hdmi: '<button onclick="connectSource()">Use HDMI Capture</button><p style="font-size:11px;color:#64748b;">First available capture card (device 0)</p>',
+            usb: '<button onclick="connectSource()">Use USB Webcam</button><p style="font-size:11px;color:#64748b;">First available webcam (device 0)</p>',
+            custom: `<div class="source-row"><input type="text" id="source-ip" placeholder="URL or device index" value="${loadVal('custom_url', '')}"><button onclick="connectSource()">Go</button></div>`,
         };
         sourceConfig.innerHTML = configs[type] || '';
     }
+
+    // Restore last used source type
+    sourceType.value = loadVal('source_type', 'droidcam');
+    onSourceTypeChange();
 
     function connectSource() {
         const type = sourceType.value;
@@ -192,21 +195,24 @@
         if (type === 'droidcam') {
             const ip = ipEl ? ipEl.value.trim() : '';
             if (!ip) { log('Enter phone IP address'); return; }
+            saveVal('droidcam_ip', ip);
             source = 'http://' + ip + ':4747/video';
         } else if (type === 'rtsp') {
             source = ipEl ? ipEl.value.trim() : '';
             if (!source) { log('Enter RTSP URL'); return; }
+            saveVal('rtsp_url', source);
         } else if (type === 'hdmi') {
-            // HDMI capture cards show up as video devices, usually index 0 or 1
             source = '0';
         } else if (type === 'usb') {
             source = '0';
         } else if (type === 'custom') {
             source = ipEl ? ipEl.value.trim() : '';
-            if (!source) { log('Enter source URL or device'); return; }
+            if (!source) { log('Enter source'); return; }
+            saveVal('custom_url', source);
         }
 
         log('Connecting: ' + source);
+        hint.textContent = 'Connecting to ' + source + '...';
         send('change_source', { source });
     }
 
