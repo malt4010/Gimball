@@ -11,6 +11,7 @@ import threading
 import time
 import cv2
 import numpy as np
+import numpy as np
 
 
 class VideoCapture:
@@ -69,15 +70,36 @@ class VideoCapture:
         self._thread = threading.Thread(target=self._capture_loop, daemon=True)
         self._thread.start()
 
+    def change_source(self, new_source):
+        """Switch to a different video source without restarting the system."""
+        self.stop()
+        if isinstance(new_source, str) and new_source.isdigit():
+            new_source = int(new_source)
+        self.source = new_source
+        self._frame = None
+        self._fps = 0.0
+        self._frame_count = 0
+        print(f"[VideoCapture] Switching to: {new_source}")
+        self.start()
+
     def stop(self):
         self._running = False
         if self._thread:
             self._thread.join(timeout=3)
 
     def _capture_loop(self):
-        cap = cv2.VideoCapture(self.source)
+        source_str = str(self.source)
+
+        # HTTP MJPEG streams (DroidCam, IP cameras)
+        if source_str.startswith("http"):
+            self._capture_mjpeg(source_str)
+        else:
+            self._capture_opencv(self.source)
+
+    def _capture_opencv(self, source):
+        cap = cv2.VideoCapture(source)
         if not cap.isOpened():
-            print(f"[VideoCapture] Failed to open: {self.source}")
+            print(f"[VideoCapture] Failed to open: {source}")
             return
 
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.width)
@@ -92,3 +114,35 @@ class VideoCapture:
             self.push_frame(frame)
 
         cap.release()
+
+    def _capture_mjpeg(self, url):
+        """Read MJPEG stream from HTTP (DroidCam, IP cameras)."""
+        import requests
+
+        while self._running:
+            try:
+                resp = requests.get(url, stream=True, timeout=10)
+                buf = b""
+
+                for chunk in resp.iter_content(4096):
+                    if not self._running:
+                        break
+                    buf += chunk
+
+                    # Find JPEG boundaries (FFD8 = start, FFD9 = end)
+                    start = buf.find(b"\xff\xd8")
+                    end = buf.find(b"\xff\xd9", start + 2) if start >= 0 else -1
+
+                    if start >= 0 and end >= 0:
+                        jpg = buf[start:end + 2]
+                        buf = buf[end + 2:]
+
+                        arr = np.frombuffer(jpg, dtype=np.uint8)
+                        frame = cv2.imdecode(arr, cv2.IMREAD_COLOR)
+                        if frame is not None:
+                            self.push_frame(frame)
+
+                resp.close()
+            except Exception as e:
+                print(f"[VideoCapture] Stream error: {e}, reconnecting...")
+                time.sleep(1)

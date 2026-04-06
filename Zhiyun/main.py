@@ -1,19 +1,21 @@
 """
-AI Person Tracking Gimbal System - Main Entry Point
+AI Person Tracking Gimbal System
 
-Connects all components:
-  Video Capture → Person Tracker → PID Controller → Gimbal BLE
-  Web Server for remote monitoring and control
+Architecture:
+  Phone (DroidCam/NDI) → WiFi video stream
+  Pi/Mac captures stream via OpenCV → YOLOv8 detection → PID → Gimbal BLE
+  Web dashboard for monitoring + target selection (any browser)
+  OBS captures same DroidCam/NDI stream independently (clean, 0 latency)
 
 Usage:
-  python main.py                    # webcam input (for testing)
-  python main.py --source rtsp://.. # RTSP/NDI stream
-  python main.py --no-gimbal        # test without gimbal hardware
+  python main.py --source http://PHONE_IP:4747/video   # DroidCam
+  python main.py --source 0                             # local webcam
+  python main.py --source rtsp://...                    # RTSP stream
+  python main.py --no-gimbal                            # test without gimbal
 """
 import asyncio
 import argparse
 import signal
-import sys
 
 from tracker.video_capture import VideoCapture
 from tracker.tracker import PersonTracker, TargetState
@@ -23,30 +25,31 @@ from web.server import WebServer
 
 
 async def main(args):
-    # --- Initialize components ---
     print("[INIT] Starting AI Tracking Gimbal System...")
 
-    # Video capture
-    if args.source == "webrtc":
-        video = VideoCapture(source=None, width=args.width, height=args.height)
-        print(f"[INIT] Video: WebRTC (waiting for phone camera via browser)")
-    else:
-        source = int(args.source) if args.source.isdigit() else args.source
-        video = VideoCapture(source=source, width=args.width, height=args.height)
-        video.start()
-        print(f"[INIT] Video capture: {args.source} ({args.width}x{args.height})")
+    # Video capture from DroidCam / webcam / RTSP
+    source = args.source
+    if source.isdigit():
+        source = int(source)
+    video = VideoCapture(source=source, width=args.width, height=args.height)
+    video.start()
+    print(f"[INIT] Video source: {args.source}")
 
-        for _ in range(50):
-            if video.frame is not None:
-                break
-            await asyncio.sleep(0.1)
+    # Wait for first frame
+    for _ in range(100):
+        if video.frame is not None:
+            break
+        await asyncio.sleep(0.1)
 
-        if video.frame is None:
-            print("[ERROR] No video frames received!")
-            video.stop()
-            return
+    if video.frame is None:
+        print("[ERROR] No video! Check that DroidCam is running and URL is correct.")
+        print(f"  Tried: {args.source}")
+        print(f"  DroidCam URL format: http://PHONE_IP:4747/video")
+        video.stop()
+        return
 
-    print(f"[INIT] Video ready")
+    h, w = video.frame.shape[:2]
+    print(f"[INIT] Video OK: {w}x{h} @ {video.fps:.0f} FPS")
 
     # Person tracker
     tracker = PersonTracker(
@@ -54,7 +57,7 @@ async def main(args):
         model_size=args.model,
         input_size=args.yolo_size,
     )
-    print(f"[INIT] Tracker: YOLOv8{args.model} @ {args.yolo_size}px")
+    print(f"[INIT] YOLOv8{args.model} @ {args.yolo_size}px")
 
     # Gimbal
     gimbal = ZhiyunGimbal()
@@ -63,28 +66,23 @@ async def main(args):
         if await gimbal.connect():
             print("[INIT] Gimbal connected!")
         else:
-            print("[WARN] Gimbal not found - running without gimbal")
+            print("[WARN] Gimbal not found")
     else:
-        print("[INIT] Gimbal disabled (--no-gimbal)")
+        print("[INIT] Gimbal disabled")
 
     # PID controller
     pid = PIDController(
-        kp=args.pid_p,
-        ki=args.pid_i,
-        kd=args.pid_d,
-        dead_zone=args.dead_zone,
-        smoothing=args.smoothing,
+        kp=args.pid_p, ki=args.pid_i, kd=args.pid_d,
+        dead_zone=args.dead_zone, smoothing=args.smoothing,
     )
 
-    # Web server
+    # Web dashboard
     web = WebServer(tracker, gimbal, video, port=args.port)
-    print(f"[INIT] Web UI: http://0.0.0.0:{args.port}")
+    print(f"[INIT] Dashboard: https://0.0.0.0:{args.port}")
 
-    # Start web server in background
     web_task = asyncio.create_task(web.start())
 
-    # --- Main loop ---
-    print("[RUN] System running. Open web UI to select target.")
+    print("[RUN] Ready. Open dashboard to select target.")
 
     running = True
     def stop(sig, frame):
@@ -100,56 +98,52 @@ async def main(args):
                 await asyncio.sleep(0.01)
                 continue
 
-            # Run detection + tracking
+            # AI detection + tracking
             annotated = tracker.process_frame(frame)
-
-            # Update web UI frame
             web.set_annotated_frame(annotated)
 
-            # Gimbal control based on tracker state
+            # Gimbal control
             if tracker.state == TargetState.TRACKING and tracker.target_bbox:
                 x1, y1, x2, y2 = tracker.target_bbox
-                target_cx = (x1 + x2) / 2
-                target_cy = (y1 + y2) / 2
+                cx = (x1 + x2) / 2
+                cy = (y1 + y2) / 2
                 h, w = frame.shape[:2]
 
-                pan, tilt = pid.update(target_cx, target_cy, w, h)
-
+                pan, tilt = pid.update(cx, cy, w, h)
                 if gimbal.connected:
                     await gimbal.move(tilt=tilt, pan=pan)
 
             elif tracker.state in (TargetState.LOST, TargetState.IDLE):
-                # Stop gimbal when not tracking
                 if gimbal.connected:
                     await gimbal.stop()
                 pid.reset()
 
-            await asyncio.sleep(0.02)  # ~50 Hz main loop
+            await asyncio.sleep(0.02)
 
     finally:
-        print("\n[SHUTDOWN] Stopping...")
+        print("\n[SHUTDOWN]")
         video.stop()
         if gimbal.connected:
             await gimbal.stop()
             await gimbal.disconnect()
         web_task.cancel()
-        print("[SHUTDOWN] Done.")
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="AI Person Tracking Gimbal")
-    parser.add_argument("--source", default="webrtc", help="Video source: 'webrtc' (phone browser), camera index, or RTSP URL")
-    parser.add_argument("--width", type=int, default=640, help="Frame width")
-    parser.add_argument("--height", type=int, default=480, help="Frame height")
-    parser.add_argument("--model", default="n", choices=["n", "s", "m"], help="YOLO model size")
-    parser.add_argument("--yolo-size", type=int, default=640, help="YOLO input size")
-    parser.add_argument("--confidence", type=float, default=0.5, help="Detection confidence")
-    parser.add_argument("--no-gimbal", action="store_true", help="Run without gimbal")
-    parser.add_argument("--port", type=int, default=8080, help="Web UI port")
-    parser.add_argument("--pid-p", type=float, default=2.0, help="PID proportional gain")
-    parser.add_argument("--pid-i", type=float, default=0.0, help="PID integral gain")
-    parser.add_argument("--pid-d", type=float, default=0.5, help="PID derivative gain")
-    parser.add_argument("--dead-zone", type=float, default=0.05, help="PID dead zone")
-    parser.add_argument("--smoothing", type=float, default=0.3, help="Output smoothing")
+    p = argparse.ArgumentParser(description="AI Person Tracking Gimbal")
+    p.add_argument("--source", default="0",
+                   help="DroidCam URL (http://IP:4747/video), camera index, or RTSP URL")
+    p.add_argument("--width", type=int, default=640)
+    p.add_argument("--height", type=int, default=480)
+    p.add_argument("--model", default="n", choices=["n", "s", "m"])
+    p.add_argument("--yolo-size", type=int, default=320)
+    p.add_argument("--confidence", type=float, default=0.5)
+    p.add_argument("--no-gimbal", action="store_true")
+    p.add_argument("--port", type=int, default=8080)
+    p.add_argument("--pid-p", type=float, default=2.0)
+    p.add_argument("--pid-i", type=float, default=0.0)
+    p.add_argument("--pid-d", type=float, default=0.5)
+    p.add_argument("--dead-zone", type=float, default=0.05)
+    p.add_argument("--smoothing", type=float, default=0.3)
 
-    asyncio.run(main(parser.parse_args()))
+    asyncio.run(main(p.parse_args()))

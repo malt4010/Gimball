@@ -1,19 +1,15 @@
 """
-Web server with WebRTC camera input, live video dashboard, and gimbal controls.
+Web dashboard for AI gimbal tracker.
 
-The phone opens the web UI in its browser which:
-1. Sends camera feed to Pi via WebRTC
-2. Shows processed video (with detection overlays) back via MJPEG
-3. Allows clicking on persons to track them
-4. Provides gimbal controls (center, stop)
-
-A separate device (laptop/tablet) can also open the UI for monitoring only.
+Features:
+- Video source selector (DroidCam, RTSP, HDMI capture, USB webcam)
+- Live processed video with detection overlays
+- Click-to-track target selection
+- Gimbal controls
 """
 import asyncio
 import json
-import base64
 import cv2
-import numpy as np
 from pathlib import Path
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, StreamingResponse
@@ -33,7 +29,6 @@ class WebServer:
         self._setup_routes()
 
     def set_annotated_frame(self, frame):
-        """Set the latest AI-processed frame for streaming back."""
         self._latest_annotated = frame
 
     def _setup_routes(self):
@@ -56,80 +51,57 @@ class WebServer:
             await ws.accept()
             try:
                 while True:
-                    msg = await ws.receive()
+                    msg = await ws.receive_text()
+                    data = json.loads(msg)
+                    action = data.get("action")
 
-                    # Binary = JPEG frame from phone camera
-                    if "bytes" in msg and msg["bytes"]:
-                        jpeg_bytes = msg["bytes"]
-                        arr = np.frombuffer(jpeg_bytes, dtype=np.uint8)
-                        frame = cv2.imdecode(arr, cv2.IMREAD_COLOR)
+                    if action == "select_target":
+                        x, y = data.get("x", 0), data.get("y", 0)
+                        frame = self.video.frame
                         if frame is not None:
-                            self.video.push_frame(frame)
-                            if self.video._frame_count <= 3:
-                                h, w = frame.shape[:2]
-                                print(f"[WebSocket] Receiving frames: {w}x{h}")
-                        continue
+                            success = self.tracker.select_target(x, y, frame)
+                            await ws.send_json({"event": "target_selected",
+                                                "success": success})
 
-                    # Text = JSON control message
-                    if "text" in msg and msg["text"]:
-                        data = json.loads(msg["text"])
-                        action = data.get("action")
+                    elif action == "stop_tracking":
+                        self.tracker.stop_tracking()
+                        if self.gimbal:
+                            await self.gimbal.stop()
+                        await ws.send_json({"event": "tracking_stopped"})
 
-                        # Base64 JPEG frame (iOS Safari compatibility)
-                        if action == "frame":
-                            data_url = data.get("data", "")
-                            # Strip "data:image/jpeg;base64," prefix
-                            if "," in data_url:
-                                b64 = data_url.split(",", 1)[1]
-                                jpeg_bytes = base64.b64decode(b64)
-                                arr = np.frombuffer(jpeg_bytes, dtype=np.uint8)
-                                frame = cv2.imdecode(arr, cv2.IMREAD_COLOR)
-                                if frame is not None:
-                                    self.video.push_frame(frame)
-                                    if self.video._frame_count <= 3:
-                                        h, w = frame.shape[:2]
-                                        print(f"[WebSocket] Receiving frames: {w}x{h}")
-                            continue
+                    elif action == "center":
+                        if self.gimbal:
+                            await self.gimbal.stop()
+                        await ws.send_json({"event": "centered"})
 
-                        if action == "select_target":
-                            x, y = data.get("x", 0), data.get("y", 0)
-                            frame = self.video.frame
-                            if frame is not None:
-                                success = self.tracker.select_target(x, y, frame)
-                                await ws.send_json({"event": "target_selected",
-                                                    "success": success})
+                    elif action == "change_source":
+                        source = data.get("source", "")
+                        if source:
+                            self.video.change_source(source)
+                            await ws.send_json({"event": "source_changed",
+                                                "source": source})
 
-                        elif action == "stop_tracking":
-                            self.tracker.stop_tracking()
-                            if self.gimbal:
-                                await self.gimbal.stop()
-                            await ws.send_json({"event": "tracking_stopped"})
-
-                        elif action == "center":
-                            if self.gimbal:
-                                await self.gimbal.stop()
-                            await ws.send_json({"event": "centered"})
-
-                        elif action == "get_status":
-                            await ws.send_json({
-                                "event": "status",
-                                "state": self.tracker.state,
-                                "gimbal_connected": self.gimbal.connected if self.gimbal else False,
-                                "target_bbox": self.tracker.target_bbox,
-                                "fps": round(self.video.fps, 1),
-                            })
+                    elif action == "get_status":
+                        await ws.send_json({
+                            "event": "status",
+                            "state": self.tracker.state,
+                            "gimbal_connected": self.gimbal.connected if self.gimbal else False,
+                            "fps": round(self.video.fps, 1),
+                            "detections": len(self.tracker.detections),
+                            "source": str(self.video.source or "none"),
+                        })
 
             except WebSocketDisconnect:
                 pass
-            except Exception as e:
-                print(f"[WebSocket] Error: {e}")
+            except Exception:
+                pass
 
     async def _generate_mjpeg(self):
         while True:
             frame = self._latest_annotated
             if frame is not None:
                 _, buf = cv2.imencode(".jpg", frame,
-                                      [cv2.IMWRITE_JPEG_QUALITY, 70])
+                                      [cv2.IMWRITE_JPEG_QUALITY, 75])
                 yield (b"--frame\r\n"
                        b"Content-Type: image/jpeg\r\n\r\n" +
                        buf.tobytes() + b"\r\n")
@@ -137,10 +109,7 @@ class WebServer:
 
     async def start(self):
         import uvicorn
-        import ssl
-        from pathlib import Path
 
-        # Use HTTPS if cert files exist (required for camera access on phones)
         base = Path(__file__).parent.parent
         cert = base / "cert.pem"
         key = base / "key.pem"
@@ -149,9 +118,7 @@ class WebServer:
         if cert.exists() and key.exists():
             kwargs["ssl_certfile"] = str(cert)
             kwargs["ssl_keyfile"] = str(key)
-            print(f"[Web] HTTPS enabled (self-signed cert)")
-        else:
-            print(f"[Web] HTTP only (no cert.pem/key.pem found)")
+            print("[Web] HTTPS enabled")
 
         config = uvicorn.Config(self.app, host=self.host, port=self.port,
                                 log_level="warning", **kwargs)
