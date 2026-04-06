@@ -16,12 +16,15 @@ Usage:
 import asyncio
 import argparse
 import signal
+from concurrent.futures import ThreadPoolExecutor
 
 from tracker.video_capture import VideoCapture
 from tracker.tracker import PersonTracker, TargetState
 from controller.gimbal_ble import ZhiyunGimbal
 from controller.pid import PIDController
 from web.server import WebServer
+
+_executor = ThreadPoolExecutor(max_workers=1)
 
 
 async def main(args):
@@ -98,8 +101,9 @@ async def main(args):
                 await asyncio.sleep(0.01)
                 continue
 
-            # AI detection + tracking
-            annotated = tracker.process_frame(frame)
+            # AI detection + tracking (run in thread to not block async loop)
+            loop = asyncio.get_event_loop()
+            annotated = await loop.run_in_executor(_executor, tracker.process_frame, frame)
             web.set_annotated_frame(annotated)
             web.set_clean_frame(frame)  # clean feed for OBS
 
