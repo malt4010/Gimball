@@ -153,23 +153,26 @@ async def main(args):
 
                 if gimbal.connected:
                     threshold = 0.02
-                    if abs(pan) > threshold or abs(tilt) > threshold:
-                        # Send both axes using raw capture bytes
-                        # Pick tilt cmd1 based on tilt direction
-                        if abs(tilt) > threshold:
-                            cmd1 = _RAW["tilt_up"][0] if tilt > 0 else _RAW["tilt_down"][0]
-                        else:
-                            cmd1 = _RAW["neutral"][0]
+                    need_pan = abs(pan) > threshold
+                    need_tilt = abs(tilt) > threshold
 
-                        # Pick pan cmd3 based on pan direction
-                        if abs(pan) > threshold:
-                            cmd3 = _RAW["pan_right"][1] if pan > 0 else _RAW["pan_left"][1]
+                    if need_pan or need_tilt:
+                        # Can't mix cmd1/cmd3 from different captures.
+                        # Alternate between pan and tilt each frame.
+                        if need_pan and need_tilt:
+                            # Both needed - alternate
+                            if frame_log_count % 2 == 0:
+                                direction = "pan_right" if pan > 0 else "pan_left"
+                            else:
+                                direction = "tilt_up" if tilt > 0 else "tilt_down"
+                        elif need_pan:
+                            direction = "pan_right" if pan > 0 else "pan_left"
                         else:
-                            cmd3 = _RAW["neutral"][1]
+                            direction = "tilt_up" if tilt > 0 else "tilt_down"
 
-                        await gimbal._send_raw(cmd1, "061002080031EB", cmd3)
+                        await gimbal.move_raw(direction)
                         if frame_log_count % 30 == 0:
-                            print(f"[GIMBAL] pan={pan:.3f} tilt={tilt:.3f}")
+                            print(f"[GIMBAL] {direction} pan={pan:.3f} tilt={tilt:.3f}")
                     else:
                         await gimbal.stop()
 
