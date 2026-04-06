@@ -11,6 +11,7 @@ A separate device (laptop/tablet) can also open the UI for monitoring only.
 """
 import asyncio
 import json
+import base64
 import cv2
 import numpy as np
 from pathlib import Path
@@ -64,12 +65,31 @@ class WebServer:
                         frame = cv2.imdecode(arr, cv2.IMREAD_COLOR)
                         if frame is not None:
                             self.video.push_frame(frame)
+                            if self.video._frame_count <= 3:
+                                h, w = frame.shape[:2]
+                                print(f"[WebSocket] Receiving frames: {w}x{h}")
                         continue
 
                     # Text = JSON control message
                     if "text" in msg and msg["text"]:
                         data = json.loads(msg["text"])
                         action = data.get("action")
+
+                        # Base64 JPEG frame (iOS Safari compatibility)
+                        if action == "frame":
+                            data_url = data.get("data", "")
+                            # Strip "data:image/jpeg;base64," prefix
+                            if "," in data_url:
+                                b64 = data_url.split(",", 1)[1]
+                                jpeg_bytes = base64.b64decode(b64)
+                                arr = np.frombuffer(jpeg_bytes, dtype=np.uint8)
+                                frame = cv2.imdecode(arr, cv2.IMREAD_COLOR)
+                                if frame is not None:
+                                    self.video.push_frame(frame)
+                                    if self.video._frame_count <= 3:
+                                        h, w = frame.shape[:2]
+                                        print(f"[WebSocket] Receiving frames: {w}x{h}")
+                            continue
 
                         if action == "select_target":
                             x, y = data.get("x", 0), data.get("y", 0)
@@ -117,7 +137,23 @@ class WebServer:
 
     async def start(self):
         import uvicorn
+        import ssl
+        from pathlib import Path
+
+        # Use HTTPS if cert files exist (required for camera access on phones)
+        base = Path(__file__).parent.parent
+        cert = base / "cert.pem"
+        key = base / "key.pem"
+
+        kwargs = {}
+        if cert.exists() and key.exists():
+            kwargs["ssl_certfile"] = str(cert)
+            kwargs["ssl_keyfile"] = str(key)
+            print(f"[Web] HTTPS enabled (self-signed cert)")
+        else:
+            print(f"[Web] HTTP only (no cert.pem/key.pem found)")
+
         config = uvicorn.Config(self.app, host=self.host, port=self.port,
-                                log_level="warning")
+                                log_level="warning", **kwargs)
         server = uvicorn.Server(config)
         await server.serve()

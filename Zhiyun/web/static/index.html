@@ -56,8 +56,15 @@
             width: 100%; height: 100%;
             pointer-events: none;
         }
-        #camera-preview { display: none; }
-        #processed-feed { cursor: crosshair; }
+        #camera-preview {
+            max-width: 100%; max-height: 100%; object-fit: contain;
+        }
+        #processed-feed {
+            cursor: crosshair;
+            position: absolute; top: 0; left: 0;
+            max-width: 100%; max-height: 100%; object-fit: contain;
+            display: none;
+        }
 
         .hint {
             position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
@@ -140,7 +147,8 @@
 
     // --- WebSocket ---
     function connectWS() {
-        ws = new WebSocket(`ws://${location.host}/ws`);
+        const wsProto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+        ws = new WebSocket(`${wsProto}//${location.host}/ws`);
         ws.binaryType = 'arraybuffer';
 
         ws.onopen = () => {
@@ -207,21 +215,43 @@
             });
 
             preview.srcObject = cameraStream;
+            preview.setAttribute('autoplay', '');
+            preview.setAttribute('playsinline', '');
+            preview.setAttribute('muted', '');
             await preview.play();
 
-            // Set up capture canvas
-            const track = cameraStream.getVideoTracks()[0];
-            const settings = track.getSettings();
-            captureCanvas.width = settings.width || 640;
-            captureCanvas.height = settings.height || 480;
+            // Wait for video to actually produce frames
+            await new Promise((resolve) => {
+                const check = () => {
+                    if (preview.videoWidth > 0 && preview.videoHeight > 0) {
+                        resolve();
+                    } else {
+                        requestAnimationFrame(check);
+                    }
+                };
+                check();
+            });
+
+            // Set up capture canvas to match actual video resolution
+            captureCanvas.width = preview.videoWidth;
+            captureCanvas.height = preview.videoHeight;
+
+            hint.textContent = `Camera: ${preview.videoWidth}x${preview.videoHeight}. Connecting...`;
 
             btnCamera.textContent = 'Stop Camera';
             btnCamera.classList.add('active');
             camDot.className = 'dot dot-green';
-            hint.textContent = 'Camera active. Click on a person to track.';
 
             // Start sending frames to server
             startSending();
+
+            // Once server starts processing, overlay processed feed
+            processedFeed.onload = () => {
+                if (cameraStream) {
+                    processedFeed.style.display = 'block';
+                    hint.textContent = 'AI active. Click on a person to track.';
+                }
+            };
 
         } catch (err) {
             console.error('Camera error:', err);
@@ -237,6 +267,7 @@
             cameraStream = null;
         }
         preview.srcObject = null;
+        processedFeed.style.display = 'none';
         btnCamera.textContent = 'Start Camera';
         btnCamera.classList.remove('active');
         camDot.className = 'dot dot-gray';
@@ -248,17 +279,34 @@
         sending = true;
         const ctx = captureCanvas.getContext('2d');
 
-        // Send frames at ~15 FPS (balance between quality and bandwidth)
-        sendInterval = setInterval(() => {
-            if (!ws || ws.readyState !== 1 || !cameraStream) return;
+        let framesSent = 0;
 
-            ctx.drawImage(preview, 0, 0, captureCanvas.width, captureCanvas.height);
-            captureCanvas.toBlob((blob) => {
-                if (blob && ws.readyState === 1) {
-                    blob.arrayBuffer().then(buf => ws.send(buf));
+        function sendFrame() {
+            if (!sending || !ws || ws.readyState !== 1 || !cameraStream) {
+                if (sending) setTimeout(sendFrame, 100);
+                return;
+            }
+
+            try {
+                ctx.drawImage(preview, 0, 0, captureCanvas.width, captureCanvas.height);
+
+                // Use dataURL approach (more compatible with iOS Safari)
+                const dataUrl = captureCanvas.toDataURL('image/jpeg', 0.6);
+                // Strip the data:image/jpeg;base64, prefix and send as text
+                ws.send(JSON.stringify({ action: 'frame', data: dataUrl }));
+
+                framesSent++;
+                if (framesSent <= 5 || framesSent % 30 === 0) {
+                    hint.textContent = `Sending frames: ${framesSent}`;
                 }
-            }, 'image/jpeg', 0.7);
-        }, 66); // ~15 FPS
+            } catch (err) {
+                hint.textContent = `Frame error: ${err.message}`;
+            }
+
+            setTimeout(sendFrame, 100); // ~10 FPS
+        }
+
+        sendFrame();
     }
 
     function stopSending() {

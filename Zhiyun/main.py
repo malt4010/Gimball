@@ -104,7 +104,7 @@ async def main(args):
             annotated = tracker.process_frame(frame)
 
             # Update web UI frame
-            web.set_frame(annotated)
+            web.set_annotated_frame(annotated)
 
             # Gimbal control based on tracker state
             if tracker.state == TargetState.TRACKING and tracker.target_bbox:
