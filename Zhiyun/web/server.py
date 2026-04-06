@@ -45,6 +45,12 @@ class WebServer:
             html_path = Path(__file__).parent / "static" / "index.html"
             return HTMLResponse(html_path.read_text())
 
+        @app.get("/camera")
+        async def camera():
+            """Dedicated camera page for phone - sends video feed only."""
+            html_path = Path(__file__).parent / "static" / "camera.html"
+            return HTMLResponse(html_path.read_text())
+
         @app.get("/video_feed")
         async def video_feed():
             """Processed feed with detection overlays (for dashboard)."""

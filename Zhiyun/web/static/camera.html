@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Camera Feed</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #000; color: #eee;
+            font-family: -apple-system, sans-serif;
+            display: flex; flex-direction: column;
+            height: 100vh; overflow: hidden;
+        }
+        .video-container {
+            flex: 1; display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+        video {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 16px; display: flex; align-items: center; justify-content: space-between;
+        }
+        .status {
+            font-size: 13px; display: flex; align-items: center; gap: 8px;
+        }
+        .dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            display: inline-block;
+        }
+        .dot-green { background: #4ade80; }
+        .dot-red { background: #f87171; }
+        .dot-orange { background: #fb923c; animation: pulse 1s infinite; }
+        .dot-gray { background: #6b7280; }
+        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+        .info { font-size: 11px; color: #999; }
+        button {
+            padding: 12px 24px; border: none; border-radius: 8px;
+            font-size: 15px; font-weight: 600; cursor: pointer;
+        }
+        .btn-start { background: #22c55e; color: white; }
+        .btn-stop { background: #ef4444; color: white; }
+
+        .startup {
+            flex: 1; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 20px;
+            padding: 20px;
+        }
+        .startup h2 { font-size: 20px; }
+        .startup p { font-size: 13px; color: #999; text-align: center; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <!-- Startup screen -->
+    <div class="startup" id="startup">
+        <h2>Gimbal Camera</h2>
+        <p>This device will send its camera to the tracking system.<br>Use the back camera for best results.</p>
+        <button class="btn-start" onclick="start()">Start Camera</button>
+        <p class="info" id="startup-info"></p>
+    </div>
+
+    <!-- Camera screen -->
+    <div class="video-container hidden" id="cam-screen">
+        <video id="vid" autoplay playsinline muted></video>
+        <div class="overlay">
+            <div class="status">
+                <span class="dot dot-gray" id="ws-dot"></span>
+                <span id="status-text">Connecting...</span>
+            </div>
+            <div>
+                <span class="info" id="frame-info"></span>
+                <button class="btn-stop" onclick="stop()" style="margin-left:8px;">Stop</button>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="canvas" style="display:none;"></canvas>
+
+    <script>
+    const vid = document.getElementById('vid');
+    const canvas = document.getElementById('canvas');
+    const startupDiv = document.getElementById('startup');
+    const camScreen = document.getElementById('cam-screen');
+    const wsDot = document.getElementById('ws-dot');
+    const statusText = document.getElementById('status-text');
+    const frameInfo = document.getElementById('frame-info');
+    const startupInfo = document.getElementById('startup-info');
+
+    let ws = null;
+    let stream = null;
+    let sendTimer = null;
+    let frameCount = 0;
+
+    function connectWS() {
+        const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+        ws = new WebSocket(proto + '//' + location.host + '/ws');
+        ws.binaryType = 'arraybuffer';
+
+        ws.onopen = () => {
+            wsDot.className = 'dot dot-green';
+            statusText.textContent = 'Connected';
+            ws.send(JSON.stringify({ action: 'change_source', source: 'websocket' }));
+        };
+        ws.onclose = () => {
+            wsDot.className = 'dot dot-red';
+            statusText.textContent = 'Reconnecting...';
+            setTimeout(connectWS, 2000);
+        };
+        ws.onerror = () => {};
+    }
+
+    async function start() {
+        try {
+            startupInfo.textContent = 'Requesting camera...';
+            stream = await navigator.mediaDevices.getUserMedia({
+                video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } },
+                audio: false,
+            });
+
+            vid.srcObject = stream;
+            await vid.play();
+
+            // Wait for video to be ready
+            await new Promise(r => {
+                const c = () => vid.videoWidth > 0 ? r() : requestAnimationFrame(c); c();
+            });
+
+            // Send at reduced size for AI
+            const sendW = 640;
+            const sendH = Math.round(vid.videoHeight / vid.videoWidth * sendW);
+            canvas.width = sendW;
+            canvas.height = sendH;
+            const ctx = canvas.getContext('2d');
+
+            // Show camera screen
+            startupDiv.classList.add('hidden');
+            camScreen.classList.remove('hidden');
+
+            // Connect WebSocket
+            connectWS();
+
+            // Send frames
+            frameCount = 0;
+            sendTimer = setInterval(() => {
+                if (!ws || ws.readyState !== 1 || ws.bufferedAmount > 100000) return;
+
+                ctx.drawImage(vid, 0, 0, sendW, sendH);
+                canvas.toBlob(blob => {
+                    if (blob && ws && ws.readyState === 1) {
+                        ws.send(blob);
+                        frameCount++;
+                        if (frameCount % 15 === 0) {
+                            frameInfo.textContent = `${frameCount} frames | ${(blob.size/1024).toFixed(0)}KB`;
+                        }
+                    }
+                }, 'image/jpeg', 0.7);
+            }, 66); // ~15 FPS
+
+        } catch(e) {
+            startupInfo.textContent = 'Camera error: ' + e.message;
+        }
+    }
+
+    function stop() {
+        if (sendTimer) { clearInterval(sendTimer); sendTimer = null; }
+        if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+        if (ws) { ws.close(); ws = null; }
+        camScreen.classList.add('hidden');
+        startupDiv.classList.remove('hidden');
+        startupInfo.textContent = 'Camera stopped';
+    }
+    </script>
+</body>
+</html>
