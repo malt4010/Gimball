@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="screen-orientation" content="landscape">
     <title>Camera Feed</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -11,6 +12,17 @@
             font-family: -apple-system, sans-serif;
             display: flex; flex-direction: column;
             height: 100vh; overflow: hidden;
+        }
+        /* Warning if portrait */
+        .rotate-warning {
+            display: none; position: fixed; inset: 0; z-index: 100;
+            background: #000; color: #fff;
+            flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+        }
+        .rotate-warning .icon { font-size: 48px; animation: rotate-hint 1.5s ease-in-out infinite; }
+        @keyframes rotate-hint { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(90deg); } }
+        @media (orientation: portrait) {
+            .rotate-warning { display: flex; }
         }
         .video-container {
             flex: 1; display: flex; align-items: center; justify-content: center;
@@ -55,6 +67,13 @@
     </style>
 </head>
 <body>
+    <!-- Rotate warning -->
+    <div class="rotate-warning">
+        <div class="icon">&#128241;</div>
+        <p style="font-size:18px;font-weight:600;">Rotate to landscape</p>
+        <p style="font-size:13px;color:#999;">Hold your phone horizontally for 16:9 video</p>
+    </div>
+
     <!-- Startup screen -->
     <div class="startup" id="startup">
         <h2>Gimbal Camera</h2>
@@ -114,10 +133,18 @@
     async function start() {
         try {
             startupInfo.textContent = 'Requesting camera...';
+            // Request landscape resolution (width > height)
             stream = await navigator.mediaDevices.getUserMedia({
-                video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } },
+                video: {
+                    facingMode: { ideal: 'environment' },
+                    width: { ideal: 1920 },
+                    height: { ideal: 1080 },
+                },
                 audio: false,
             });
+
+            // Try to lock to landscape
+            try { await screen.orientation.lock('landscape'); } catch(e) {}
 
             vid.srcObject = stream;
             await vid.play();
