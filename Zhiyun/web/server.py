@@ -103,10 +103,15 @@ class WebServer:
                     if action == "select_target":
                         x, y = data.get("x", 0), data.get("y", 0)
                         frame = self.video.frame
+                        print(f"[WS] Select target at ({x},{y}), frame={'OK '+str(frame.shape) if frame is not None else 'None'}, dets={len(self.tracker.detections)}")
                         if frame is not None:
                             success = self.tracker.select_target(x, y, frame)
+                            print(f"[WS] Target selected: {success}, state={self.tracker.state}")
                             await ws.send_json({"event": "target_selected",
                                                 "success": success})
+                        else:
+                            await ws.send_json({"event": "target_selected",
+                                                "success": False})
 
                     elif action == "stop_tracking":
                         self.tracker.stop_tracking()

@@ -20,7 +20,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from tracker.video_capture import VideoCapture
 from tracker.tracker import PersonTracker, TargetState
-from controller.gimbal_ble import ZhiyunGimbal
+from controller.gimbal_ble import ZhiyunGimbal, _RAW
 from controller.pid import PIDController
 from web.server import WebServer
 
@@ -112,6 +112,8 @@ async def main(args):
             web.set_clean_frame(full if full is not None else frame)
 
             # Gimbal control with framing offset and axis locks
+            if frame_log_count % 50 == 0:
+                print(f"[DEBUG] state={tracker.state} bbox={tracker.target_bbox} dets={len(tracker.detections)}")
             if tracker.state == TargetState.TRACKING and tracker.target_bbox:
                 x1, y1, x2, y2 = tracker.target_bbox
                 cx = (x1 + x2) / 2
@@ -150,7 +152,26 @@ async def main(args):
                 web.gimbal_tilt = tilt
 
                 if gimbal.connected:
-                    await gimbal.move(tilt=tilt, pan=pan)
+                    threshold = 0.02
+                    if abs(pan) > threshold or abs(tilt) > threshold:
+                        # Send both axes using raw capture bytes
+                        # Pick tilt cmd1 based on tilt direction
+                        if abs(tilt) > threshold:
+                            cmd1 = _RAW["tilt_up"][0] if tilt > 0 else _RAW["tilt_down"][0]
+                        else:
+                            cmd1 = _RAW["neutral"][0]
+
+                        # Pick pan cmd3 based on pan direction
+                        if abs(pan) > threshold:
+                            cmd3 = _RAW["pan_right"][1] if pan > 0 else _RAW["pan_left"][1]
+                        else:
+                            cmd3 = _RAW["neutral"][1]
+
+                        await gimbal._send_raw(cmd1, "061002080031EB", cmd3)
+                        if frame_log_count % 30 == 0:
+                            print(f"[GIMBAL] pan={pan:.3f} tilt={tilt:.3f}")
+                    else:
+                        await gimbal.stop()
 
             elif tracker.state in (TargetState.LOST, TargetState.IDLE):
                 web.gimbal_pan = 0.0
