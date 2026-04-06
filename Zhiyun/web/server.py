@@ -4,6 +4,7 @@ Web dashboard for AI gimbal tracker.
 import asyncio
 import json
 import cv2
+import numpy as np
 from pathlib import Path
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, StreamingResponse
@@ -67,25 +68,33 @@ class WebServer:
                 media_type="multipart/x-mixed-replace; boundary=frame"
             )
 
+        @app.websocket("/ws/camera")
+        async def camera_ws(ws: WebSocket):
+            """Dedicated WebSocket for camera frames (binary JPEG)."""
+            await ws.accept()
+            print("[WS] Camera connected")
+            try:
+                while True:
+                    data = await ws.receive_bytes()
+                    arr = np.frombuffer(data, dtype=np.uint8)
+                    frame = cv2.imdecode(arr, cv2.IMREAD_COLOR)
+                    if frame is not None:
+                        self.video.push_frame(frame)
+                        if self.video._frame_count <= 3:
+                            h, w = frame.shape[:2]
+                            print(f"[WS] Camera frame: {w}x{h} ({len(data)}B)")
+            except WebSocketDisconnect:
+                print("[WS] Camera disconnected")
+            except Exception as e:
+                print(f"[WS] Camera error: {e}")
+
         @app.websocket("/ws")
         async def websocket_endpoint(ws: WebSocket):
+            """WebSocket for dashboard control messages (JSON only)."""
             await ws.accept()
             try:
                 while True:
-                    msg = await ws.receive()
-
-                    # Binary = JPEG frame from browser camera
-                    if "bytes" in msg and msg["bytes"]:
-                        arr = np.frombuffer(msg["bytes"], dtype=np.uint8)
-                        frame = cv2.imdecode(arr, cv2.IMREAD_COLOR)
-                        if frame is not None:
-                            self.video.push_frame(frame)
-                        continue
-
-                    # Text = JSON control message
-                    if "text" not in msg or not msg["text"]:
-                        continue
-                    data = json.loads(msg["text"])
+                    data = json.loads(await ws.receive_text())
                     action = data.get("action")
 
                     if action == "select_target":
@@ -122,11 +131,10 @@ class WebServer:
                     elif action == "change_source":
                         source = data.get("source", "")
                         if source == "websocket":
-                            # Browser camera mode - frames come via WebSocket binary
                             self.video.stop()
                             self.video.source = None
                             await ws.send_json({"event": "source_changed",
-                                                "source": "Browser Camera"})
+                                                "source": "Phone Camera"})
                         elif source:
                             self.video.change_source(source)
                             await ws.send_json({"event": "source_changed",

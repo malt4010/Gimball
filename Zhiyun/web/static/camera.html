@@ -97,20 +97,18 @@
 
     function connectWS() {
         const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
-        ws = new WebSocket(proto + '//' + location.host + '/ws');
-        ws.binaryType = 'arraybuffer';
+        ws = new WebSocket(proto + '//' + location.host + '/ws/camera');
 
         ws.onopen = () => {
             wsDot.className = 'dot dot-green';
-            statusText.textContent = 'Connected';
-            ws.send(JSON.stringify({ action: 'change_source', source: 'websocket' }));
+            statusText.textContent = 'Connected - sending frames';
         };
         ws.onclose = () => {
             wsDot.className = 'dot dot-red';
             statusText.textContent = 'Reconnecting...';
             setTimeout(connectWS, 2000);
         };
-        ws.onerror = () => {};
+        ws.onerror = () => { statusText.textContent = 'Connection error'; };
     }
 
     async function start() {
@@ -151,11 +149,13 @@
                 ctx.drawImage(vid, 0, 0, sendW, sendH);
                 canvas.toBlob(blob => {
                     if (blob && ws && ws.readyState === 1) {
-                        ws.send(blob);
-                        frameCount++;
-                        if (frameCount % 15 === 0) {
-                            frameInfo.textContent = `${frameCount} frames | ${(blob.size/1024).toFixed(0)}KB`;
-                        }
+                        blob.arrayBuffer().then(buf => {
+                            ws.send(buf);
+                            frameCount++;
+                            if (frameCount <= 3 || frameCount % 15 === 0) {
+                                frameInfo.textContent = `${frameCount} frames | ${(blob.size/1024).toFixed(0)}KB`;
+                            }
+                        });
                     }
                 }, 'image/jpeg', 0.7);
             }, 66); // ~15 FPS

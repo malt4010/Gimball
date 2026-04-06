@@ -90,12 +90,18 @@ async def main(args):
     signal.signal(signal.SIGINT, stop)
     signal.signal(signal.SIGTERM, stop)
 
+    frame_log_count = 0
     try:
         while running:
             frame = video.frame
             if frame is None:
-                await asyncio.sleep(0.01)
+                await asyncio.sleep(0.05)
                 continue
+
+            frame_log_count += 1
+            if frame_log_count <= 3:
+                h, w = frame.shape[:2]
+                print(f"[MAIN] Processing frame #{frame_log_count}: {w}x{h}")
 
             # AI detection + tracking (run in thread to not block async loop)
             loop = asyncio.get_event_loop()
