@@ -77,6 +77,7 @@ async def main(args):
 
     # Web dashboard
     web = WebServer(tracker, gimbal, video, port=args.port)
+    web.pid_controller = pid
     print(f"[INIT] Dashboard: https://0.0.0.0:{args.port}")
 
     web_task = asyncio.create_task(web.start())
@@ -114,7 +115,9 @@ async def main(args):
             if tracker.state == TargetState.TRACKING and tracker.target_bbox:
                 x1, y1, x2, y2 = tracker.target_bbox
                 cx = (x1 + x2) / 2
-                cy = (y1 + y2) / 2
+                # Track head position (top 30% of bbox) instead of body center
+                bbox_h = y2 - y1
+                cy = y1 + bbox_h * 0.2
                 h, w = frame.shape[:2]
 
                 # Apply framing offset: shift the "target center" in the frame
@@ -169,10 +172,10 @@ if __name__ == "__main__":
     p.add_argument("--confidence", type=float, default=0.5)
     p.add_argument("--no-gimbal", action="store_true")
     p.add_argument("--port", type=int, default=8080)
-    p.add_argument("--pid-p", type=float, default=2.0)
+    p.add_argument("--pid-p", type=float, default=3.0)
     p.add_argument("--pid-i", type=float, default=0.0)
-    p.add_argument("--pid-d", type=float, default=0.5)
-    p.add_argument("--dead-zone", type=float, default=0.05)
-    p.add_argument("--smoothing", type=float, default=0.3)
+    p.add_argument("--pid-d", type=float, default=0.8)
+    p.add_argument("--dead-zone", type=float, default=0.03)
+    p.add_argument("--smoothing", type=float, default=0.15)
 
     asyncio.run(main(p.parse_args()))

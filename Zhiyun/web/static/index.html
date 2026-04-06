@@ -177,6 +177,14 @@
 
             <div class="divider"></div>
 
+            <h3>Sensitivity</h3>
+            <div class="slider-label"><span>Speed</span><span id="speed-val">Medium</span></div>
+            <input type="range" id="speed-slider" min="1" max="10" value="5" oninput="updateSpeed()">
+            <div class="slider-label"><span>Smoothing</span><span id="smooth-val">Medium</span></div>
+            <input type="range" id="smooth-slider" min="0" max="10" value="3" oninput="updateSpeed()">
+
+            <div class="divider"></div>
+
             <h3>Axis Lock</h3>
             <div class="toggle-row">
                 <div class="toggle-btn" id="lock-pan" onclick="toggleLock('pan')">Lock Pan</div>
@@ -325,6 +333,20 @@
         const y = Math.round((e.clientY - rect.top) / rect.height * (feed.naturalHeight || 480));
         send('select_target', { x, y });
     });
+
+    // --- Sensitivity ---
+    document.getElementById('speed-slider').value = loadVal('speed', '5');
+    document.getElementById('smooth-slider').value = loadVal('smooth', '3');
+    function updateSpeed() {
+        const speed = parseInt(document.getElementById('speed-slider').value);
+        const smooth = parseInt(document.getElementById('smooth-slider').value);
+        saveVal('speed', speed); saveVal('smooth', smooth);
+        const labels = ['Slowest','Slow','','Medium-Slow','','Medium','','Medium-Fast','','Fast','Fastest'];
+        document.getElementById('speed-val').textContent = labels[speed] || speed;
+        document.getElementById('smooth-val').textContent = smooth === 0 ? 'None (instant)' : smooth >= 8 ? 'Very smooth' : smooth >= 5 ? 'Smooth' : smooth >= 3 ? 'Medium' : 'Low';
+        send('set_pid', { kp: speed * 0.6, kd: speed * 0.15, smoothing: smooth / 10 });
+    }
+    updateSpeed();
 
     feed.onload = () => { camDot.className = 'dot dot-green'; updateFraming(); };
     document.getElementById('obs-url').textContent = location.origin + '/clean_feed';

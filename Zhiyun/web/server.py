@@ -33,6 +33,9 @@ class WebServer:
         self.gimbal_pan = 0.0
         self.gimbal_tilt = 0.0
 
+        # PID tuning (set from dashboard)
+        self.pid_controller = None
+
         self._setup_routes()
 
     def set_annotated_frame(self, frame):
@@ -143,6 +146,12 @@ class WebServer:
                     elif action == "set_framing":
                         self.offset_x = float(data.get("offset_x", 0))
                         self.offset_y = float(data.get("offset_y", -0.15))
+
+                    elif action == "set_pid":
+                        if self.pid_controller:
+                            self.pid_controller.kp = float(data.get("kp", 2.0))
+                            self.pid_controller.kd = float(data.get("kd", 0.5))
+                            self.pid_controller.smoothing = float(data.get("smoothing", 0.3))
 
                     elif action == "set_locks":
                         self.lock_pan = bool(data.get("lock_pan", False))
