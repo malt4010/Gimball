@@ -47,8 +47,17 @@ class WebServer:
 
         @app.get("/video_feed")
         async def video_feed():
+            """Processed feed with detection overlays (for dashboard)."""
             return StreamingResponse(
-                self._generate_mjpeg(),
+                self._generate_mjpeg(annotated=True),
+                media_type="multipart/x-mixed-replace; boundary=frame"
+            )
+
+        @app.get("/clean_feed")
+        async def clean_feed():
+            """Clean feed without overlays (for OBS / livestream)."""
+            return StreamingResponse(
+                self._generate_mjpeg(annotated=False),
                 media_type="multipart/x-mixed-replace; boundary=frame"
             )
 
@@ -57,8 +66,20 @@ class WebServer:
             await ws.accept()
             try:
                 while True:
-                    msg = await ws.receive_text()
-                    data = json.loads(msg)
+                    msg = await ws.receive()
+
+                    # Binary = JPEG frame from browser camera
+                    if "bytes" in msg and msg["bytes"]:
+                        arr = np.frombuffer(msg["bytes"], dtype=np.uint8)
+                        frame = cv2.imdecode(arr, cv2.IMREAD_COLOR)
+                        if frame is not None:
+                            self.video.push_frame(frame)
+                        continue
+
+                    # Text = JSON control message
+                    if "text" not in msg or not msg["text"]:
+                        continue
+                    data = json.loads(msg["text"])
                     action = data.get("action")
 
                     if action == "select_target":
@@ -94,7 +115,13 @@ class WebServer:
 
                     elif action == "change_source":
                         source = data.get("source", "")
-                        if source:
+                        if source == "websocket":
+                            # Browser camera mode - frames come via WebSocket binary
+                            self.video.stop()
+                            self.video.source = None
+                            await ws.send_json({"event": "source_changed",
+                                                "source": "Browser Camera"})
+                        elif source:
                             self.video.change_source(source)
                             await ws.send_json({"event": "source_changed",
                                                 "source": source})
@@ -124,12 +151,17 @@ class WebServer:
             except Exception:
                 pass
 
-    async def _generate_mjpeg(self):
+    def set_clean_frame(self, frame):
+        """Set the latest clean frame (no overlays) for OBS."""
+        self._latest_clean = frame
+
+    async def _generate_mjpeg(self, annotated=True):
         while True:
-            frame = self._latest_annotated
+            frame = self._latest_annotated if annotated else getattr(self, '_latest_clean', None)
             if frame is not None:
+                quality = 75 if annotated else 90  # higher quality for OBS
                 _, buf = cv2.imencode(".jpg", frame,
-                                      [cv2.IMWRITE_JPEG_QUALITY, 75])
+                                      [cv2.IMWRITE_JPEG_QUALITY, quality])
                 yield (b"--frame\r\n"
                        b"Content-Type: image/jpeg\r\n\r\n" +
                        buf.tobytes() + b"\r\n")

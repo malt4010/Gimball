@@ -122,6 +122,7 @@
             <h3>Video Source</h3>
             <div class="source-group">
                 <select id="source-type" onchange="onSourceTypeChange()">
+                    <option value="browser">Phone Browser Camera</option>
                     <option value="droidcam">DroidCam</option>
                     <option value="rtsp">RTSP / IP Camera</option>
                     <option value="hdmi">HDMI Capture</option>
@@ -249,9 +250,15 @@
     }
 
     // --- Source ---
+    let browserStream = null;
+    let browserSendInterval = null;
+
     function onSourceTypeChange() {
         const t = sourceType.value; saveVal('st', t);
+        // Stop browser camera if switching away
+        if (t !== 'browser') stopBrowserCam();
         const c = {
+            browser: '<button onclick="connectSource()">Start Phone Camera</button><p style="font-size:10px;color:#64748b;">Opens camera in this browser. OBS uses /clean_feed</p>',
             droidcam: `<div class="source-row"><input type="text" id="source-ip" placeholder="Phone IP" value="${loadVal('dip', '')}"><button onclick="connectSource()">Go</button></div>`,
             rtsp: `<div class="source-row"><input type="text" id="source-ip" placeholder="rtsp://IP:554/stream" value="${loadVal('ru', '')}"><button onclick="connectSource()">Go</button></div>`,
             hdmi: '<button onclick="connectSource()">Use HDMI</button>',
@@ -260,11 +267,12 @@
         };
         sourceConfig.innerHTML = c[t] || '';
     }
-    sourceType.value = loadVal('st', 'droidcam');
+    sourceType.value = loadVal('st', 'browser');
     onSourceTypeChange();
 
     function connectSource() {
         const t = sourceType.value, el = document.getElementById('source-ip');
+        if (t === 'browser') { startBrowserCam(); return; }
         let src = '';
         if (t === 'droidcam') { const ip = el?.value.trim(); if (!ip) return; saveVal('dip', ip); src = 'http://' + ip + ':4747/video'; }
         else if (t === 'rtsp') { src = el?.value.trim(); if (!src) return; saveVal('ru', src); }
@@ -272,6 +280,55 @@
         else { src = el?.value.trim(); if (!src) return; saveVal('cu', src); }
         log('Connect: ' + src); hint.textContent = 'Connecting...';
         send('change_source', { source: src });
+    }
+
+    // --- Browser camera (WebSocket frame upload) ---
+    async function startBrowserCam() {
+        if (browserStream) { stopBrowserCam(); return; }
+        try {
+            browserStream = await navigator.mediaDevices.getUserMedia({
+                video: { facingMode: { ideal: 'environment' }, width: { ideal: 1280 }, height: { ideal: 720 } },
+                audio: false,
+            });
+            const vid = document.createElement('video');
+            vid.srcObject = browserStream; vid.setAttribute('playsinline', '');
+            vid.muted = true; await vid.play();
+            await new Promise(r => { const c = () => vid.videoWidth > 0 ? r() : requestAnimationFrame(c); c(); });
+
+            const canvas = document.createElement('canvas');
+            canvas.width = 640; canvas.height = Math.round(vid.videoHeight / vid.videoWidth * 640);
+            const ctx = canvas.getContext('2d');
+
+            // Tell server to use WebSocket source
+            send('change_source', { source: 'websocket' });
+
+            log(`Camera: ${vid.videoWidth}x${vid.videoHeight} → ${canvas.width}x${canvas.height}`);
+            hint.textContent = 'Camera active';
+            camDot.className = 'dot dot-green';
+
+            let count = 0;
+            browserSendInterval = setInterval(() => {
+                if (!ws || ws.readyState !== 1 || ws.bufferedAmount > 100000) return;
+                ctx.drawImage(vid, 0, 0, canvas.width, canvas.height);
+                canvas.toBlob(blob => {
+                    if (blob && ws && ws.readyState === 1) { ws.send(blob); count++; }
+                    if (count <= 3 || count % 50 === 0) hint.textContent = `Camera: ${count} frames`;
+                }, 'image/jpeg', 0.7);
+            }, 66); // ~15 FPS
+
+            // Update button
+            sourceConfig.innerHTML = '<button onclick="connectSource()" style="background:#ef4444;">Stop Camera</button><p style="font-size:10px;color:#64748b;">OBS: http://localhost:8080/clean_feed</p>';
+        } catch(e) {
+            log('Camera error: ' + e.message);
+            hint.textContent = 'Camera denied';
+            camDot.className = 'dot dot-red';
+        }
+    }
+
+    function stopBrowserCam() {
+        if (browserSendInterval) { clearInterval(browserSendInterval); browserSendInterval = null; }
+        if (browserStream) { browserStream.getTracks().forEach(t => t.stop()); browserStream = null; }
+        camDot.className = 'dot dot-gray';
     }
 
     // --- WebSocket ---
