@@ -30,29 +30,25 @@ _executor = ThreadPoolExecutor(max_workers=1)
 async def main(args):
     print("[INIT] Starting AI Tracking Gimbal System...")
 
-    # Video capture from DroidCam / webcam / RTSP
+    # Video capture
     source = args.source
-    if source.isdigit():
-        source = int(source)
-    video = VideoCapture(source=source, width=args.width, height=args.height)
-    video.start()
-    print(f"[INIT] Video source: {args.source}")
+    if source == "websocket":
+        video = VideoCapture(source=None, width=args.width, height=args.height)
+        print(f"[INIT] Video: waiting for phone camera on /camera")
+    else:
+        if source.isdigit():
+            source = int(source)
+        video = VideoCapture(source=source, width=args.width, height=args.height)
+        video.start()
+        print(f"[INIT] Video source: {args.source}")
 
-    # Wait for first frame
-    for _ in range(100):
-        if video.frame is not None:
-            break
-        await asyncio.sleep(0.1)
+        for _ in range(100):
+            if video.frame is not None:
+                break
+            await asyncio.sleep(0.1)
 
-    if video.frame is None:
-        print("[ERROR] No video! Check that DroidCam is running and URL is correct.")
-        print(f"  Tried: {args.source}")
-        print(f"  DroidCam URL format: http://PHONE_IP:4747/video")
-        video.stop()
-        return
-
-    h, w = video.frame.shape[:2]
-    print(f"[INIT] Video OK: {w}x{h} @ {video.fps:.0f} FPS")
+        if video.frame is None:
+            print(f"[WARN] No video from {args.source} - waiting for source change")
 
     # Person tracker
     tracker = PersonTracker(
@@ -157,7 +153,7 @@ async def main(args):
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description="AI Person Tracking Gimbal")
-    p.add_argument("--source", default="0",
+    p.add_argument("--source", default="websocket",
                    help="DroidCam URL (http://IP:4747/video), camera index, or RTSP URL")
     p.add_argument("--width", type=int, default=640)
     p.add_argument("--height", type=int, default=480)
