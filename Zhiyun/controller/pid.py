@@ -37,13 +37,13 @@ class PIDController:
         self._prev_output = {"pan": 0.0, "tilt": 0.0}
         self._prev_time = None
 
-    def update(self, target_x, target_y, frame_w, frame_h,
-               target_cx=None, target_cy=None):
+    def update(self, person_x, person_y, frame_w, frame_h,
+               target_x=None, target_y=None):
         """Compute gimbal commands from target position in frame.
 
-        target_x, target_y: center of detected person bounding box in pixels
+        person_x, person_y: center of detected person bounding box in pixels
         frame_w, frame_h: frame dimensions in pixels
-        target_cx, target_cy: desired position in frame (default: frame center)
+        target_x, target_y: desired position in frame (default: frame center)
 
         Returns (pan, tilt) each in range -1.0 to 1.0
         """
@@ -52,15 +52,13 @@ class PIDController:
         dt = max(dt, 0.001)
         self._prev_time = now
 
-        # Where we want the person to be (default: frame center)
-        if target_cx is None:
-            target_cx = frame_w / 2
-        if target_cy is None:
-            target_cy = frame_h / 2
+        if target_x is None:
+            target_x = frame_w / 2
+        if target_y is None:
+            target_y = frame_h / 2
 
-        # Error: how far the person is from desired position
-        error_x = (target_x - target_cx) / (frame_w / 2)  # positive = person is right of target
-        error_y = (target_y - target_cy) / (frame_h / 2)  # positive = person is below target
+        error_x = (person_x - target_x) / (frame_w / 2)
+        error_y = (person_y - target_y) / (frame_h / 2)
 
         pan = self._compute_axis("pan", error_x, dt)
         tilt = self._compute_axis("tilt", -error_y, dt)

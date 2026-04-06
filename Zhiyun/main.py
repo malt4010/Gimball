@@ -116,7 +116,8 @@ async def main(args):
                 target_cy = h * (0.5 + web.offset_y)
 
                 pan, tilt = pid.update(cx, cy, w, h,
-                                       target_x=target_cx, target_y=target_cy)
+                                       target_x=target_cx,
+                                       target_y=target_cy)
 
                 # Apply axis locks
                 if web.lock_pan:
