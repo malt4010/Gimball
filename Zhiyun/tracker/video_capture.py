@@ -26,6 +26,7 @@ class VideoCapture:
         self.width = width
         self.height = height
         self._frame = None
+        self._frame_full = None  # full resolution for clean feed
         self._lock = threading.Lock()
         self._running = False
         self._thread = None
@@ -36,18 +37,29 @@ class VideoCapture:
 
     @property
     def frame(self):
+        """AI-sized frame (resized to width x height)."""
         with self._lock:
             return self._frame.copy() if self._frame is not None else None
+
+    @property
+    def frame_full(self):
+        """Full resolution frame (for OBS clean feed)."""
+        with self._lock:
+            return self._frame_full.copy() if self._frame_full is not None else None
 
     @property
     def fps(self):
         return self._fps
 
     def push_frame(self, frame):
-        """Push a frame from an external source (WebRTC).
+        """Push a frame from an external source.
 
-        frame: numpy array (BGR, any size - will be resized)
+        frame: numpy array (BGR, any size)
+        Stores both full-res and AI-resized versions.
         """
+        with self._lock:
+            self._frame_full = frame
+
         h, w = frame.shape[:2]
         if w != self.width or h != self.height:
             frame = cv2.resize(frame, (self.width, self.height))

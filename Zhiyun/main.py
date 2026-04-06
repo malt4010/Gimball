@@ -107,7 +107,8 @@ async def main(args):
             loop = asyncio.get_event_loop()
             annotated = await loop.run_in_executor(_executor, tracker.process_frame, frame)
             web.set_annotated_frame(annotated)
-            web.set_clean_frame(frame)  # clean feed for OBS
+            full = video.frame_full
+            web.set_clean_frame(full if full is not None else frame)
 
             # Gimbal control with framing offset and axis locks
             if tracker.state == TargetState.TRACKING and tracker.target_bbox:
