@@ -1,11 +1,5 @@
 """
 Web dashboard for AI gimbal tracker.
-
-Features:
-- Video source selector (DroidCam, RTSP, HDMI capture, USB webcam)
-- Live processed video with detection overlays
-- Click-to-track target selection
-- Gimbal controls
 """
 import asyncio
 import json
@@ -25,6 +19,18 @@ class WebServer:
         self.port = port
         self.app = FastAPI()
         self._latest_annotated = None
+
+        # Framing offset (0 = center, -0.5..0.5)
+        self.offset_x = 0.0
+        self.offset_y = -0.15  # default: slight headroom
+
+        # Axis locks
+        self.lock_pan = False
+        self.lock_tilt = False
+
+        # Current gimbal output (for dashboard arrows)
+        self.gimbal_pan = 0.0
+        self.gimbal_tilt = 0.0
 
         self._setup_routes()
 
@@ -81,6 +87,14 @@ class WebServer:
                             await ws.send_json({"event": "source_changed",
                                                 "source": source})
 
+                    elif action == "set_framing":
+                        self.offset_x = float(data.get("offset_x", 0))
+                        self.offset_y = float(data.get("offset_y", -0.15))
+
+                    elif action == "set_locks":
+                        self.lock_pan = bool(data.get("lock_pan", False))
+                        self.lock_tilt = bool(data.get("lock_tilt", False))
+
                     elif action == "get_status":
                         await ws.send_json({
                             "event": "status",
@@ -89,6 +103,8 @@ class WebServer:
                             "fps": round(self.video.fps, 1),
                             "detections": len(self.tracker.detections),
                             "source": str(self.video.source or "none"),
+                            "gimbal_pan": round(self.gimbal_pan, 3),
+                            "gimbal_tilt": round(self.gimbal_tilt, 3),
                         })
 
             except WebSocketDisconnect:
@@ -109,18 +125,12 @@ class WebServer:
 
     async def start(self):
         import uvicorn
-
         base = Path(__file__).parent.parent
-        cert = base / "cert.pem"
-        key = base / "key.pem"
-
+        cert, key = base / "cert.pem", base / "key.pem"
         kwargs = {}
         if cert.exists() and key.exists():
-            kwargs["ssl_certfile"] = str(cert)
-            kwargs["ssl_keyfile"] = str(key)
+            kwargs = {"ssl_certfile": str(cert), "ssl_keyfile": str(key)}
             print("[Web] HTTPS enabled")
-
         config = uvicorn.Config(self.app, host=self.host, port=self.port,
                                 log_level="warning", **kwargs)
-        server = uvicorn.Server(config)
-        await server.serve()
+        await uvicorn.Server(config).serve()

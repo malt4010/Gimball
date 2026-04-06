@@ -18,74 +18,92 @@
         header h1 { font-size: 16px; font-weight: 600; }
         .status-bar { display: flex; gap: 12px; font-size: 12px; align-items: center; }
         .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 3px; }
-        .dot-green { background: #4ade80; }
-        .dot-red { background: #f87171; }
-        .dot-orange { background: #fb923c; }
-        .dot-gray { background: #6b7280; }
+        .dot-green { background: #4ade80; } .dot-red { background: #f87171; }
+        .dot-orange { background: #fb923c; } .dot-gray { background: #6b7280; }
 
         .main { flex: 1; display: flex; overflow: hidden; }
 
+        /* Video area with direction arrows */
         .video-area {
             flex: 1; position: relative; background: #000;
             display: flex; align-items: center; justify-content: center;
-            cursor: crosshair;
+            cursor: crosshair; overflow: hidden;
         }
         .video-area img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        /* Crosshair showing target framing position */
+        .crosshair {
+            position: absolute; pointer-events: none;
+            width: 20px; height: 20px;
+            border: 2px solid rgba(255,255,100,0.6);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: left 0.2s, top 0.2s;
+        }
+        .crosshair::before, .crosshair::after {
+            content: ''; position: absolute; background: rgba(255,255,100,0.4);
+        }
+        .crosshair::before { width: 1px; height: 30px; left: 50%; top: -5px; transform: translateX(-50%); }
+        .crosshair::after { height: 1px; width: 30px; top: 50%; left: -5px; transform: translateY(-50%); }
+
+        /* Direction arrows */
+        .arrow { position: absolute; font-size: 28px; opacity: 0; transition: opacity 0.15s; pointer-events: none; filter: drop-shadow(0 0 4px rgba(0,0,0,0.8)); }
+        .arrow-up { top: 12px; left: 50%; transform: translateX(-50%); }
+        .arrow-down { bottom: 12px; left: 50%; transform: translateX(-50%); }
+        .arrow-left { left: 12px; top: 50%; transform: translateY(-50%); }
+        .arrow-right { right: 12px; top: 50%; transform: translateY(-50%); }
+        .arrow.active { opacity: 1; }
+        .arrow.mild { opacity: 0.4; }
+
         .hint {
             position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
             background: rgba(0,0,0,0.75); padding: 5px 12px;
             border-radius: 6px; font-size: 11px; color: #999;
         }
 
+        /* Sidebar */
         .sidebar {
-            width: 260px; background: #16213e; padding: 14px;
-            display: flex; flex-direction: column; gap: 10px;
+            width: 270px; background: #16213e; padding: 14px;
+            display: flex; flex-direction: column; gap: 8px;
             overflow-y: auto;
         }
         .sidebar h3 { font-size: 11px; text-transform: uppercase; color: #64748b; letter-spacing: 1px; margin-bottom: 2px; }
-
-        button, select {
-            width: 100%; padding: 8px; border: none; border-radius: 6px;
-            font-size: 13px; cursor: pointer;
-        }
-        button { font-weight: 500; }
-        button:hover { opacity: 0.85; }
+        button, select { width: 100%; padding: 8px; border: none; border-radius: 6px; font-size: 13px; cursor: pointer; }
+        button { font-weight: 500; } button:hover { opacity: 0.85; }
         .btn-stop { background: #ef4444; color: white; }
         .btn-center { background: #3b82f6; color: white; }
-        .btn-connect { background: #8b5cf6; color: white; }
-
         select { background: #0f172a; color: #eee; border: 1px solid #334155; }
-        input[type="text"] {
-            width: 100%; padding: 8px; border: 1px solid #334155; border-radius: 6px;
-            background: #0f172a; color: #eee; font-size: 13px;
-        }
-
-        .state-badge {
-            padding: 8px; border-radius: 6px; text-align: center;
-            font-size: 14px; font-weight: 600;
-        }
-        .state-idle { background: #374151; }
-        .state-tracking { background: #166534; }
-        .state-lost { background: #92400e; }
-
+        input[type="text"] { width: 100%; padding: 8px; border: 1px solid #334155; border-radius: 6px; background: #0f172a; color: #eee; font-size: 13px; }
+        input[type="range"] { width: 100%; accent-color: #3b82f6; }
+        .state-badge { padding: 8px; border-radius: 6px; text-align: center; font-size: 14px; font-weight: 600; }
+        .state-idle { background: #374151; } .state-tracking { background: #166534; } .state-lost { background: #92400e; }
         .info-row { display: flex; justify-content: space-between; font-size: 12px; color: #94a3b8; }
-
         .source-group { display: flex; flex-direction: column; gap: 6px; }
         .source-row { display: flex; gap: 6px; }
         .source-row input { flex: 1; }
         .source-row button { width: auto; padding: 8px 14px; background: #22c55e; color: white; }
+        .divider { border-top: 1px solid #1e293b; margin: 4px 0; }
+
+        /* Toggle buttons */
+        .toggle-row { display: flex; gap: 6px; }
+        .toggle-btn {
+            flex: 1; padding: 8px; border: 2px solid #334155; border-radius: 6px;
+            background: transparent; color: #94a3b8; font-size: 12px; text-align: center;
+        }
+        .toggle-btn.active { border-color: #f59e0b; color: #f59e0b; background: rgba(245,158,11,0.1); }
+
+        /* Framing sliders */
+        .slider-label { display: flex; justify-content: space-between; font-size: 11px; color: #94a3b8; margin-bottom: 2px; }
 
         .log {
             flex: 1; overflow-y: auto; font-size: 10px;
             background: #0f172a; border-radius: 6px; padding: 6px;
-            font-family: monospace; color: #64748b; min-height: 60px;
+            font-family: monospace; color: #64748b; min-height: 50px;
         }
-
-        .divider { border-top: 1px solid #1e293b; margin: 4px 0; }
 
         @media (max-width: 700px) {
             .main { flex-direction: column; }
-            .sidebar { width: 100%; max-height: 200px; }
+            .sidebar { width: 100%; max-height: 220px; }
             .log { display: none; }
         }
     </style>
@@ -103,6 +121,11 @@
     <div class="main">
         <div class="video-area" id="video-area">
             <img id="feed" src="/video_feed" alt="No video">
+            <div class="crosshair" id="crosshair"></div>
+            <div class="arrow arrow-up" id="arrow-up">&#9650;</div>
+            <div class="arrow arrow-down" id="arrow-down">&#9660;</div>
+            <div class="arrow arrow-left" id="arrow-left">&#9664;</div>
+            <div class="arrow arrow-right" id="arrow-right">&#9654;</div>
             <div class="hint" id="hint">Select a video source to begin</div>
         </div>
 
@@ -119,9 +142,6 @@
                 <div id="source-config"></div>
             </div>
             <div class="info-row">
-                <span>Source: <span id="current-source">-</span></span>
-            </div>
-            <div class="info-row">
                 <span>FPS: <span id="fps-val">-</span></span>
                 <span>Persons: <span id="person-count">0</span></span>
             </div>
@@ -132,6 +152,22 @@
             <div class="state-badge state-idle" id="state-badge">IDLE</div>
             <button class="btn-stop" onclick="send('stop_tracking')">Stop Tracking</button>
             <button class="btn-center" onclick="send('center')">Center Gimbal</button>
+
+            <div class="divider"></div>
+
+            <h3>Framing</h3>
+            <div class="slider-label"><span>Horizontal</span><span id="frame-x-val">Center</span></div>
+            <input type="range" id="frame-x" min="-50" max="50" value="0" oninput="updateFraming()">
+            <div class="slider-label"><span>Vertical (headroom)</span><span id="frame-y-val">Center</span></div>
+            <input type="range" id="frame-y" min="-50" max="50" value="-15" oninput="updateFraming()">
+
+            <div class="divider"></div>
+
+            <h3>Axis Lock</h3>
+            <div class="toggle-row">
+                <div class="toggle-btn" id="lock-pan" onclick="toggleLock('pan')">Lock Pan</div>
+                <div class="toggle-btn" id="lock-tilt" onclick="toggleLock('tilt')">Lock Tilt</div>
+            </div>
 
             <div class="divider"></div>
 
@@ -149,41 +185,107 @@
     const trackDot = document.getElementById('track-dot');
     const fpsVal = document.getElementById('fps-val');
     const personCount = document.getElementById('person-count');
-    const currentSource = document.getElementById('current-source');
     const logEl = document.getElementById('log');
     const sourceType = document.getElementById('source-type');
     const sourceConfig = document.getElementById('source-config');
-    const sourceIp = document.getElementById('source-ip');
+    const crosshair = document.getElementById('crosshair');
+    const frameXSlider = document.getElementById('frame-x');
+    const frameYSlider = document.getElementById('frame-y');
+    const arrowUp = document.getElementById('arrow-up');
+    const arrowDown = document.getElementById('arrow-down');
+    const arrowLeft = document.getElementById('arrow-left');
+    const arrowRight = document.getElementById('arrow-right');
 
     let ws = null;
+    let lockPan = false;
+    let lockTilt = false;
 
     function log(msg) {
         logEl.textContent += new Date().toLocaleTimeString() + ' ' + msg + '\n';
         logEl.scrollTop = logEl.scrollHeight;
     }
-
     function send(action, extra) {
         if (ws && ws.readyState === 1) ws.send(JSON.stringify({ action, ...extra }));
     }
 
-    // --- Source selection (with localStorage persistence) ---
+    // --- localStorage ---
     function saveVal(key, val) { try { localStorage.setItem('gimbal_' + key, val); } catch(e) {} }
     function loadVal(key, def) { try { return localStorage.getItem('gimbal_' + key) || def; } catch(e) { return def; } }
 
+    // --- Framing ---
+    frameXSlider.value = loadVal('frame_x', '0');
+    frameYSlider.value = loadVal('frame_y', '-15');
+
+    function updateFraming() {
+        const x = parseInt(frameXSlider.value);
+        const y = parseInt(frameYSlider.value);
+        saveVal('frame_x', x);
+        saveVal('frame_y', y);
+
+        // Label
+        const xLabel = x === 0 ? 'Center' : x < 0 ? `Left ${-x}%` : `Right ${x}%`;
+        const yLabel = y === 0 ? 'Center' : y < 0 ? `Up ${-y}% (headroom)` : `Down ${y}%`;
+        document.getElementById('frame-x-val').textContent = xLabel;
+        document.getElementById('frame-y-val').textContent = yLabel;
+
+        // Move crosshair on video
+        const rect = feed.getBoundingClientRect();
+        crosshair.style.left = (rect.left + rect.width * (50 + x) / 100) + 'px';
+        crosshair.style.top = (rect.top + rect.height * (50 + y) / 100) + 'px';
+
+        send('set_framing', { offset_x: x / 100, offset_y: y / 100 });
+    }
+    updateFraming();
+    window.addEventListener('resize', updateFraming);
+
+    // --- Axis lock ---
+    lockPan = loadVal('lock_pan', 'false') === 'true';
+    lockTilt = loadVal('lock_tilt', 'false') === 'true';
+    if (lockPan) document.getElementById('lock-pan').classList.add('active');
+    if (lockTilt) document.getElementById('lock-tilt').classList.add('active');
+
+    function toggleLock(axis) {
+        if (axis === 'pan') {
+            lockPan = !lockPan;
+            document.getElementById('lock-pan').classList.toggle('active');
+            saveVal('lock_pan', lockPan);
+        } else {
+            lockTilt = !lockTilt;
+            document.getElementById('lock-tilt').classList.toggle('active');
+            saveVal('lock_tilt', lockTilt);
+        }
+        send('set_locks', { lock_pan: lockPan, lock_tilt: lockTilt });
+        log((axis === 'pan' ? 'Pan' : 'Tilt') + (axis === 'pan' ? (lockPan ? ' locked' : ' unlocked') : (lockTilt ? ' locked' : ' unlocked')));
+    }
+
+    // Send lock state on connect
+    function sendLocks() { send('set_locks', { lock_pan: lockPan, lock_tilt: lockTilt }); }
+
+    // --- Direction arrows ---
+    function updateArrows(pan, tilt) {
+        // pan/tilt are -1..1 from PID output
+        const thresh = 0.05;
+        const strong = 0.3;
+
+        arrowLeft.className = 'arrow arrow-left' + (pan < -thresh ? (pan < -strong ? ' active' : ' mild') : '');
+        arrowRight.className = 'arrow arrow-right' + (pan > thresh ? (pan > strong ? ' active' : ' mild') : '');
+        arrowUp.className = 'arrow arrow-up' + (tilt > thresh ? (tilt > strong ? ' active' : ' mild') : '');
+        arrowDown.className = 'arrow arrow-down' + (tilt < -thresh ? (tilt < -strong ? ' active' : ' mild') : '');
+    }
+
+    // --- Source selection ---
     function onSourceTypeChange() {
         const type = sourceType.value;
         saveVal('source_type', type);
         const configs = {
             droidcam: `<div class="source-row"><input type="text" id="source-ip" placeholder="Phone IP (e.g. 192.168.1.50)" value="${loadVal('droidcam_ip', '')}"><button onclick="connectSource()">Go</button></div>`,
             rtsp: `<div class="source-row"><input type="text" id="source-ip" placeholder="rtsp://IP:554/stream" value="${loadVal('rtsp_url', '')}"><button onclick="connectSource()">Go</button></div>`,
-            hdmi: '<button onclick="connectSource()">Use HDMI Capture</button><p style="font-size:11px;color:#64748b;">First available capture card (device 0)</p>',
-            usb: '<button onclick="connectSource()">Use USB Webcam</button><p style="font-size:11px;color:#64748b;">First available webcam (device 0)</p>',
+            hdmi: '<button onclick="connectSource()">Use HDMI Capture</button>',
+            usb: '<button onclick="connectSource()">Use USB Webcam</button>',
             custom: `<div class="source-row"><input type="text" id="source-ip" placeholder="URL or device index" value="${loadVal('custom_url', '')}"><button onclick="connectSource()">Go</button></div>`,
         };
         sourceConfig.innerHTML = configs[type] || '';
     }
-
-    // Restore last used source type
     sourceType.value = loadVal('source_type', 'droidcam');
     onSourceTypeChange();
 
@@ -191,28 +293,22 @@
         const type = sourceType.value;
         const ipEl = document.getElementById('source-ip');
         let source = '';
-
         if (type === 'droidcam') {
             const ip = ipEl ? ipEl.value.trim() : '';
-            if (!ip) { log('Enter phone IP address'); return; }
-            saveVal('droidcam_ip', ip);
-            source = 'http://' + ip + ':4747/video';
+            if (!ip) { log('Enter phone IP'); return; }
+            saveVal('droidcam_ip', ip); source = 'http://' + ip + ':4747/video';
         } else if (type === 'rtsp') {
             source = ipEl ? ipEl.value.trim() : '';
             if (!source) { log('Enter RTSP URL'); return; }
             saveVal('rtsp_url', source);
-        } else if (type === 'hdmi') {
-            source = '0';
-        } else if (type === 'usb') {
-            source = '0';
+        } else if (type === 'hdmi' || type === 'usb') { source = '0';
         } else if (type === 'custom') {
             source = ipEl ? ipEl.value.trim() : '';
             if (!source) { log('Enter source'); return; }
             saveVal('custom_url', source);
         }
-
         log('Connecting: ' + source);
-        hint.textContent = 'Connecting to ' + source + '...';
+        hint.textContent = 'Connecting...';
         send('change_source', { source });
     }
 
@@ -220,12 +316,12 @@
     function connectWS() {
         const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
         ws = new WebSocket(proto + '//' + location.host + '/ws');
-
         ws.onopen = () => {
-            log('Dashboard connected');
-            setInterval(() => send('get_status'), 500);
+            log('Connected');
+            sendLocks();
+            updateFraming();
+            setInterval(() => send('get_status'), 300);
         };
-
         ws.onmessage = (e) => {
             const data = JSON.parse(e.data);
             if (data.event === 'status') {
@@ -238,23 +334,21 @@
                 fpsVal.textContent = fps;
                 camDot.className = 'dot ' + (fps > 0 ? 'dot-green' : 'dot-gray');
                 if (data.detections != null) personCount.textContent = data.detections;
-                if (data.source) currentSource.textContent = data.source;
-                if (fps > 0) hint.textContent = 'Click on a person to start tracking';
+                if (fps > 0 && hint.textContent.includes('Connecting')) hint.textContent = 'Click on a person to track';
+                // Update arrows
+                if (data.gimbal_pan != null) updateArrows(data.gimbal_pan, data.gimbal_tilt);
             } else if (data.event === 'target_selected') {
-                log(data.success ? 'Target locked!' : 'No person at that position');
-                hint.textContent = data.success ? 'Tracking active' : 'Click on a person to track';
-            } else if (data.event === 'tracking_stopped') {
-                log('Tracking stopped');
-            } else if (data.event === 'source_changed') {
-                log('Source changed: ' + data.source);
-            }
+                log(data.success ? 'Target locked!' : 'No person there');
+                hint.textContent = data.success ? 'Tracking active' : 'Click on a person';
+            } else if (data.event === 'tracking_stopped') { log('Stopped');
+            } else if (data.event === 'source_changed') { log('Source: ' + data.source); }
         };
-
         ws.onclose = () => setTimeout(connectWS, 2000);
     }
 
     // --- Click to track ---
     document.getElementById('video-area').addEventListener('click', (e) => {
+        if (e.target.closest('.arrow') || e.target.closest('.crosshair')) return;
         const rect = feed.getBoundingClientRect();
         const scaleX = (feed.naturalWidth || 320) / rect.width;
         const scaleY = (feed.naturalHeight || 240) / rect.height;
@@ -264,8 +358,7 @@
         log('Select (' + x + ',' + y + ')');
     });
 
-    feed.onload = () => { camDot.className = 'dot dot-green'; };
-
+    feed.onload = () => { camDot.className = 'dot dot-green'; updateFraming(); };
     connectWS();
     </script>
 </body>

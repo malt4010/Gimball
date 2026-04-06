@@ -102,18 +102,38 @@ async def main(args):
             annotated = tracker.process_frame(frame)
             web.set_annotated_frame(annotated)
 
-            # Gimbal control
+            # Gimbal control with framing offset and axis locks
             if tracker.state == TargetState.TRACKING and tracker.target_bbox:
                 x1, y1, x2, y2 = tracker.target_bbox
                 cx = (x1 + x2) / 2
                 cy = (y1 + y2) / 2
                 h, w = frame.shape[:2]
 
-                pan, tilt = pid.update(cx, cy, w, h)
+                # Apply framing offset: shift the "target center" in the frame
+                # offset_x > 0 means person should be right of center
+                # offset_y < 0 means person should be above center (headroom)
+                target_cx = w * (0.5 + web.offset_x)
+                target_cy = h * (0.5 + web.offset_y)
+
+                pan, tilt = pid.update(cx, cy, w, h,
+                                       target_x=target_cx, target_y=target_cy)
+
+                # Apply axis locks
+                if web.lock_pan:
+                    pan = 0.0
+                if web.lock_tilt:
+                    tilt = 0.0
+
+                # Store for dashboard arrows
+                web.gimbal_pan = pan
+                web.gimbal_tilt = tilt
+
                 if gimbal.connected:
                     await gimbal.move(tilt=tilt, pan=pan)
 
             elif tracker.state in (TargetState.LOST, TargetState.IDLE):
+                web.gimbal_pan = 0.0
+                web.gimbal_tilt = 0.0
                 if gimbal.connected:
                     await gimbal.stop()
                 pid.reset()
