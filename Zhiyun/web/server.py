@@ -149,9 +149,10 @@ class WebServer:
 
                     elif action == "set_pid":
                         if self.pid_controller:
-                            self.pid_controller.kp = float(data.get("kp", 2.0))
-                            self.pid_controller.kd = float(data.get("kd", 0.5))
+                            self.pid_controller.kp = float(data.get("kp", 1.5))
+                            self.pid_controller.kd = float(data.get("kd", 0.8))
                             self.pid_controller.smoothing = float(data.get("smoothing", 0.3))
+                        self.max_speed = float(data.get("max_speed", 0.4))
 
                     elif action == "set_locks":
                         self.lock_pan = bool(data.get("lock_pan", False))

@@ -178,8 +178,10 @@
             <div class="divider"></div>
 
             <h3>Sensitivity</h3>
-            <div class="slider-label"><span>Speed</span><span id="speed-val">Medium</span></div>
+            <div class="slider-label"><span>Responsiveness</span><span id="speed-val">Medium</span></div>
             <input type="range" id="speed-slider" min="1" max="10" value="5" oninput="updateSpeed()">
+            <div class="slider-label"><span>Max speed</span><span id="maxspeed-val">40%</span></div>
+            <input type="range" id="maxspeed-slider" min="5" max="100" value="40" step="5" oninput="updateSpeed()">
             <div class="slider-label"><span>Smoothing</span><span id="smooth-val">Medium</span></div>
             <input type="range" id="smooth-slider" min="0" max="10" value="3" oninput="updateSpeed()">
 
@@ -337,14 +339,17 @@
     // --- Sensitivity ---
     document.getElementById('speed-slider').value = loadVal('speed', '5');
     document.getElementById('smooth-slider').value = loadVal('smooth', '3');
+    document.getElementById('maxspeed-slider').value = loadVal('maxspeed', '40');
     function updateSpeed() {
         const speed = parseInt(document.getElementById('speed-slider').value);
         const smooth = parseInt(document.getElementById('smooth-slider').value);
-        saveVal('speed', speed); saveVal('smooth', smooth);
-        const labels = ['Slowest','Slow','','Medium-Slow','','Medium','','Medium-Fast','','Fast','Fastest'];
+        const maxspeed = parseInt(document.getElementById('maxspeed-slider').value);
+        saveVal('speed', speed); saveVal('smooth', smooth); saveVal('maxspeed', maxspeed);
+        const labels = ['','Slowest','Slow','Med-Slow','','Medium','','Med-Fast','Fast','Very Fast','Fastest'];
         document.getElementById('speed-val').textContent = labels[speed] || speed;
-        document.getElementById('smooth-val').textContent = smooth === 0 ? 'None (instant)' : smooth >= 8 ? 'Very smooth' : smooth >= 5 ? 'Smooth' : smooth >= 3 ? 'Medium' : 'Low';
-        send('set_pid', { kp: speed * 0.3, kd: 0.5 + speed * 0.1, smoothing: smooth / 10 });
+        document.getElementById('smooth-val').textContent = smooth === 0 ? 'None' : smooth >= 8 ? 'Very smooth' : smooth >= 5 ? 'Smooth' : smooth >= 3 ? 'Medium' : 'Low';
+        document.getElementById('maxspeed-val').textContent = maxspeed + '%';
+        send('set_pid', { kp: speed * 0.3, kd: 0.5 + speed * 0.1, smoothing: smooth / 10, max_speed: maxspeed / 100 });
     }
     updateSpeed();
 

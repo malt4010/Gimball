@@ -136,7 +136,19 @@ async def main(args):
                 if web.lock_tilt:
                     tilt = 0.0
 
-                # Store for dashboard arrows
+                # Expo curve: small inputs → much smaller output
+                # This gives fine control near center and fast movement at extremes
+                def expo(val, curve=3.0):
+                    """Apply exponential curve. curve=1 is linear, higher = more expo."""
+                    sign = 1.0 if val >= 0 else -1.0
+                    return sign * (abs(val) ** curve)
+
+                # Max speed limiter (0.0-1.0, adjustable from dashboard)
+                max_speed = getattr(web, 'max_speed', 0.4)
+                pan = expo(pan) * max_speed
+                tilt = expo(tilt) * max_speed
+
+                # Store for dashboard arrows (pre-expo for visualization)
                 web.gimbal_pan = pan
                 web.gimbal_tilt = tilt
 
