@@ -344,7 +344,7 @@
         const labels = ['Slowest','Slow','','Medium-Slow','','Medium','','Medium-Fast','','Fast','Fastest'];
         document.getElementById('speed-val').textContent = labels[speed] || speed;
         document.getElementById('smooth-val').textContent = smooth === 0 ? 'None (instant)' : smooth >= 8 ? 'Very smooth' : smooth >= 5 ? 'Smooth' : smooth >= 3 ? 'Medium' : 'Low';
-        send('set_pid', { kp: speed * 0.6, kd: speed * 0.15, smoothing: smooth / 10 });
+        send('set_pid', { kp: speed * 0.3, kd: 0.5 + speed * 0.1, smoothing: smooth / 10 });
     }
     updateSpeed();
 

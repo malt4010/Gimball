@@ -172,10 +172,10 @@ if __name__ == "__main__":
     p.add_argument("--confidence", type=float, default=0.5)
     p.add_argument("--no-gimbal", action="store_true")
     p.add_argument("--port", type=int, default=8080)
-    p.add_argument("--pid-p", type=float, default=3.0)
+    p.add_argument("--pid-p", type=float, default=1.5)
     p.add_argument("--pid-i", type=float, default=0.0)
     p.add_argument("--pid-d", type=float, default=0.8)
-    p.add_argument("--dead-zone", type=float, default=0.03)
-    p.add_argument("--smoothing", type=float, default=0.15)
+    p.add_argument("--dead-zone", type=float, default=0.05)
+    p.add_argument("--smoothing", type=float, default=0.3)
 
     asyncio.run(main(p.parse_args()))
